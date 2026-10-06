@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+<html class="avst-print" lang="no">
+<head>
+<meta charset="utf-8"/>
+<title>Hvordan vet vi det vi tror vi vet? Uke 40, EXPH0400</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme" rel="stylesheet"/>
+
+
+<style>
+  :root{
+    /* ../palette.md, hentet fra institusjonens Menti-tema */
+    --ntnu-blue:#00509E;
+    --ink:#252B36;
+    --magenta:#AD208E;
+    --yellow:#D5D10E;
+    --periwinkle:#79A2CE;
+    --brown:#90492D;
+    --purple:#552988;
+    --teal:#5CBEC9;
+    --paper:#FFFFFF;
+    --bg-gradient: linear-gradient(135deg, #ffffff 0%, #e9ebee 100%);
+  }
+  .reveal { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: var(--ink); }
+  /* Standardbakgrunn for hele visningsflaten, en diskret diagonal toning. Satt på viewporten (ikke på hver section), ellers farges bare en boks rundt selve innholdet, siden en section kun er så høy som innholdet sitt. Slides med egen farge (poll/engage/fasit/diskusjon/aktuelt) setter sin egen background på selve sliden og legger seg oppå denne. */
+  html, body { background: var(--bg-gradient); }
+  .reveal-viewport { background: var(--bg-gradient) !important; }
+  .reveal h1, .reveal h2, .reveal h3 { color: var(--ntnu-blue); font-weight:600; }
+  .reveal h1 { font-size: 1.5em; line-height:1.25; }
+  .reveal h2 { font-size: 1.35em; }
+  .reveal section.content-slide { text-align:left; }
+  .reveal section.content-slide h2 { border-bottom:3px solid var(--ntnu-blue); padding-bottom:0.15em; margin-bottom:0.5em; }
+  .reveal .kicker { text-transform:uppercase; letter-spacing:0.08em; font-size:0.42em; color:var(--magenta); font-weight:700; }
+  .reveal ul, .reveal ol { display:block; }
+  .reveal li { margin-bottom:0.3em; }
+
+  /* KJERNE / FORDYPNING-merking */
+  .tag { display:inline-block; font-size:0.36em; font-weight:700; letter-spacing:0.06em;
+         padding:0.15em 0.6em; margin-bottom:0.4em; text-transform:uppercase; }
+  .tag-kjerne { background:var(--ntnu-blue); color:#fff; }
+  .tag-fordypning { background:#eee; color:#555; border:1px solid #ccc; }
+
+  /* FLA-henvisning: diskret. Sidetall: nå tydelig lesbart, sort */
+  .fla-ref { font-size:0.32em; color:#777; font-style:italic; margin-bottom:0.3em; }
+  .pagecite { font-size:0.5em; color:#000; font-weight:600; }
+
+  /* Side-om-side layout for slides med bilde */
+  .split { display:flex; gap:1.2em; align-items:flex-start; }
+  .split .col-text { flex:1.8; }
+  .split .col-img { flex:0.8; text-align:center; min-width:0; }
+  .split .col-img img { max-width:100%; max-height:210px; width:auto; object-fit:cover; }
+  .split .col-img.portrait img { max-height:140px; }
+  .split .col-text li { font-size:0.85em; }
+  .split .col-text .aside-note { font-size:0.65em; color:#555; margin-top:0.4em; }
+  .thinker-info { font-size:0.42em; color:#000; margin-top:0.3em; line-height:1.3; }
+  .photo-credit { font-size:0.2em; color:#aaa; margin-top:0.15em; }
+
+  /* Sporsmal-slide (fullt sporsmal + alternativer, uten sporsmalsnummer) */
+  .reveal section.question-slide { text-align:left; }
+  .question-slide > p:not(.pagecite), .fasit-slide > p:not(.pagecite) { font-size:0.8em; }
+  .question-slide .alt, .fasit-slide .alt { font-size:0.8em; margin:0.2em 0; padding:0.15em 0.4em; }
+  .question-slide .altnum, .fasit-slide .altnum { display:inline-block; width:1.6em; font-weight:700; color:var(--ntnu-blue); }
+  .fasit-slide .alt.correct { background:#e3f6e9; font-weight:700; }
+  .fasit-slide .alt.correct .altnum { color:#1d7a3d; }
+  .fasit-slide .alt.correct::after { content:" \2713"; color:#1d7a3d; font-weight:700; }
+
+  /* Poll-slide: flervalg, resultatene tegnes av ../avstemning/avstemning-deck.js */
+  .reveal section.poll-slide { background: var(--periwinkle); text-align:center; }
+  .poll-badge {
+    display:inline-block; background:var(--ntnu-blue); color:#fff;
+    padding:0.2em 0.8em; font-size:0.4em;
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.9em;
+  }
+
+  /* Engasjement-slide: andre avstemningstyper (ordsky, skala, rangering, åpent svar, spørsmål) */
+  .reveal section.engage-slide { background:#f5eefc; text-align:center; }
+  .engage-badge {
+    display:inline-block; background:var(--purple); color:#fff;
+    padding:0.2em 0.8em; font-size:0.4em;
+    letter-spacing:0.05em; text-transform:uppercase; margin-bottom:0.7em;
+  }
+
+  .engage-row { display:flex; gap:24px; align-items:flex-start; text-align:left; }
+  .engage-text { flex:0 0 330px; }
+  .engage-text h2 { font-size:1.05em; }
+  .engage-text p { font-size:0.6em; }
+  /* Avstemningens resultatboks (.poll-results): ../avstemning/avstemning-deck.css */
+
+  /* Fasit-slide */
+  .reveal section.fasit-slide { background:#f2fbf8; text-align:left; }
+
+  /* Diskusjon (uten Menti) */
+  .reveal section.discussion-slide { background:#fdf3ee; text-align:left; }
+
+  /* Aktuelt 2026 / gjennomgående eksempel */
+  .reveal section.current-slide { background:#eef7ee; text-align:left; }
+
+  .reveal section.title-slide, .reveal section.join-slide { text-align:center; }
+  .join-box {
+    max-width:480px; margin:0.6em auto; padding:1.1em;
+    color:#555;
+  }
+  .reveal .join-box img.join-qr { display:block; width:220px; height:220px; margin:0.2em auto 0; image-rendering:pixelated; }
+  .join-slide .join-box { padding:0.5em 1.1em; margin-top:0.3em; }
+  .join-slide .join-box p { margin:0.2em 0; font-size:0.5em; font-weight:700; white-space:nowrap; }
+  /* Oversikt + QR på samme slide: dagens plan til venstre, QR til høyre */
+  .reveal section.join-slide.with-plan { text-align:left; }
+  .join-slide.with-plan .join-grid { display:grid; grid-template-columns:1fr 300px; gap:0 40px; align-items:start; margin-top:0.2em; }
+  .join-slide.with-plan h2 { font-size:0.9em; margin:0 0 0.3em; }
+  .join-slide.with-plan h3 { font-size:0.45em; color:var(--ntnu-blue); text-transform:uppercase; letter-spacing:0.05em; margin:0 0 0.4em; }
+  .reveal .join-slide .agenda { list-style:none; margin:0; padding:0; counter-reset:del; }
+  .reveal .join-slide .agenda li { counter-increment:del; font-size:0.52em; line-height:1.2; padding:0.22em 0 0.22em 2.2em; border-bottom:1px solid #e3e6ec; position:relative; }
+  .reveal .join-slide .agenda li::before { content:counter(del); position:absolute; left:0; width:1.5em; text-align:right; font-weight:700; color:var(--ntnu-blue); }
+  .reveal .join-slide .agenda a { color:var(--ink); text-decoration:none; }
+  .reveal .join-slide .agenda a:hover { color:var(--ntnu-blue); }
+  .join-slide.with-plan .join-side { text-align:center; }
+  .join-slide.with-plan .join-box { margin:0 auto; padding:0.2em 0 0; }
+  .join-slide.with-plan .src-note { text-align:center; font-size:0.36em; line-height:1.35; margin-top:0.5em; }
+  .subtitle { font-size:0.5em; color:var(--ink); margin-top:0.4em; }
+  .subsubtitle { font-size:0.36em; color:#888; margin-top:0.6em; }
+  .reveal img.banner-img { max-width:380px; max-height:220px; width:auto; height:auto; margin-top:0.8em; }
+
+  .src-note { font-size:0.38em; color:#888; margin-top:0.8em; }
+
+  /* Mindre tekst i den samlede begreper-oppsummeringen, for a fa alt pa en side */
+  .begreper-recap li { font-size:0.52em; line-height:1.25; margin-bottom:0.3em; }
+  .begreper-recap .pagecite { font-size:0.72em; color:#555; font-weight:400; }
+  /* Fargekode for hvor sidetallene er fra, siden denne sliden blander Tenk! og Thomassen-artikkelen */
+  .begreper-recap .pagecite.src-tenk { color:var(--ntnu-blue); }
+  .begreper-recap .pagecite.src-thomassen { color:var(--brown); }
+  .begreper-recap .kilde-nokkel { font-size:0.36em; color:#555; margin:0 0 0.15em; }
+  .begreper-recap .kilde-nokkel .swatch { display:inline-block; width:0.8em; height:0.8em; border-radius:2px; vertical-align:-0.1em; margin-right:0.3em; }
+  .begreper-recap .kilde-nokkel .swatch.tenk { background:var(--ntnu-blue); }
+  .begreper-recap .kilde-nokkel .swatch.thomassen { background:var(--brown); }
+
+  /* Bunnlinje: teller, papaminnelse, NTNU-tekst, i den rekkefolgen, med plass igjen til reveal sine piler. Alle tre delene og skilletegnene deler samme storrelse/farge. */
+  .bottom-bar {
+    position:fixed; left:0; right:0; bottom:0; height:62px;
+    display:flex; align-items:center;
+    padding:0 140px 0 14px;
+    z-index:20; pointer-events:none;
+  }
+  .bottom-bar .custom-counter-inline,
+  .bottom-bar .qa-reminder-inline,
+  .bottom-bar .ntnu-text-inline,
+  .bottom-bar .bar-sep {
+    font-size:18px; color:#555; opacity:0.75;
+  }
+  .bottom-bar .custom-counter-inline { flex:0 0 auto; white-space:nowrap; }
+  .bottom-bar .qa-reminder-inline { flex:1; text-align:center; }
+  .bottom-bar .ntnu-text-inline { flex:0 0 auto; white-space:nowrap; }
+  .bottom-bar .bar-sep { flex:0 0 auto; white-space:pre; }
+
+
+  /* Tettere tekst på de nye slidene (flere punkter enn de opprinnelige) */
+  .reveal section.tett h2 { font-size:1.15em; }
+  .reveal section.tett ul, .reveal section.tett ol { font-size:0.8em; }
+  .reveal section.tett .split .col-text li { font-size:0.8em; }
+  .reveal section.tett .split .col-img > img { max-height:180px; margin:0 auto 4px; }
+  .reveal section.tett .split .col-img p { margin:0.15em 0; }
+
+  /* Flere bilder på rad (tvetydige figurer o.l.) og to bilder over hverandre i bildekolonnen */
+  .img-row { display:flex; gap:28px; justify-content:center; align-items:flex-end; margin-top:0.5em; }
+  .img-row figure { margin:0; text-align:center; }
+  .reveal .img-row img { max-height:250px; max-width:270px; width:auto; margin:0; }
+  .img-row figcaption { font-size:0.45em; color:#000; margin-top:0.25em; }
+  .split .col-img .img-pair { display:flex; flex-direction:column; gap:6px; align-items:center; }
+  .reveal .split .col-img .img-pair img { max-height:108px; margin:0; }
+  .reveal .split .col-img .r-stack img { max-height:190px; margin:0; background:#fff; }
+
+  /* Sammenligningstabell (fire årsaker, forklare/forstå) */
+  .reveal table.cmp-table { font-size:0.52em; border-collapse:collapse; margin:0.4em 0 0 0; }
+  .reveal table.cmp-table th, .reveal table.cmp-table td { padding:0.3em 0.8em; border-bottom:1px solid #ccc; text-align:left; }
+  .reveal table.cmp-table th { color:var(--ntnu-blue); border-bottom:2px solid var(--ntnu-blue); }
+  .reveal table.cmp-table td:first-child { font-weight:600; }
+  .quote { font-size:0.62em; font-style:italic; color:var(--ntnu-blue); margin:0.2em 0 0.3em; }
+
+  /* Kuhns syklus */
+  .flow { display:flex; flex-wrap:wrap; align-items:center; gap:8px; font-size:0.52em; margin-top:0.7em; }
+  .flow .step { background:#fff; border:2px solid var(--ntnu-blue); padding:0.35em 0.6em; }
+  .flow .step.hot { border-color:var(--magenta); color:var(--magenta); font-weight:700; }
+  .flow .arrow { color:var(--ntnu-blue); font-weight:700; margin-right:8px; }
+  .flow-note { font-size:0.55em; margin-top:1em; }
+
+  /* Base rate-figur */
+  .baserate { display:flex; align-items:center; gap:16px; margin-top:0.6em; }
+  .br-box { border:2px solid var(--ntnu-blue); padding:0.4em 0.8em; font-size:0.5em; text-align:center; background:#fff; }
+  .br-num { font-size:1.9em; font-weight:700; color:var(--ntnu-blue); }
+  .br-sick .br-num { color:#1d7a3d; }
+  .br-false { padding:0.9em 1.6em; border-color:var(--magenta); }
+  .br-false .br-num { color:var(--magenta); font-size:2.6em; }
+  .br-arrow { font-size:0.9em; color:var(--ntnu-blue); }
+  .br-conclusion { font-size:0.6em; margin-top:0.9em; }
+
+  /* Vitenskapshierarki (bro til hermeneutikk) */
+  .layers { display:flex; flex-direction:column; align-items:center; gap:5px; margin-top:0.5em; }
+  .layers div { background:var(--periwinkle); color:#fff; font-size:0.5em; padding:0.3em 0; text-align:center; }
+  .layer-q { font-size:0.6em; margin-top:0.7em; text-align:center; color:var(--magenta); font-weight:600; }
+
+  /* Skilleslide mellom kjerne (med lagquiz) og fordypning i hver del */
+  .reveal section.divider-slide { text-align:center; padding-top:130px; }
+  .reveal section.divider-slide h2 { font-size:1.6em; }
+  .reveal .tbl-status, .reveal .mc-count { position:absolute; top:0; right:0; }
+  .reveal .tbl-grid { grid-template-rows:188px 188px; }
+
+  /* Oversikt først i hver del: kjerne og fordypning, med eksempler og spørsmål */
+  .reveal section.overview-slide { text-align:left; }
+  .reveal .overview-slide h2 { font-size:1.15em; margin-bottom:0.25em; }
+  .ov-open { font-size:0.45em; color:#555; margin:0 0 0.5em; }
+  .ov-cols { display:flex; gap:32px; }
+  .ov-col { flex:1; }
+  .ov-cols.wide .ov-col.ford { flex:1.7; }
+  .ov-cols.wide .ov-col.ford ul { columns:2; column-gap:24px; }
+  .reveal .ov-col h3 { font-size:0.42em; letter-spacing:0.06em; margin:0 0 0.5em; padding:0.15em 0.6em; display:inline-block; color:#fff; background:var(--ntnu-blue); }
+  .reveal .ov-col.ford h3 { background:#eee; color:#555; border:1px solid #ccc; }
+  .reveal .ov-col ul { margin:0; padding-left:1em; font-size:0.46em; }
+  .reveal .ov-cols.wide ul { font-size:0.42em; }
+  .reveal .ov-col li { margin:0 0 0.45em; break-inside:avoid; }
+  .ov-ex { color:#666; font-style:italic; }
+  /* Fordypning i oversiktene: gråere enn kjernen (tekst #777, eksempler #aaa) */
+  .reveal .ov-col.ford li { color:#777; }
+  .reveal .ov-col.ford .ov-ex { color:#aaa; }
+  .reveal .ov-col.ford li.ov-sub { color:#777; }
+  .reveal .ov-col.ford li.ov-q { color:#d68ac4; }
+  .ov-ex::before { content:"("; } .ov-ex::after { content:")"; } .ov-ex:empty { display:none; }
+  .reveal .ov-col li.ov-q { list-style:none; margin-left:-1em; color:var(--magenta); font-weight:700; }
+  .reveal .ov-col li.ov-sub { list-style:none; margin-left:-1em; font-weight:700; color:#333; }
+  .reveal .kicker .grp { display:inline-block; background:#eee; color:#555; border:1px solid #ccc; padding:0 0.35em; margin-right:0.4em; font-weight:700; }
+
+  /* Tabellnote (fire årsaker), kildemerknad i sitater, to bilder side om side */
+  .table-note { font-size:0.5em; margin-top:0.7em; }
+  /* Tre spørsmål (kap. 7): nummerert liste og tabell med vurdering per spørsmål */
+  .reveal section ol.tre-sp { font-size:0.85em; margin-top:0.5em; }
+  .reveal section ol.tre-sp li { margin:0.35em 0; }
+  .reveal section ol.forventninger { font-size:0.46em; text-align:left; max-width:820px; margin:0.4em auto 0; }
+  .reveal section ol.forventninger li { margin:0.3em 0; line-height:1.25; }
+  .reveal section .case-line { font-size:0.58em; margin:0.2em 0 0.3em; }
+  .reveal table.cmp-table.tre-krit { font-size:0.5em; width:100%; }
+  .reveal table.cmp-table.tre-krit td:first-child { width:38%; }
+  .question-slide.long-alts > p:not(.pagecite) { font-size:0.62em; }
+  .question-slide.long-alts .alt { font-size:0.52em; }
+  .reveal .engage-text img.engage-img { display:block; max-width:100%; max-height:250px; margin:0.4em auto 0.2em; }
+  .reveal .engage-text p.photo-credit { font-size:11px; text-align:center; }
+  .reveal .split .col-text .aside-note.small { font-size:0.45em; margin-top:0.8em; }
+  .reveal .engage-text p.video-link { font-size:13px; text-align:center; margin:0.2em 0 0; }
+  .src-inline { font-size:0.7em; color:#555; font-style:normal; }
+  .reveal .quote.small { font-size:0.48em; margin-top:0.7em; }
+  .reveal .split .col-img .r-stack.map { height:190px; }
+  .reveal .split .col-img .r-stack.map img { width:100%; height:100%; max-height:none; object-fit:contain; background:#fff; }
+  .split .col-img .img-pair.side { flex-direction:row; align-items:flex-end; }
+  .reveal .split .col-img .img-pair.side img { max-height:170px; max-width:48%; }
+
+  /* Bildeslide: et bilde i helt format som bakgrunn, med en liten kreditering øverst til venstre */
+  .reveal .image-credit { position:absolute; top:0; left:0; margin:0; font-size:11px; color:#777; background:rgba(255,255,255,0.85); padding:2px 6px; }
+
+  /* Siste slide: Alaska over hele skjermen, teksten oppå */
+  .reveal section.end-slide { text-align:center; position:relative; height:100%; }
+  .reveal .end-slide h2 { color:#fff; font-size:2.2em; margin-top:170px; text-shadow:0 2px 14px rgba(0,0,0,0.65); }
+  .reveal .end-slide .photo-credit-full { position:absolute; bottom:80px; left:0; right:0; color:#fff; font-size:0.4em; text-shadow:0 1px 6px rgba(0,0,0,0.75); opacity:0.85; }
+</style>
+<script>
+  // PDF til Canvas: vis fasit på flervalgsslidene (se ../avstemning/avstemning-deck.css)
+  if (/print-pdf/.test(location.search)) document.documentElement.classList.add('avst-print');
+</script>
+<style>/* Resultatvisning, delt av dekkene og foreleser-siden (se resultater.js).
+   Størrelsene følger boksens font-size, så samme stil passer både på en
+   slide (20px) og på en mobil. Fargene hentes fra sidens egne --ntnu-blue osv. */
+
+.poll-results {
+  position:relative; box-sizing:border-box;
+  display:flex; flex-direction:column; overflow:hidden;
+  padding:0.7em 0.9em 0.4em; background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,0.12);
+  color:var(--ink, #1f2430); text-align:center; line-height:1.2;
+}
+
+.pr-msg { margin:auto; color:#777; font-size:0.9em; }
+.pr-foot { flex:0 0 auto; margin-top:0.3em; font-size:0.7em; color:#666; }
+
+/* Skjult (standard mens det stemmes): bare antall svar */
+.pr-waiting { flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+.pr-waiting-n { font-size:4em; font-weight:700; color:var(--ntnu-blue, #00509e); line-height:1; }
+.pr-waiting-text { font-size:1.2em; color:#555; margin-bottom:0.8em; }
+.pr-waiting .pr-msg { margin:0; font-size:0.75em; }
+
+/* Stolper: flervalg og skala */
+.pr-bars { flex:1; min-height:0; display:flex; justify-content:center; gap:1.1em; }
+.pr-col { flex:1; max-width:6em; display:flex; flex-direction:column; align-items:center; }
+.pr-count { font-size:1em; font-weight:700; }
+.pr-track { flex:1; width:100%; position:relative; margin-top:0.2em; }
+.pr-bar {
+  position:absolute; left:0; right:0; bottom:0; min-height:3px;
+  background:var(--ntnu-blue, #00509e); transition:height 0.4s;
+}
+.pr-label { margin-top:0.25em; font-size:1.2em; font-weight:700; color:var(--ntnu-blue, #00509e); }
+.pr-sublabel { font-size:0.6em; color:#666; min-height:1.25em; }
+
+/* Riktig svar: hakemerke over stolpen, og stolpen/tallet i grønt i stedet for blatt */
+.pr-check {
+  width:1.4em; height:1.4em; margin-bottom:0.2em; border-radius:50%;
+  background:var(--ok, #1d7a3d); color:#fff; font-size:0.9em; font-weight:800;
+  display:flex; align-items:center; justify-content:center; flex:0 0 auto;
+}
+.pr-col.pr-correct .pr-bar { background:var(--ok, #1d7a3d); }
+.pr-col.pr-correct .pr-label { color:var(--ok, #1d7a3d); }
+
+/* Ordsky (ordstørrelse settes i em av resultater.js) */
+.pr-cloud {
+  flex:1; min-height:0; display:flex; flex-wrap:wrap; align-content:center; justify-content:center;
+  gap:0.1em 0.8em; font-weight:700; line-height:1.1;
+}
+
+/* Åpne svar og Q&A */
+.pr-cards {
+  flex:1; min-height:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(9.5em, 1fr));
+  gap:0.4em; align-content:start; overflow:hidden; text-align:left;
+}
+.pr-card { background:#f1f3f7; padding:0.4em 0.5em; font-size:0.7em; line-height:1.3; overflow-wrap:anywhere; }
+
+/* Rangering */
+.pr-rank { flex:1; min-height:0; display:flex; flex-direction:column; justify-content:center; gap:0.6em; text-align:left; }
+.pr-rank-row { display:flex; align-items:center; gap:0.6em; font-size:0.9em; }
+.pr-rank-name { flex:0 0 42%; }
+.pr-rank-track { flex:1; }
+.pr-rank-bar { height:1.1em; background:var(--purple, #552988); }
+.pr-rank-avg { font-size:0.75em; color:#666; white-space:nowrap; }
+
+/* Lagquiz: poengtavle */
+.pr-board { flex:1; min-height:0; display:flex; flex-direction:column; justify-content:flex-start; gap:0.25em; text-align:left; overflow:hidden; }
+.pr-board-row { display:flex; align-items:baseline; gap:0.6em; padding:0.15em 0.3em; border-bottom:1px solid #e3e6ec; font-size:0.9em; }
+.pr-board-row.pending { color:#888; }
+.pr-board-name { flex:1; font-weight:700; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pr-board-tries { font-size:0.75em; color:#666; white-space:nowrap; }
+.pr-board-pts { flex:0 0 2.6em; text-align:right; font-weight:700; color:var(--ntnu-blue, #00509e); }
+
+/* Lagquiz: samlet poengtavle for økten (totals/standings i resultater.js) */
+.pr-total { flex:1; min-height:0; display:grid; grid-template-columns:1fr; grid-auto-rows:min-content; gap:0 1.6em; text-align:left; overflow:hidden; }
+.pr-total.two { grid-template-columns:1fr 1fr; grid-auto-flow:column; grid-template-rows:repeat(15, min-content); }
+.pr-total-row { display:flex; align-items:baseline; gap:0.5em; padding:0.2em 0.3em; border-bottom:1px solid #e3e6ec; }
+.pr-total.two .pr-total-row { font-size:0.8em; padding:0.1em 0.3em; }
+.pr-total-row.top { background:#f2f6fb; }
+.pr-total-place { flex:0 0 1.8em; text-align:right; color:#666; }
+.pr-total-name { flex:1; font-weight:700; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pr-total-cells { display:flex; gap:0.15em; }
+.pr-total-cell { width:1.3em; text-align:center; font-size:0.7em; color:#555; background:#eef0f4; }
+.pr-total-cell.none { color:#aaa; background:none; }
+.pr-total-sum { flex:0 0 3em; text-align:right; font-weight:700; color:var(--ntnu-blue, #00509e); }
+</style><style>/* Avstemning i reveal.js-dekket, se README.md i samme mappe.
+   Selve resultatvisningen er i public/resultater.css (delt med foreleser-siden);
+   her er bare det som er spesielt for dekket. Størrelser i px er i slidens egne
+   koordinater (960x540), reveal.js skalerer. */
+
+.reveal .poll-results { aspect-ratio:16/9; font-size:20px; }
+.poll-slide .poll-results { width:740px; margin:0 auto; }
+.engage-row .poll-results { flex:1 1 auto; }
+
+/* Bunnlinjen: statusprikk (grå = ikke innlogget, grønn = innlogget som foreleser)
+   og antall ubesvarte spørsmål fra studentene (vises bare når det finnes noen) */
+.bottom-bar .poll-dot { flex:0 0 auto; font-size:14px; color:#aaa; margin-right:6px; cursor:pointer; pointer-events:auto; }
+.bottom-bar .poll-dot.on { color:#1d7a3d; }
+.bottom-bar .poll-dot.err { color:#b3261e; }
+/* Samme diskrete stil som resten av bunnlinjen (18px, grå, 75 %) */
+.bottom-bar .poll-qa {
+  flex:0 0 auto; display:inline-flex; align-items:center; gap:5px; margin-left:12px; white-space:nowrap;
+  font-size:18px; color:#555; opacity:0.75;
+}
+.bottom-bar .poll-qa[hidden] { display:none; }
+.bottom-bar .poll-qa svg { width:0.9em; height:0.9em; }
+
+/* Innloggingspanelet (tast A). Ligger utenfor .slides, så det skaleres ikke. */
+.avst-panel {
+  position:fixed; top:16px; right:16px; z-index:100; width:320px;
+  background:#fff; color:#1f2430; padding:16px;
+  box-shadow:0 6px 24px rgba(0,0,0,0.25); font:15px/1.4 system-ui, "Segoe UI", Arial, sans-serif; text-align:left;
+}
+.avst-panel h3 { margin:0 0 6px; font-size:17px; color:var(--ntnu-blue); text-transform:none; }
+.avst-panel p { margin:0 0 10px; }
+.avst-panel input { display:block; width:100%; box-sizing:border-box; margin-bottom:8px; padding:8px; font:inherit; border:1px solid #c9ced8; }
+.avst-panel button { font:inherit; padding:7px 12px; border:0; background:var(--ntnu-blue); color:#fff; cursor:pointer; margin:0 6px 6px 0; }
+.avst-panel button.danger { background:#b3261e; }
+.avst-panel .avst-help { font-size:12px; color:#666; margin:6px 0 0; }
+
+/* ---- Lagquiz (team-based learning) ---- */
+
+/* Spørsmålssliden: merke øverst og fremdrift nederst (bare tall, eget tempo) */
+.tbl-badge {
+  display:inline-block; background:var(--magenta, #ad208e); color:#fff;
+  padding:0.2em 0.8em; font-size:0.36em; font-weight:700;
+  letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.4em;
+}
+/* Ekstraspørsmål i en lagquiz-blokk: gir ikke poeng */
+.tbl-badge.tbl-extra { background:#fff; color:var(--magenta, #ad208e); box-shadow:inset 0 0 0 2px var(--magenta, #ad208e); }
+.tbl-status { margin-top:0.6em; font-size:0.4em; color:#555; white-space:pre-line; }
+
+/* Resultatsliden: fire paneler i 2 x 2 (alene, lagenes første valg, poeng, fasit) */
+.reveal section.tbl-result-slide { text-align:left; }
+.tbl-result-slide h2.tbl-title { font-size:0.9em; margin:0 0 0.25em; }
+/* Samlet poengtavle (data-tbl-total) */
+.reveal section.tbl-total-slide { text-align:left; }
+.tbl-total-slide h2.tbl-title { font-size:0.9em; margin:0 0 0.25em; }
+.reveal .tbl-total-slide .poll-results.tbl-total { aspect-ratio:auto; height:430px; font-size:19px; }
+.tbl-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:205px 205px; gap:10px 14px; }
+.tbl-panel { display:flex; flex-direction:column; min-height:0; }
+.tbl-panel h3 { font-size:15px; margin:0 0 4px; color:var(--ntnu-blue, #00509e); text-transform:uppercase; letter-spacing:0.05em; }
+.reveal .tbl-panel .poll-results { flex:1; aspect-ratio:auto; font-size:15px; width:auto; }
+.tbl-fasit { background:#f2fbf8; padding:8px 12px; box-shadow:0 2px 10px rgba(0,0,0,0.12); overflow:hidden; }
+.tbl-fasit .tbl-q { font-size:12px; margin:0 0 3px; }
+.reveal .tbl-fasit .alt { font-size:11.5px; margin:0; padding:1px 6px; line-height:1.3; }
+.tbl-fasit .tbl-note, .tbl-fasit .pagecite { font-size:11px; margin:3px 0 0; line-height:1.3; }
+/* Før R: fasiten er skjult (paneler viser bare antall) */
+.tbl-result-slide:not(.revealed) .tbl-fasit > * { visibility:hidden; }
+.tbl-result-slide:not(.revealed) .tbl-fasit::before { content:"Fasit vises med R"; display:block; color:#777; font-size:14px; margin-top:80px; text-align:center; }
+
+/* ---- Enkelt flervalg på én slide (fordypning) ---- */
+.mc-slide .alt { position:relative; overflow:hidden; isolation:isolate; --share:0%; }
+.mc-slide .alt::before {
+  content:""; position:absolute; left:0; top:0; bottom:0; width:var(--share);
+  background:rgba(0,80,158,0.14); transition:width 0.4s; z-index:-1;
+}
+.mc-slide .alt .mc-share { float:right; font-size:0.8em; color:#555; font-weight:400; }
+.mc-slide .mc-note { display:none; }
+.mc-slide .mc-count { font-size:0.4em; color:#555; margin-top:0.4em; }
+.mc-slide.revealed .alt.is-correct { background:#e3f6e9; font-weight:700; }
+.mc-slide.revealed .alt.is-correct::before { background:rgba(29,122,61,0.22); }
+.mc-slide.revealed .alt.is-correct .altnum { color:#1d7a3d; }
+.mc-slide.revealed .mc-note { display:block; }
+
+/* PDF til Canvas (?print-pdf): vis fasit og notat, skjul tellere og tomme resultatpaneler */
+html.avst-print .mc-slide .alt.is-correct { background:#e3f6e9; font-weight:700; }
+html.avst-print .mc-slide .mc-note { display:block; }
+html.avst-print .mc-count, html.avst-print .tbl-status { display:none; }
+html.avst-print .tbl-total > * { display:none; }
+html.avst-print .tbl-total::before { content:"Poengtavlen fra forelesningen vises her live."; margin:auto; color:#777; font-size:0.9em; }
+html.avst-print .tbl-result-slide .tbl-fasit > * { visibility:visible; }
+html.avst-print .tbl-result-slide .tbl-fasit::before { content:none; }
+html.avst-print .tbl-result-slide .tbl-grid { grid-template-columns:1fr; grid-template-rows:auto; }
+html.avst-print .tbl-result-slide .tbl-panel:not(.tbl-fasit) { display:none; }
+.tbl-fasit .altnum { display:inline-block; width:1.4em; font-weight:700; color:var(--ntnu-blue, #00509e); }
+.tbl-fasit .alt.correct { background:#e3f6e9; font-weight:700; }
+.tbl-fasit .alt.correct .altnum { color:#1d7a3d; }
+.tbl-fasit .alt.correct::after { content:" \2713"; color:#1d7a3d; font-weight:700; }
+.reveal .mc-slide .mc-note { font-size:0.5em; margin-top:0.3em; }
+/* PDF: ingen «Trykk A og logg inn»-meldinger i tomme resultatbokser */
+html.avst-print .poll-results .pr-msg { visibility:hidden; }
+</style></head>
+<body>
+<div class="reveal">
+<div class="bottom-bar">
+<div class="custom-counter-inline" id="custom-counter"></div>
+<div class="bar-sep">  ·  </div>
+<div class="qa-reminder-inline">Spørsmål? Send inn når som helst på mobilen</div>
+<div class="bar-sep">  ·  </div>
+<div class="ntnu-text-inline">NTNU i Ålesund, 2026</div>
+</div>
+<div class="slides">
+<!-- TITLE -->
+<section class="title-slide" data-background-image="bilder/flammarion.jpg" data-background-opacity="0.2" data-background-size="cover" data-title="Tittel">
+<div class="kicker">Filosofi uke 40</div>
+<h1>Vet vi egentlig<br/>det vi tror vi vet?</h1>
+<p class="subtitle">Vitenskapsfilosofi (bekreftelse og verdier) og hermeneutikk</p>
+<p class="subsubtitle"><em>Tenk!</em> Del 2 (kap. 7–10), Del 3 (kap. 11) · Thomassen, «Hermeneutikk som refleksjon og livsfortolkning»</p>
+
+</section>
+<!-- FLAMMARION-TRESNITTET I HELT FORMAT (samme bilde som falmet bak tittelen) -->
+<section class="image-slide" data-background-color="#ffffff" data-background-image="bilder/flammarion.jpg" data-background-size="contain" data-title="Flammarion">
+<p class="image-credit">Flammarion-tresnittet, i <em>L'atmosphère</em> (1888). Public domain</p>
+
+</section>
+<!-- DAGENS PLAN + BLI MED I AVSTEMNINGEN (én gang for hele forelesningen).
+       Listen fylles automatisk fra data-title på delene etter denne sliden (se skriptet nederst). -->
+
+<!-- FORVENTNINGER TIL FORELESNINGEN -->
+<section data-title="Forventninger">
+<section class="content-slide">
+<h2>Noen forventninger</h2>
+<ol class="forventninger">
+<li>Vær oppmerksom: f.eks. slides på én skjerm og notater/<em>Tenk!</em> på den andre, eller papir og <em>Tenk!</em> foran deg</li>
+<li>Ikke forstyrr andre: annet på skjermen, prating, osv.</li>
+<li>Bli kjent med begrepene på forhånd. Usikker på noe? Se siste slide, med sidetall</li>
+<li>Du velger selv om du fullfører forelesningsarbeidet underveis (det dekker alle de viktige teoriene)</li>
+<li>Jeg går gjennom kjernen, ikke alt</li>
+<li>Still spørsmål underveis</li>
+<li>Dette er et forsøk: vær tålmodig med oss denne første gangen</li>
+<li>FLA-spørsmålene er merket på slidene, sammen med sidetall i <em>Tenk!</em></li>
+</ol>
+
+</section>
+</section>
+<!-- REPETISJON: HDM (uke 39) -->
+<section data-title="Repetisjon: HDM (uke 39)">
+<section class="content-slide">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="kicker">Repetisjon, uke 39 <span class="pagecite">· <em>Tenk!</em> s. 95</span></div>
+<h2>Hypotetisk-deduktiv metode</h2>
+<ul>
+<li class="fragment">1. Formuler en hypotese</li>
+<li class="fragment">2. Utled en prediksjon fra hypotesen</li>
+<li class="fragment">3. Test prediksjonen</li>
+<li class="fragment">4. Bekreft eller avkreft hypotesen ut fra resultatet</li>
+</ul>
+</section>
+<section class="content-slide tett">
+<div class="kicker">Helseeksempel</div>
+<h2>John Snow og koleraen i London, 1854</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Hypotese: forurenset vann fra Broad Street-pumpen sprer kolera</li>
+<li class="fragment">Prediksjon: fjernes pumpehåndtaket, bør nye tilfeller synke</li>
+<li class="fragment">Test: håndtaket ble fjernet 8. september 1854</li>
+<li class="fragment">Resultat: færre nye tilfeller. Hypotesen styrket, men utbruddet var alt på retur</li>
+</ul>
+</div>
+<div class="col-img portrait">
+<img alt="John Snow, portrett" src="bilder/john_snow.jpg"/>
+<p class="thinker-info">John Snow (1813–1858). Engelsk lege.<br/>Kjent for: koleraundersøkelsen i Soho, «On the Mode of Communication of Cholera» (1855)</p>
+<p class="photo-credit">Public domain</p>
+</div>
+</div>
+
+</section>
+</section>
+<!-- BEKREFTELSE (KAP. 7) -->
+<section data-title="Bekreftelse (kap. 7)">
+<section class="overview-slide">
+<div class="kicker">Kap. 7, bekreftelse</div>
+<h2>Oversikt</h2>
+<div class="ov-cols">
+<div class="ov-col kjerne">
+<h3>Kjerne</h3>
+<ul>
+<li>Tre spørsmål <span class="ov-ex">VM: Norge slo Brasil</span></li>
+<li>Svak bekreftelse <span class="ov-ex">brokkolivann</span></li>
+<li>Sterk bekreftelse <span class="ov-ex">streptomycin, 1948</span></li>
+<li>Kornete bevis <span class="ov-ex">Nessie</span></li>
+<li class="ov-q">Lagquiz: hva bekrefter en hypotese?</li>
+<li class="ov-q">Ekstra: Nessie</li>
+</ul>
+</div>
+<div class="ov-col ford">
+<h3>Fordypning</h3>
+<ul>
+<li>Svak og sterk bekreftelse <span class="ov-ex">solformørkelsen 1919</span></li>
+<li>Base rate <span class="ov-ex">sjelden sykdom, positiv test</span></li>
+<li class="ov-q">Spørsmål: base rate</li>
+<li>Overraskende? <span class="ov-ex">dødsfall etter vaksinen</span></li>
+<li class="ov-q">Spørsmål: spøkelset og boka</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="fla-ref">Se FLA 40: Bekreftelse (Bjørns egen forklaring, ikke nummerert)</div>
+<div class="kicker">Kap. 7 <span class="pagecite">· <em>Tenk!</em> ss. 113–6</span></div>
+<h2>Overraskelsesprinsippet: tre spørsmål</h2>
+<ol class="tre-sp">
+<li class="fragment">Er e forventet hvis h er sann?</li>
+<li class="fragment">Er e overraskende hvis h er usann?</li>
+<li class="fragment">Er h sannsynlig i utgangspunktet? (base rate)</li>
+</ol>
+<p class="table-note fragment"><strong>1 og 2:</strong> hvor mye e <em>bekrefter</em> h. <strong>1, 2 og 3:</strong> hvor stor <em>tillit</em> vi til slutt bør ha til h.</p>
+
+</section>
+<section class="current-slide">
+<div class="kicker">Aktuelt, VM 2026</div>
+<h2>Norge slo Brasil 2 til 1</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Norge tilbake i VM for første gang siden 1998, til kvartfinale</li>
+<li class="fragment">Et overraskende resultat: bekrefter «vi er faktisk gode nok» sterkere enn en ventet seier ville gjort</li>
+<li class="fragment">Men sterk bekreftelse er ikke det samme som sikkerhet: én kamp er én kamp</li>
+</ul>
+</div>
+<div class="col-img">
+<img alt="Erling Haaland i Norges VM-drakt, kamp mot Frankrike, VM 2026" src="bilder/haaland_frankrike_vm2026.jpg"/>
+<p class="photo-credit">Foto: Bryan Berlin / WikiPortraits, CC BY-SA 4.0</p>
+</div>
+</div>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="kicker">Kap. 7, helseeksempel <span class="pagecite">· <em>Tenk!</em> ss. 113–6</span></div>
+<h2>Brokkolivann mot forkjølelse</h2>
+<p class="case-line">h: «brokkolivann kurerer forkjølelse». e: du drikker det og er frisk etter 14 dager.</p>
+<table class="cmp-table tre-krit">
+<tr class="fragment"><td>1. Er e forventet hvis h er sann?</td><td>Ja</td></tr>
+<tr class="fragment"><td>2. Overraskende hvis h er usann?</td><td>Nei: de fleste er friske etter 14 dager uansett</td></tr>
+<tr class="fragment"><td>3. Sannsynlig i utgangspunktet?</td><td>Lite: ingen kjent virkningsmekanisme</td></tr>
+</table>
+<p class="table-note fragment">Svak bekreftelse og lav tillit. Spår du «frisk etter ett døgn», blir e mer overraskende (2), men 3 er like lav.</p>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="kicker">Kap. 7, helseeksempel <span class="pagecite">· <em>Tenk!</em> ss. 113–6</span></div>
+<h2>Streptomycin mot tuberkulose, 1948</h2>
+<p class="case-line">h: «streptomycin virker mot lungetuberkulose». e: 107 pasienter fordelt ved loddtrekning. Etter seks måneder var 7 % døde med streptomycin, mot 27 % med bare sengeleie.</p>
+<table class="cmp-table tre-krit">
+<tr class="fragment"><td>1. Er e forventet hvis h er sann?</td><td>Ja</td></tr>
+<tr class="fragment"><td>2. Overraskende hvis h er usann?</td><td>Ja: loddtrekningen gjør tilfeldighet og skjeve grupper lite sannsynlig</td></tr>
+<tr class="fragment"><td>3. Sannsynlig i utgangspunktet?</td><td>Ganske: stoffet drepte tuberkelbasiller i laboratoriet og hjalp syke marsvin</td></tr>
+</table>
+<p class="table-note fragment">Sterk bekreftelse og høy tillit, men fortsatt ikke sikkerhet.</p>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="fla-ref">Se FLA 40: Bekreftelse (fordypningseksempel)</div>
+<div class="kicker">Kap. 7 <span class="pagecite">· <em>Tenk!</em> ss. 113–6</span></div>
+<h2>Nessie: «det kornete beviset»</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Skeptikeren: «Bemerkelsesverdige påstander krever bemerkelsesverdig evidens»</li>
+<li class="fragment">En stor sjøorm i Loch Ness strider mot mye av det vi vet om biologi og zoologi</li>
+<li class="fragment">Et kornete og uklart bilde kan forestille mye rart</li>
+<li class="fragment">Samme poeng, sagt med de tre spørsmålene?</li>
+</ul>
+</div>
+<div class="col-img">
+<img alt="Det såkalte «Surgeon's Photograph» av Loch Ness-monsteret, 1934" src="bilder/nessie_surgeons_photograph.jpg"/>
+<p class="photo-credit">«The Surgeon's Photograph», 1934 (kjent forfalskning). Public domain</p>
+</div>
+</div>
+
+</section>
+<section class="question-slide tbl-slide" data-correct="1" data-poll-id="q02" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k7">
+<div class="tbl-badge">Lagquiz: først alene, så i gruppa</div>
+<div class="tbl-status"></div>
+<div class="fla-ref">Se FLA 40: Bekreftelse</div>
+<p>Hvilke av de tre spørsmålene avgjør om observasjonen <em>bekrefter</em> hypotesen, ikke bare hvor stor <em>tillit</em> vi bør ha?</p>
+<div class="alt"><span class="altnum">1</span> Spørsmål 1 og 2.</div>
+<div class="alt"><span class="altnum">2</span> Spørsmål 1 og 3.</div>
+<div class="alt"><span class="altnum">3</span> Spørsmål 2 og 3.</div>
+<div class="alt"><span class="altnum">4</span> Alle tre likt.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 113–6</p>
+
+</section>
+<section class="tbl-result-slide" data-tbl-for="q02">
+<h2 class="tbl-title">Lagquiz: resultat</h2>
+<div class="tbl-grid">
+<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
+<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
+<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+<div class="tbl-panel tbl-fasit">
+<h3>Fasit</h3>
+<p class="tbl-q">Hvilke av de tre spørsmålene avgjør om observasjonen bekrefter hypotesen, ikke bare hvor stor tillit vi bør ha?</p>
+<div class="alt correct"><span class="altnum">1</span> Spørsmål 1 og 2.</div>
+<div class="alt"><span class="altnum">2</span> Spørsmål 1 og 3.</div>
+<div class="alt"><span class="altnum">3</span> Spørsmål 2 og 3.</div>
+<div class="alt"><span class="altnum">4</span> Alle tre likt.</div>
+<p class="tbl-note">1 og 2 er overraskelsesprinsippet. Spørsmål 3 (base rate) endrer bare tilliten til slutt.</p>
+<p class="pagecite"><em>Tenk!</em> ss. 113–6</p>
+</div>
+</div>
+</section>
+<section class="question-slide tbl-slide long-alts" data-correct="4" data-poll-id="q03" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k7">
+<div class="tbl-badge tbl-extra">Ekstra: i eget tempo</div>
+<div class="tbl-status"></div>
+<p>Et kornete bilde er det mest kjente «beviset» for Loch Ness-sjøormen. Skeptikeren: en sjøorm strider mot biologien, og bildet kan forestille mye rart. Hva er en tilsvarende måte å fremstille innvendingen på?</p>
+<div class="alt"><span class="altnum">1</span> Poppers falsifikasjonisme: kunnskapen i biologi og zoologi er samlet sett tilstrekkelig til å avkrefte hypotesen «det lever en stor sjøorm i Loch Ness».</div>
+<div class="alt"><span class="altnum">2</span> Hypotetisk-deduktiv metode: fra hypotesen kan man utlede observasjoner, men det er ikke klart at man faktisk har fått en observasjon i tråd med prediksjonene.</div>
+<div class="alt"><span class="altnum">3</span> Quine–Duhem-tesen: et fotografi kan kalles en test, men det er svært mange feilkilder og forutsetninger før man kan konkludere med at bildet viser en sjøorm.</div>
+<div class="alt"><span class="altnum">4</span> Overraskelsesprinsippet: at noen tar et kornete bilde av noe som likner en sjøorm, er ikke spesielt overraskende selv om det ikke var en sjøorm i Loch Ness.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 113–6</p>
+
+</section>
+<section class="tbl-result-slide" data-tbl-for="q03">
+<h2 class="tbl-title">Lagquiz, ekstra: resultat</h2>
+<div class="tbl-grid">
+<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
+<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
+<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+<div class="tbl-panel tbl-fasit">
+<h3>Fasit</h3>
+<p class="tbl-q">Nessie-skeptikeren: «bemerkelsesverdig påstand krever bemerkelsesverdig evidens». Tilsvarende måte å si det på?</p>
+<div class="alt"><span class="altnum">1</span> Popper: biologi og zoologi avkrefter sjøormen.</div>
+<div class="alt"><span class="altnum">2</span> HDM: uklart om observasjonen er i tråd med prediksjonene.</div>
+<div class="alt"><span class="altnum">3</span> Quine–Duhem: mange feilkilder og forutsetninger.</div>
+<div class="alt correct"><span class="altnum">4</span> Overraskelsesprinsippet: bildet er ikke overraskende uten sjøorm.</div>
+<p class="tbl-note">Lav på 2 og 3: lite bekreftelse og lav tillit. FVO 14.</p>
+<p class="pagecite"><em>Tenk!</em> ss. 113–6</p>
+</div>
+</div>
+</section>
+<section class="divider-slide" data-visibility="uncounted">
+<div class="kicker">Kap. 7, bekreftelse</div>
+<h2>Fordypning</h2>
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker">Kap. 7 <span class="pagecite">· <em>Tenk!</em> ss. 106, 113–5</span></div>
+<h2>Svak og sterk bekreftelse</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Svak: h = «en mer smittsom virusvariant sprer seg», e = flere blir smittet</li>
+<li class="fragment">Flere smittede kunne skyldes mye annet (vinter, færre tiltak)</li>
+<li class="fragment">Sterk: Einstein forutsa at sola bøyer lys. Uten teorien ville målingen i 1919 vært en stor overraskelse</li>
+</ul>
+</div>
+<div class="col-img">
+<img alt="Solformørkelsen 29. mai 1919, fotografert av Eddingtons ekspedisjon" src="bilder/eclipse_1919.jpg"/>
+<p class="thinker-info">Solformørkelsen 29. mai 1919</p>
+<p class="photo-credit">Dyson, Eddington og Davidson (1920). Public domain</p>
+</div>
+</div>
+
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker">Kap. 7, spørsmål 3: base rate <span class="pagecite">· <em>Tenk!</em> ss. 115–6</span></div>
+<h2>Base rate</h2>
+<div class="baserate">
+<div class="br-box"><div class="br-num">1 000 000</div><div>tar testen</div></div>
+<div class="br-arrow">→</div>
+<div class="br-box br-sick fragment"><div class="br-num">1</div><div>syk, tester positivt</div></div>
+<div class="br-box br-false fragment"><div class="br-num">≈ 10 000</div><div>friske, tester likevel positivt</div></div>
+</div>
+<p class="br-conclusion fragment">Positiv test: omtrent 1 av 10 000 sjanse for å være syk. En testfeil er langt mer sannsynlig enn sykdommen.</p>
+<p class="br-conclusion fragment">Testen bekrefter sykdom (spørsmål 1 og 2), men lav base rate (3) gir likevel lav tillit.</p>
+
+</section>
+<section class="question-slide mc-slide" data-correct="4" data-poll-id="q19" data-poll-options="4" data-poll-type="mc" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="mc-count"></div>
+<p>Sykdom: 1 av 1 million. Test: 99 % pålitelig. Du tester positivt. Hvor sannsynlig er det at du er syk?</p>
+<div class="alt"><span class="altnum">1</span> Omtrent 99 %.</div>
+<div class="alt"><span class="altnum">2</span> Omtrent 50 %.</div>
+<div class="alt"><span class="altnum">3</span> Omtrent 1 %.</div>
+<div class="alt is-correct"><span class="altnum">4</span> Omtrent 0,01 %.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 115–6</p>
+
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker">Kap. 7, base rate og bakgrunnskunnskap <span class="pagecite">· <em>Tenk!</em> ss. 113–6</span></div>
+<h2>Overraskende? Dødsfall etter vaksinen</h2>
+<ul>
+<li class="fragment">Januar 2021: flere på sykehjem døde få dager etter koronavaksinen</li>
+<li class="fragment">Forventet hvis vaksinen er farlig. Men overraskende hvis den er trygg?</li>
+<li class="fragment">Nei: de eldste og sykeste ble vaksinert først, og rundt 400 dør i uka på norske sykehjem</li>
+<li class="fragment">Å vurdere 2 og 3 krever bakgrunnskunnskap</li>
+</ul>
+
+</section>
+<section class="question-slide mc-slide" data-correct="3" data-poll-id="q29" data-poll-options="4" data-poll-type="mc" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="mc-count"></div>
+<p>Hver natt kl. 02.13 faller samme bok ut av hylla, selv om Bjørn sjekker den. Det var forrige eiers yndlingsbok. Hypotese: det spøker. Hva sier overraskelsesprinsippet?</p>
+<div class="alt"><span class="altnum">1</span> Lav på 1, 2 og 3: liten bekreftelse.</div>
+<div class="alt"><span class="altnum">2</span> Høy på 1, lav på 2 og 3: liten bekreftelse.</div>
+<div class="alt is-correct"><span class="altnum">3</span> Høy på 1 og 2, men lav base rate: ikke nok.</div>
+<div class="alt"><span class="altnum">4</span> Høy på 1, 2 og 3: god grunn til å tro.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 113–6</p>
+<p class="mc-note">Observasjonen bekrefter h litt (1 og 2), men tilliten til h bør fortsatt være lav (3)</p>
+
+</section>
+</section>
+<!-- VITENSKAP OG VERDIER (KAP. 8) -->
+<section data-title="Vitenskap og verdier (kap. 8)">
+<section class="overview-slide">
+<div class="kicker">Kap. 8, vitenskap og verdier</div>
+<h2>Oversikt</h2>
+<div class="ov-cols">
+<div class="ov-col kjerne">
+<h3>Kjerne</h3>
+<ul>
+<li>Tre måter verdier virker inn <span class="ov-ex">Pluto</span></li>
+<li>KUDOS-normene <span class="ov-ex">Merton</span></li>
+<li>Situert kunnskap <span class="ov-ex">Longino og Harding, kjønnshormonene</span></li>
+<li class="ov-q">Lagquiz: situert kunnskap</li>
+<li class="ov-q">Ekstra: universalisme</li>
+</ul>
+</div>
+<div class="ov-col ford">
+<h3>Fordypning</h3>
+<ul>
+<li class="ov-q">Rangering: KUDOS</li>
+<li>Spørsmål og svar <span class="ov-ex">publikasjonsbias</span></li>
+<li class="ov-q">Spørsmål: 200 variabler og kreft</li>
+<li>Standpunktteori <span class="ov-ex">Harding</span></li>
+<li class="ov-q">Åpent svar: når blir verdier et problem?</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="fla-ref">Se FLA 40 spørsmål 1</div>
+<div class="kicker">Kap. 8 <span class="pagecite">· <em>Tenk!</em> ss. 123–6</span></div>
+<h2>Tre måter verdier virker inn</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Hvordan vi sorterer: Pluto ble «dvergplanet» i 2006</li>
+<li class="fragment">Hvilke spørsmål vi stiller (oppdragsforskning, lite forskning på «kvinnesykdommer»)</li>
+<li class="fragment">Hvor mye evidens vi krever før vi handler</li>
+</ul>
+</div>
+<div class="col-img">
+<img alt="Pluto fotografert av romsonden New Horizons, 2015" src="bilder/pluto_new_horizons.jpg"/>
+<p class="thinker-info">Pluto, New Horizons 2015</p>
+<p class="photo-credit">NASA/JHUAPL/SwRI. Public domain</p>
+</div>
+</div>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="fla-ref">Se FLA 40 spørsmål 2</div>
+<div class="kicker">Kap. 8 <span class="pagecite">· <em>Tenk!</em> s. 123</span></div>
+<h2>KUDOS-normene (Merton)</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment"><strong>K</strong>ommunalisme: kunnskap deles</li>
+<li class="fragment"><strong>U</strong>niversalisme: vurdér innhold, ikke avsender</li>
+<li class="fragment"><strong>D</strong>isinteresserthet: ikke egeninteresse</li>
+<li class="fragment"><strong>O</strong>rganisert <strong>S</strong>kepsis: kritisk prøving</li>
+</ul>
+</div>
+<div class="col-img portrait">
+<img alt="Robert K. Merton, 1965" src="bilder/merton_1965.jpg"/>
+<p class="thinker-info">Robert K. Merton (1910–2003). Amerikansk sosiolog.<br/>Hovedverk: «The Normative Structure of Science» (1942)</p>
+<p class="photo-credit">Foto 1965. CC0</p>
+</div>
+</div>
+
+</section>
+<section class="content-slide">
+<h2>Longino og Harding</h2>
+<div class="split">
+<div class="col-text" style="flex:1; text-align:center;">
+<img alt="Helen Longino" src="bilder/longino.jpg" style="max-height:190px;"/>
+<p class="thinker-info">Helen Longino (f. 1944). Amerikansk filosof.<br/>«The Fate of Knowledge» (2002)</p>
+<p class="photo-credit">Helen E. Longino, CC BY-SA 4.0</p>
+</div>
+<div class="col-text" style="flex:1; text-align:center;">
+<img alt="Sandra Harding" src="bilder/harding.jpg" style="max-height:190px;"/>
+<p class="thinker-info">Sandra Harding (1935–2025). Amerikansk filosof.<br/>«The Science Question in Feminism» (1986)</p>
+<p class="photo-credit">Mina Kara, CC BY-SA 4.0</p>
+</div>
+</div>
+<p class="src-note">Sentrale i standpunktepistemologi og kritikken av «verdifri» vitenskap. Longino: «prosedyrekriterier» som alternativ til KUDOS <span class="pagecite">(ss. 127, 129)</span></p>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="fla-ref">Se FLA 40 spørsmål 2</div>
+<div class="kicker">Kap. 8 <span class="pagecite">· <em>Tenk!</em> ss. 126–8</span></div>
+<h2>Situert kunnskap</h2>
+<ul>
+<li class="fragment">Kunnskap produseres fra et sosialt eller historisk ståsted</li>
+<li class="fragment">Utfordrer KUDOS' ideal om en nøytral forsker</li>
+<li class="fragment">Eksempel: rundt 1920 så man «mannlige» og «kvinnelige» kjønnshormoner som motsetninger. At alle har begge, ble godtatt på 1930-tallet</li>
+</ul>
+
+</section>
+<section class="question-slide tbl-slide" data-correct="1" data-poll-id="q06" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k8">
+<div class="tbl-badge">Lagquiz: først alene, så i gruppa</div>
+<div class="tbl-status"></div>
+<p>Hva innebærer «situert kunnskap»?</p>
+<div class="alt"><span class="altnum">1</span> Forskerens egenskaper påvirker evaluering av data og funn.</div>
+<div class="alt"><span class="altnum">2</span> Forskerens standpunkt må ikke påvirkes utenfra.</div>
+<div class="alt"><span class="altnum">3</span> Vitenskapen må være verdifri.</div>
+<div class="alt"><span class="altnum">4</span> Alle grupper vurderer funn likt.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 126–8</p>
+
+</section>
+<section class="tbl-result-slide" data-tbl-for="q06">
+<h2 class="tbl-title">Lagquiz: resultat</h2>
+<div class="tbl-grid">
+<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
+<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
+<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+<div class="tbl-panel tbl-fasit">
+<h3>Fasit</h3>
+<p class="tbl-q">Hva innebærer «situert kunnskap»?</p>
+<div class="alt correct"><span class="altnum">1</span> Forskerens egenskaper påvirker evaluering av data og funn.</div>
+<div class="alt"><span class="altnum">2</span> Forskerens standpunkt må ikke påvirkes utenfra.</div>
+<div class="alt"><span class="altnum">3</span> Vitenskapen må være verdifri.</div>
+<div class="alt"><span class="altnum">4</span> Alle grupper vurderer funn likt.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 126–8</p>
+</div>
+</div>
+</section>
+<section class="question-slide tbl-slide" data-correct="4" data-poll-id="q05" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k8">
+<div class="tbl-badge tbl-extra">Ekstra: i eget tempo</div>
+<div class="tbl-status"></div>
+<p>Hva går normen om universalisme ut på?</p>
+<div class="alt"><span class="altnum">1</span> Søke mest allmenngyldige svar.</div>
+<div class="alt"><span class="altnum">2</span> Unngå at forskning styres av egeninteresse.</div>
+<div class="alt"><span class="altnum">3</span> Forske på det som er best for alle.</div>
+<div class="alt"><span class="altnum">4</span> Vurdere påstander på innhold, uavhengig av avsender.</div>
+<p class="pagecite"><em>Tenk!</em> s. 123</p>
+
+</section>
+<section class="tbl-result-slide" data-tbl-for="q05">
+<h2 class="tbl-title">Lagquiz, ekstra: resultat</h2>
+<div class="tbl-grid">
+<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
+<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
+<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+<div class="tbl-panel tbl-fasit">
+<h3>Fasit</h3>
+<p class="tbl-q">Hva går normen om universalisme ut på?</p>
+<div class="alt"><span class="altnum">1</span> Søke mest allmenngyldige svar.</div>
+<div class="alt"><span class="altnum">2</span> Unngå at forskning styres av egeninteresse.</div>
+<div class="alt"><span class="altnum">3</span> Forske på det som er best for alle.</div>
+<div class="alt correct"><span class="altnum">4</span> Vurdere påstander på innhold, uavhengig av avsender.</div>
+<p class="tbl-note">Alternativ 2 er heller «disinteresserthet».</p>
+<p class="pagecite"><em>Tenk!</em> s. 123</p>
+</div>
+</div>
+</section>
+<section class="divider-slide" data-visibility="uncounted">
+<div class="kicker">Kap. 8, vitenskap og verdier</div>
+<h2>Fordypning</h2>
+</section>
+<section class="engage-slide" data-poll-id="q04" data-poll-items="Kommunalisme|Universalisme|Disinteresserthet|Organisert skepsis" data-poll-prompt="Ranger KUDOS-normene, fra vanskeligst til lettest å følge i praksis." data-poll-type="ranking" data-visibility="uncounted">
+<div class="engage-badge">Avstemning, rangering</div>
+<div class="engage-row">
+<div class="engage-text">
+<h2>Ranger KUDOS-normene</h2>
+<p style="font-size:0.55em">Vanskeligst til lettest å følge i praksis</p>
+<ol style="font-size:0.55em; text-align:left; max-width:420px; margin:0.6em auto; display:block;">
+<li>Kommunalisme</li>
+<li>Universalisme</li>
+<li>Disinteresserthet</li>
+<li>Organisert skepsis</li>
+</ol>
+</div>
+<div class="poll-results"></div>
+</div>
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker">Kap. 8 <span class="pagecite">· <em>Tenk!</em> ss. 124–5</span></div>
+<h2>Spørsmål vs. svar</h2>
+<ul>
+<li class="fragment">At interesser styrer spørsmålene, gjør ikke svarene ugyldige</li>
+<li class="fragment">Det avgjøres av metoden: er svaret funnet på en pålitelig måte?</li>
+<li class="fragment">Men publikasjonsbias og p-hacking gir falske positive funn</li>
+</ul>
+
+</section>
+<section class="question-slide mc-slide" data-correct="2" data-poll-id="q30" data-poll-options="4" data-poll-type="mc" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="mc-count"></div>
+<p>En studie tester 200 mulige risikofaktorer for kreft. De som bor ved trafikkert vei har 30 % mer kreft (99 % sikkert ikke tilfeldig). Største problem?</p>
+<div class="alt"><span class="altnum">1</span> Utvalget er for lite.</div>
+<div class="alt is-correct"><span class="altnum">2</span> Med 200 tester venter vi et par slike tilfeldige funn.</div>
+<div class="alt"><span class="altnum">3</span> Korrelasjon sier aldri noe om årsak.</div>
+<div class="alt"><span class="altnum">4</span> Hypotesen kan ikke falsifiseres.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 124–5</p>
+
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker">Kap. 8 <span class="pagecite">· <em>Tenk!</em> ss. 127–8</span></div>
+<h2>Harding: standpunktteori</h2>
+<ul>
+<li class="fragment">Marginaliserte ser både sitt eget og det dominerende perspektivet</li>
+<li class="fragment">Mangfold gir ikke garantert objektivitet, men flere spørsmål</li>
+<li class="fragment">Realisme, ikke relativisme: noen ståsteder ser mer av virkeligheten</li>
+<li class="fragment">Gir ståstedet en fordel i oppdagelsen, eller i begrunnelsen?</li>
+</ul>
+
+</section>
+<section class="engage-slide" data-poll-id="q20" data-poll-prompt="Når kan verdier gjøre forskning dårligere, og hva kan motvirke det?" data-poll-type="open" data-visibility="uncounted">
+<div class="engage-badge">Avstemning, åpent svar</div>
+<div class="engage-row">
+<div class="engage-text">
+<div class="kicker">Kap. 8 <span class="pagecite">· <em>Tenk!</em> ss. 123–9</span></div>
+<h2>Når blir verdier et problem?</h2>
+<p>Når kan verdier gjøre forskning dårligere, og hva kan motvirke det?</p>
+</div>
+<div class="poll-results"></div>
+</div>
+
+</section>
+</section>
+<!-- VITENSKAPENS UTVIKLING (KAP. 9) -->
+<section data-title="Vitenskapens utvikling (kap. 9)">
+<section class="overview-slide">
+<div class="kicker">Kap. 9, vitenskapens utvikling</div>
+<h2>Oversikt</h2>
+<p class="ov-open">Åpning: and eller kanin? (ordsky). To bilder til på slutten</p>
+<div class="ov-cols wide">
+<div class="ov-col kjerne">
+<h3>Kjerne</h3>
+<ul>
+<li>Teoriavhengighet <span class="ov-ex">kart og terreng</span></li>
+<li>Å lære å se <span class="ov-ex">mikroskopet</span></li>
+<li>EBM <span class="ov-ex">fallskjerm, østrogen</span></li>
+<li>Popper og Kuhn <span class="ov-ex">Kuhns syklus</span></li>
+<li>Semmelweis <span class="ov-ex">håndvask</span></li>
+<li>Anomalier <span class="ov-ex">Uranus</span></li>
+<li class="ov-q">Lagquiz: Popper vs. Kuhn</li>
+<li class="ov-q">Ekstra: Uranus</li>
+</ul>
+</div>
+<div class="ov-col ford">
+<h3>Fordypning</h3>
+<ul>
+<li class="ov-sub">9A Normalvitenskap</li>
+<li>Semmelweis med to par briller <span class="ov-ex">diskusjon</span></li>
+<li>Normalvitenskap <span class="ov-ex">to spørsmål</span></li>
+<li>Oppdagelse og begrunnelse <span class="ov-ex">Kekulé, Tu Youyou</span></li>
+<li class="ov-sub">9B Hva ser vi?</li>
+<li>Innvending <span class="ov-ex">Müller-Lyer</span></li>
+<li>Kategorier <span class="ov-ex">hvalen</span></li>
+<li class="ov-sub">9C Fremskritt og sannhet</li>
+<li>Fremskritt? <span class="ov-ex">er medisinen bedre?</span></li>
+<li>Realisme og relativisme <span class="ov-ex">Ramses II</span></li>
+<li>Galileo-gambiten <span class="ov-ex"></span></li>
+<li class="ov-sub">9D Kuhn i dag</li>
+<li>MikroRNA <span class="ov-ex">eksamen H24</span></li>
+<li class="ov-q">Ordsky: to bilder til</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="engage-slide" data-poll-id="q26" data-poll-prompt="Hva ser du på bilde 1? Ett eller to ord" data-poll-type="wordcloud">
+<div class="engage-badge">Avstemning, ordsky</div>
+<div class="engage-row">
+<div class="engage-text">
+<div class="kicker">Åpning</div>
+<h2>Hva ser du?</h2>
+<img alt="Tvetydig bilde nummer 1" class="engage-img" src="bilder/and_kanin.jpg"/>
+<p class="photo-credit">1890-årene. Public domain</p>
+</div>
+<div class="poll-results"></div>
+</div>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="fla-ref">Se FLA 40 spørsmål 4</div>
+<div class="kicker">Kap. 9 <span class="pagecite">· <em>Tenk!</em> ss. 133, 140–1</span></div>
+<h2>Teoriavhengighet</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Det vi «ser», formes av teorien vi har, slik kart tegnes etter interesser</li>
+<li class="fragment">Ingen kart er teorinøytrale</li>
+<li class="fragment">Utfordrer realismen: relativisme? konstruktivisme?</li>
+<li class="fragment">Men terrenget avgjør om kartet stemmer</li>
+</ul>
+</div>
+<div class="col-img">
+<div class="r-stack map">
+<img alt="Mercator-kart der like store sirkler på jorda blir stadig større mot polene" src="bilder/mercator_tissot.png"/>
+<img alt="Equal Earth-kartet med de samme sirklene: like store, men klemt sammen mot polene" class="fragment" src="bilder/equal_earth_tissot.png"/>
+</div>
+<p class="thinker-info">Like store sirkler på jorda: Mercator, så FNs nye kart (Equal Earth, 2026)</p>
+<p class="photo-credit">Justin Kunimune, CC BY-SA 4.0 og CC0</p>
+</div>
+</div>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="kicker">Kap. 9, bioingeniør <span class="pagecite">· <em>Tenk!</em> s. 133</span></div>
+<h2>Hva ser du i mikroskopet?</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Lekperson: tre fargede former</li>
+<li class="fragment">Bioingeniør: erytrocytt, trombocytt og leukocytt</li>
+<li class="fragment">Å lære et fag er å lære å se</li>
+</ul>
+</div>
+<div class="col-img">
+<img alt="Elektronmikroskopbilde av rødt blodlegeme, blodplate og hvitt blodlegeme" src="bilder/blodceller_sem.jpg"/>
+<p class="thinker-info">Elektronmikroskop, fargelagt</p>
+<p class="photo-credit">National Cancer Institute. Public domain</p>
+</div>
+</div>
+
+</section>
+<section class="content-slide">
+<div class="fla-ref">Bro til uke 39, FLA-spørsmål 10b og 10c</div>
+<div class="kicker">Kap. 9 <span class="pagecite">· <em>Tenk!</em> s. 133 · Wyller og Wyller ss. 64–5</span></div>
+<h2>… og evidensbasert medisin</h2>
+<ul>
+<li class="fragment"><strong>b)</strong> EBMs «rene fakta» (RCT-data) er også teoriavhengige. Hvilke utfall som telles, måles og vektlegges er teoristyrt</li>
+<li class="fragment"><strong>c)</strong> Derfor er ikke EBM-hierarkiet nøytralt. Det skjuler egne teoretiske og normative valg bak en positivistisk selvforståelse</li>
+</ul>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="kicker">Kap. 9 <span class="pagecite">· Wyller og Wyller ss. 62–5</span></div>
+<h2>EBM: fallskjerm og østrogen</h2>
+<ul>
+<li class="fragment">Fallskjerm og lårhalsbrudd: sikker viten uten RCT</li>
+<li class="fragment">EBMs metode er altså ikke <em>nødvendig</em> for helsekunnskap</li>
+<li class="fragment">(Dårlig) EBM er heller ikke <em>tilstrekkelig</em>: RCT-en fra 2018 brukte fly på bakken</li>
+<li class="fragment">Men RCT trengs ved små effekter: østrogen virket beskyttende, RCT-er viste skade</li>
+</ul>
+
+</section>
+<section class="content-slide">
+<h2>Popper og Kuhn</h2>
+<div class="split">
+<div class="col-text" style="flex:1; text-align:center;">
+<img alt="Karl Popper" src="bilder/popper.jpg" style="max-height:190px;"/>
+<p class="thinker-info">Popper (1902–1994). Østerriksk-britisk filosof.<br/>«Logik der Forschung» (1934)</p>
+<p class="photo-credit">DorianKBandy, CC BY-SA 4.0</p>
+</div>
+<div class="col-text" style="flex:1; text-align:center;">
+<img alt="Thomas Kuhn" src="bilder/kuhn.jpg" style="max-height:190px;"/>
+<p class="thinker-info">Kuhn (1922–1996). Amerikansk vitenskapshistoriker.<br/>«The Structure of Scientific Revolutions» (1962)</p>
+<p class="photo-credit">Davi.trip, CC BY-SA 4.0</p>
+</div>
+</div>
+</section>
+<section class="content-slide">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="fla-ref">Se FLA 40 spørsmål 3</div>
+<div class="kicker">Kap. 9 <span class="pagecite">· <em>Tenk!</em> s. 132</span></div>
+<h2>Popper vs. Kuhn</h2>
+<ul>
+<li class="fragment">Popper: hypoteser må kunne falsifiseres</li>
+<li class="fragment">Kuhn: paradigmer beskyttes mot enkeltavvik</li>
+<li class="fragment">Inkommensurabilitet: paradigmer uten felles målestokk <span class="pagecite">(s. 135)</span></li>
+</ul>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="kicker">Kap. 9 <span class="pagecite">· <em>Tenk!</em> ss. 132–5</span></div>
+<h2>Kuhns syklus</h2>
+<div class="flow">
+<div class="step">Førvitenskap</div><div class="arrow">→</div>
+<span class="fragment"><span class="step" style="display:inline-block">Paradigme</span></span><span class="arrow fragment">→</span>
+<span class="fragment"><span class="step" style="display:inline-block">Normalvitenskap</span></span><span class="arrow fragment">→</span>
+<span class="fragment"><span class="step hot" style="display:inline-block">Anomalier</span></span><span class="arrow fragment">→</span>
+<span class="fragment"><span class="step hot" style="display:inline-block">Krise</span></span><span class="arrow fragment">→</span>
+<span class="fragment"><span class="step hot" style="display:inline-block">Revolusjon</span></span><span class="arrow fragment">→</span>
+<span class="fragment"><span class="step" style="display:inline-block">Nytt paradigme</span></span>
+</div>
+<p class="flow-note fragment">Paradigme: felles bakgrunnsteori, metoder, begreper og mønstereksempler</p>
+
+</section>
+<section class="content-slide tett">
+<div class="kicker">Sykepleiefaglig eksempel</div>
+<h2>Semmelweis og håndvask</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Håndvask ga langt færre dødsfall av barselfeber</li>
+<li class="fragment">Datidens leger avviste ham likevel i årevis</li>
+<li class="fragment">Hvorfor? Sykdom kom fra «dårlig luft» (miasma), ikke fra legenes hender</li>
+</ul>
+<p class="aside-note small fragment">Miasmelæren tok feil om årsaken, men ga kloakk og lufting: riktig tiltak, feil grunn</p>
+</div>
+<div class="col-img portrait">
+<img alt="Portrett av Ignaz Semmelweis, 1860" src="bilder/semmelweis_1860.jpg"/>
+<p class="thinker-info">Ignaz Semmelweis (1818–1865). Ungarsk lege.<br/>Hovedverk: «Die Ätiologie... des Kindbettfiebers» (1861)</p>
+<p class="photo-credit">Portrett 1860. Public domain</p>
+</div>
+</div>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="kicker">Wien 1847 <span class="pagecite">· <em>Tenk!</em> ss. 107–11, 132–6</span></div>
+<h2>Semmelweis steg for steg</h2>
+<ul>
+<li class="fragment">Legestudentenes fødeavdeling: langt høyere dødelighet enn jordmødrenes</li>
+<li class="fragment">Forkastet først: fødestillingen, og presten som ringte med bjelle på vei til de døende</li>
+<li class="fragment">En kollega fikk et skalpellkutt under obduksjon og døde av det samme: «likstoff»?</li>
+<li class="fragment">Håndvask i klorkalk: dødeligheten falt kraftig</li>
+</ul>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="kicker">Kap. 9, anomalier <span class="pagecite">· <em>Tenk!</em> s. 106</span></div>
+<h2>Uranus gikk feil vei</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">1800-tallet: Uranus' bane stemte ikke med Newton</li>
+<li class="fragment">Adams og Le Verrier (1846): en ukjent planet lenger ute?</li>
+<li class="fragment">Neptun ble funnet. Men var hypotesen ad hoc?</li>
+</ul>
+</div>
+<div class="col-img">
+<div class="img-pair">
+<img alt="Uranus fotografert av Voyager 2" src="bilder/uranus_voyager2.jpg"/>
+<img alt="Neptun fotografert av Voyager 2" class="fragment" src="bilder/neptun_voyager2.jpg"/>
+</div>
+<p class="photo-credit">Uranus og Neptun, Voyager 2. NASA/JPL, public domain</p>
+</div>
+</div>
+
+</section>
+<section class="question-slide tbl-slide" data-correct="2" data-poll-id="q07" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k9">
+<div class="tbl-badge">Lagquiz: først alene, så i gruppa</div>
+<div class="tbl-status"></div>
+<p>Forskjellen mellom Poppers og Kuhns syn?</p>
+<div class="alt"><span class="altnum">1</span> Popper: sikkerhet, Kuhn: veltes ved anomalier.</div>
+<div class="alt"><span class="altnum">2</span> Popper: krav om falsifiserbarhet, Kuhn: teorier beskyttes.</div>
+<div class="alt"><span class="altnum">3</span> Popper vil ha rasjonell metode, Kuhn bryr seg ikke.</div>
+<div class="alt"><span class="altnum">4</span> Popper vil holde verdier utenfor, Kuhn mener umulig.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 107–11, ss. 132–8</p>
+
+</section>
+<section class="tbl-result-slide" data-tbl-for="q07">
+<h2 class="tbl-title">Lagquiz: resultat</h2>
+<div class="tbl-grid">
+<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
+<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
+<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+<div class="tbl-panel tbl-fasit">
+<h3>Fasit</h3>
+<p class="tbl-q">Forskjellen mellom Poppers og Kuhns syn?</p>
+<div class="alt"><span class="altnum">1</span> Popper: sikkerhet, Kuhn: veltes ved anomalier.</div>
+<div class="alt correct"><span class="altnum">2</span> Popper: krav om falsifiserbarhet, Kuhn: teorier beskyttes.</div>
+<div class="alt"><span class="altnum">3</span> Popper vil ha rasjonell metode, Kuhn bryr seg ikke.</div>
+<div class="alt"><span class="altnum">4</span> Popper vil holde verdier utenfor, Kuhn mener umulig.</div>
+<p class="tbl-note">Alternativ 1 er feil om Popper; 3 og 4 overdriver.</p>
+<p class="pagecite"><em>Tenk!</em> ss. 107–11, ss. 132–8</p>
+</div>
+</div>
+</section>
+<section class="question-slide tbl-slide" data-correct="2" data-poll-id="q21" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k9">
+<div class="tbl-badge tbl-extra">Ekstra: i eget tempo</div>
+<div class="tbl-status"></div>
+<p>Uranus fulgte ikke Newtons lover. Man antok en ukjent planet. Hvordan ville Kuhn beskrevet det?</p>
+<div class="alt"><span class="altnum">1</span> Newtons lover var falsifisert og burde vært forkastet.</div>
+<div class="alt"><span class="altnum">2</span> En anomali, løst innenfor normalvitenskapen.</div>
+<div class="alt"><span class="altnum">3</span> Burde ført til et paradigmeskifte med nye naturlover.</div>
+<div class="alt"><span class="altnum">4</span> Pseudovitenskap, siden hypotesen om Neptun var ad hoc.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 106, 132–5</p>
+
+</section>
+<section class="tbl-result-slide" data-tbl-for="q21">
+<h2 class="tbl-title">Lagquiz, ekstra: resultat</h2>
+<div class="tbl-grid">
+<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
+<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
+<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+<div class="tbl-panel tbl-fasit">
+<h3>Fasit</h3>
+<p class="tbl-q">Uranus fulgte ikke Newtons lover. Man antok en ukjent planet. Hvordan ville Kuhn beskrevet det?</p>
+<div class="alt"><span class="altnum">1</span> Newtons lover var falsifisert og burde vært forkastet.</div>
+<div class="alt correct"><span class="altnum">2</span> En anomali, løst innenfor normalvitenskapen.</div>
+<div class="alt"><span class="altnum">3</span> Burde ført til et paradigmeskifte med nye naturlover.</div>
+<div class="alt"><span class="altnum">4</span> Pseudovitenskap, siden hypotesen om Neptun var ad hoc.</div>
+<p class="tbl-note">Alt. 1 er naiv falsifikasjonisme (ss. 107–11)</p>
+<p class="pagecite"><em>Tenk!</em> ss. 106, 132–5</p>
+</div>
+</div>
+</section>
+<section class="divider-slide" data-visibility="uncounted">
+<div class="kicker">Kap. 9, vitenskapens utvikling</div>
+<h2>Fordypning</h2>
+</section>
+<section class="discussion-slide tett" data-visibility="uncounted">
+<div class="kicker">Diskusjon <span class="pagecite">· <em>Tenk!</em> ss. 107–11, 132–6</span></div>
+<h2>Semmelweis med to par briller</h2>
+<ul>
+<li class="fragment">Popper: hvilke hypoteser ble falsifisert, og hvordan?</li>
+<li class="fragment">Kuhn: hvorfor avviste legene ham, tross gode tall?</li>
+<li class="fragment">Hva sier saken om forholdet mellom evidens og paradigme?</li>
+</ul>
+</section>
+<section class="content-slide" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="fla-ref">Se FLA 40 spørsmål 3</div>
+<div class="kicker"><span class="grp">9A</span>Kap. 9 <span class="pagecite">· <em>Tenk!</em> s. 132</span></div>
+<h2>Normalvitenskap</h2>
+<ul>
+<li class="fragment">Arbeid innenfor paradigmets forutsetninger</li>
+<li class="fragment">Stadig mer sofistikerte hypoteser, testet: «puslespill»</li>
+</ul>
+</section>
+<section class="question-slide mc-slide" data-correct="2" data-poll-id="q09" data-poll-options="4" data-poll-type="mc" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="mc-count"></div>
+<p>Hva er «normalvitenskap» i praksis?</p>
+<div class="alt"><span class="altnum">1</span> Oppdage nye fenomener via radikalt nye rammeverk.</div>
+<div class="alt is-correct"><span class="altnum">2</span> Utvikle og teste sofistikerte hypoteser i paradigmet.</div>
+<div class="alt"><span class="altnum">3</span> Konstruere nye paradigmer, mer presist.</div>
+<div class="alt"><span class="altnum">4</span> Systematisk teste eller gjendrive paradigmets kjerne.</div>
+<p class="pagecite"><em>Tenk!</em> s. 132</p>
+<p class="mc-note">Alternativ 1 er en revolusjon; alternativ 4 ligner falsifikasjonisme <span class="pagecite">(ss. 107–11)</span></p>
+</section>
+<section class="question-slide mc-slide" data-correct="1" data-poll-id="q10" data-poll-options="4" data-poll-type="mc" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="mc-count"></div>
+<p>Kuhns definisjon av «normalvitenskap»?</p>
+<div class="alt is-correct"><span class="altnum">1</span> Arbeid innenfor eller på bakgrunn av et paradigme.</div>
+<div class="alt"><span class="altnum">2</span> Studier av det direkte observerbare.</div>
+<div class="alt"><span class="altnum">3</span> Vitenskap uten etiske dilemmaer.</div>
+<div class="alt"><span class="altnum">4</span> Søker å avkrefte, ikke bekrefte, hypoteser.</div>
+<p class="mc-note">Alt. 4 er falsifikasjonisme, ikke normalvitenskap <span class="pagecite">ss. 107–11</span></p>
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="fla-ref">Ikke i FLA 40 (kun FVO)</div>
+<div class="kicker"><span class="grp">9A</span>Kap. 9 <span class="pagecite">· <em>Tenk!</em> ss. 95, 131–2</span></div>
+<h2>Oppdagelse vs. bekreftelse</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Hvor h kommer fra er noe annet enn hva som støtter h</li>
+<li class="fragment">Kekulé: benzenringen kom i en drøm</li>
+<li class="fragment">Tu Youyou: malariamedisin funnet i gamle tekster</li>
+</ul>
+</div>
+<div class="col-img">
+<div class="img-pair">
+<img alt="Benzenring omsluttet av en slange som biter seg selv i halen" src="bilder/kekule_ouroboros.png"/>
+<img alt="Tu Youyou ved nobelprisutdelingen 2015" src="bilder/tu_youyou.jpg"/>
+</div>
+<p class="photo-credit">Ouroboros: DMGualtieri, CC BY-SA 3.0 · Tu Youyou: Bengt Nyman, CC BY-SA 4.0</p>
+</div>
+</div>
+
+</section>
+<section class="question-slide mc-slide" data-correct="2" data-poll-id="q08" data-poll-options="4" data-poll-type="mc" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="mc-count"></div>
+<p>Hvorfor skille oppdagelses- og bekreftelseskontekst?</p>
+<div class="alt"><span class="altnum">1</span> Politiske eller sosiale forhold kan overføres mellom kontekstene.</div>
+<div class="alt is-correct"><span class="altnum">2</span> Evidensstøtte er uavhengig av hvordan h ble oppdaget.</div>
+<div class="alt"><span class="altnum">3</span> Oppdagelseskonteksten avgjør sannhet.</div>
+<div class="alt"><span class="altnum">4</span> Manglende logisk avledning betyr at hypotesen er gal.</div>
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker"><span class="grp">9B</span>Kap. 9, innvending <span class="pagecite">· <em>Tenk!</em> s. 137</span></div>
+<h2>Bestemmer teorien hva vi ser?</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Hvilken linje er lengst?</li>
+<li class="fragment">Like lange, men ser ulike ut selv når vi vet det</li>
+<li class="fragment">Sansene følger ikke bare teorien, og vi kan måle oss ut av feilen</li>
+</ul>
+</div>
+<div class="col-img">
+<div class="r-stack">
+<img alt="Müller-Lyer-illusjonen: tre linjer med ulike piler i endene" src="bilder/muller_lyer_sporsmal.png"/>
+<img alt="Müller-Lyer-illusjonen med linjene markert: like lange" class="fragment" src="bilder/muller_lyer.png"/>
+</div>
+<p class="photo-credit">Müller-Lyer: Fibonacci, CC BY-SA 3.0</p>
+</div>
+</div>
+
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker"><span class="grp">9B</span>Kap. 9, kategorier <span class="pagecite">· <em>Tenk!</em> ss. 125, 141</span></div>
+<h2>Hval: fisk eller pattedyr?</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Lenge regnet som fisk, nå pattedyr</li>
+<li class="fragment">Kategorier er en del av paradigmet</li>
+<li class="fragment">Endret hvalen seg, eller bare kartet vårt?</li>
+</ul>
+</div>
+<div class="col-img">
+<img alt="Knølhval som hopper ut av vannet ved Hawaii" src="bilder/knolhval.jpg"/>
+<p class="thinker-info">Knølhval</p>
+<p class="photo-credit">J. Moore/NOAA. Public domain</p>
+</div>
+</div>
+</section>
+<section class="engage-slide" data-poll-id="q22" data-poll-labels="uenig|enig" data-poll-options="5" data-poll-prompt="«Det er paradigmet som bestemmer at hvalen er et pattedyr»" data-poll-type="scale" data-visibility="uncounted">
+<div class="engage-badge">Avstemning, skala</div>
+<div class="engage-row">
+<div class="engage-text">
+<div class="kicker">Kap. 9 <span class="pagecite">· <em>Tenk!</em> s. 141</span></div>
+<h2>Hvor enig er du i utsagnet</h2>
+<p style="font-size:0.55em">«Det er paradigmet som bestemmer at hvalen er et pattedyr»</p>
+<p style="font-size:0.4em; opacity:0.7">1 (uenig) til 5 (enig)</p>
+</div>
+<div class="poll-results"></div>
+</div>
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker"><span class="grp">9C</span>Kap. 9 <span class="pagecite">· <em>Tenk!</em> ss. 136–7</span></div>
+<h2>Fremskritt?</h2>
+<ul>
+<li class="fragment">Inkommensurabilitet: ingen nøytral målestokk mellom paradigmer?</li>
+<li class="fragment">I så fall er det vanskelig å si at vitenskapen går fremover</li>
+<li class="fragment">Men Newton og Einstein kan enes om hvor Merkur står på himmelen</li>
+<li class="fragment">Kuhn selv avviste relativisme</li>
+</ul>
+
+</section>
+<section class="engage-slide" data-poll-id="q23" data-poll-labels="uenig|enig" data-poll-options="5" data-poll-prompt="«Medisinen i dag er bedre enn i middelalderen, ikke bare annerledes»" data-poll-type="scale" data-visibility="uncounted">
+<div class="engage-badge">Avstemning, skala</div>
+<div class="engage-row">
+<div class="engage-text">
+<div class="kicker">Kap. 9 <span class="pagecite">· <em>Tenk!</em> s. 140</span></div>
+<h2>Bedre, eller bare annerledes?</h2>
+<p style="font-size:0.55em">«Medisinen i dag er bedre enn i middelalderen, ikke bare annerledes»</p>
+<p style="font-size:0.4em; opacity:0.7">1 (uenig) til 5 (enig)</p>
+</div>
+<div class="poll-results"></div>
+</div>
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker"><span class="grp">9C</span>Kap. 9 <span class="pagecite">· <em>Tenk!</em> s. 140</span></div>
+<h2>Realisme og relativisme</h2>
+<ul>
+<li class="fragment">Realisme: virkeligheten finnes uavhengig av oss og avgjør hvilke teorier som stemmer</li>
+<li class="fragment">Relativisme: hva som er riktig, avhenger av paradigmet</li>
+<li class="fragment">Ramses II døde ca. 1213 f.Kr. I 1976 fant forskere spor av tuberkulose i mumien</li>
+<li class="fragment">Latour: anakronisme! Basillen ble først oppdaget i 1882. Hadde farao tuberkulose, eller ikke?</li>
+</ul>
+
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker"><span class="grp">9C</span>Kap. 9 <span class="pagecite">· <em>Tenk!</em> ss. 140–2</span></div>
+<h2>Hvorfor ikke relativisme?</h2>
+<ul>
+<li class="fragment">Bias er bare et problem hvis det finnes et terreng å bomme på</li>
+<li class="fragment">Relativisme: vi kan aldri ta feil, og trenger aldri lytte til andre</li>
+<li class="fragment">Da blir relativisme selv en form for dogmatisme</li>
+<li class="fragment">Realisme krever ydmykhet: vi kan alltid ta feil</li>
+</ul>
+
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker"><span class="grp">9C</span>Kap. 9 <span class="pagecite">· <em>Tenk!</em> s. 139</span></div>
+<h2>Galileo-gambiten</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">«De lo av Galileo, og nå ler de av meg»</li>
+<li class="fragment">De fleste som bryter med konsensus, tar feil</li>
+<li class="fragment">Konsensus vinnes med evidens, ikke makt</li>
+</ul>
+</div>
+<div class="col-img portrait">
+<img alt="Galileo Galilei, portrett av Justus Sustermans, 1636" src="bilder/galilei_sustermans.jpg"/>
+<p class="thinker-info">Galileo Galilei (1564–1642). Italiensk naturforsker.<br/>«Dialog om de to verdenssystemene» (1632)</p>
+<p class="photo-credit">Justus Sustermans, 1636. Public domain</p>
+</div>
+</div>
+
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<h2>Nobelprisen 2024: mikroRNA</h2>
+<div class="split">
+<div class="col-text" style="flex:1; text-align:center;">
+<img alt="Victor Ambros" src="bilder/ambros.jpg" style="max-height:160px;"/>
+<p class="thinker-info">Victor Ambros (f. 1953). Amerikansk utviklingsbiolog</p>
+<p class="photo-credit">Arthur Petron, CC BY-SA 4.0</p>
+</div>
+<div class="col-text" style="flex:1; text-align:center;">
+<img alt="Gary Ruvkun" src="bilder/ruvkun.jpg" style="max-height:160px;"/>
+<p class="thinker-info">Gary Ruvkun (f. 1952). Amerikansk molekylærbiolog</p>
+<p class="photo-credit">John Sears, CC BY-SA 4.0</p>
+</div>
+</div>
+<p class="src-note">Oppdaget mikroRNA: små RNA-molekyler som regulerer hvilke gener som blir til protein</p>
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker"><span class="grp">9D</span>Eksamen H24, oppgave 2 <span class="pagecite">· <em>Tenk!</em> ss. 132–7</span></div>
+<h2>Kuhn-revolusjon i biologien?</h2>
+<ul>
+<li class="fragment">Gammelt paradigme: gener koder (mest) for proteiner</li>
+<li class="fragment">Anomalier: introner, «søppel-DNA», mye RNA som aldri blir protein</li>
+<li class="fragment">Mattick (2023): de fleste gener lager regulerende RNA, et paradigmeskifte</li>
+</ul>
+
+</section>
+<section class="discussion-slide tett" data-visibility="uncounted">
+<div class="kicker">Diskusjon <span class="pagecite">· <em>Tenk!</em> ss. 132–41</span></div>
+<h2>Revolusjon eller normalvitenskap?</h2>
+<ul>
+<li class="fragment">Er mikroRNA en anomali, eller starten på et nytt paradigme?</li>
+<li class="fragment">Er endringen et fremskritt? Målt med hvilken målestokk?</li>
+<li class="fragment">Samme spørsmål som eksamen H24, oppgave 2</li>
+</ul>
+</section>
+<section class="engage-slide" data-poll-id="q27" data-poll-prompt="Hva ser du på bilde 2? Ett eller to ord" data-poll-type="wordcloud" data-visibility="uncounted">
+<div class="engage-badge">Avstemning, ordsky</div>
+<div class="engage-row">
+<div class="engage-text">
+<div class="kicker">Til slutt: bilde 2 av 3</div>
+<h2>Hva ser du?</h2>
+<img alt="Tvetydig bilde nummer 2" class="engage-img" src="bilder/vase_ansikter.png"/>
+<p class="photo-credit">Bryan Derksen, CC BY-SA 3.0</p>
+</div>
+<div class="poll-results"></div>
+</div>
+
+</section>
+<section class="engage-slide" data-poll-id="q28" data-poll-prompt="Hva ser du på bilde 3? Ett eller to ord" data-poll-type="wordcloud" data-visibility="uncounted">
+<div class="engage-badge">Avstemning, ordsky</div>
+<div class="engage-row">
+<div class="engage-text">
+<div class="kicker">Til slutt: bilde 3 av 3</div>
+<h2>Hva ser du?</h2>
+<img alt="Tvetydig bilde nummer 3" class="engage-img" src="bilder/kone_svigermor.png"/>
+<p class="photo-credit">W. E. Hill (1915). Public domain</p>
+<p class="video-link"><a href="https://www.youtube.com/watch?v=7f1G6Nx5VDw" rel="noopener" target="_blank">Video: gammel eller ung kvinne? (løsningen)</a></p>
+</div>
+<div class="poll-results"></div>
+</div>
+
+</section>
+</section>
+<!-- NATURSYN (KAP. 11) -->
+<section data-title="Natursyn (kap. 11)">
+<section class="overview-slide">
+<div class="kicker">Kap. 11, natursyn</div>
+<h2>Oversikt</h2>
+<div class="ov-cols">
+<div class="ov-col kjerne">
+<h3>Kjerne</h3>
+<ul>
+<li>To paradigmer <span class="ov-ex">bro fra kap. 9</span></li>
+<li>Fire årsaker <span class="ov-ex">statue, løve, menneske</span></li>
+<li>Teleologi <span class="ov-ex">eikenøtt og eik</span></li>
+<li>Mekanistisk natursyn <span class="ov-ex">hjertet som pumpe</span></li>
+<li>Teleologisk forklaring <span class="ov-ex">storjordspurven</span></li>
+<li class="ov-q">Lagquiz: nebbet</li>
+<li class="ov-q">Ekstra: teleologisk natursyn</li>
+</ul>
+</div>
+<div class="ov-col ford">
+<h3>Fordypning</h3>
+<ul>
+<li>Fire typer forandring <span class="ov-ex">eplet</span></li>
+<li class="ov-q">Spørsmål: mekanistisk natursyn</li>
+<li>Primære og sekundære egenskaper <span class="ov-ex">blodverdier</span></li>
+<li>Homeostase <span class="ov-ex">klarer vi oss uten formål?</span></li>
+<li>En utfordring til <em>Tenk!</em> <span class="ov-ex">«utvilsomt»</span></li>
+</ul>
+</div>
+</div>
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="fla-ref">Se FLA 40 spørsmål 6</div>
+<div class="kicker">Bro fra kap. 9 <span class="pagecite">· <em>Tenk!</em> ss. 132, 154, 160</span></div>
+<h2>To paradigmer for naturen</h2>
+<ul>
+<li class="fragment">Teleologisk: naturen streber mot mål (Aristoteles, fram til ca. 1600)</li>
+<li class="fragment">Mekanistisk: naturen som maskin (Galilei, Descartes, Newton)</li>
+<li class="fragment">Et paradigmeskifte (Kuhn); i dag antropocen, mennesket selv påvirker jorden mest <span class="pagecite">(s. 154)</span></li>
+</ul>
+</section>
+<section class="content-slide">
+<h2>Teleologisk og mekanistisk</h2>
+<div class="split">
+<div class="col-text" style="flex:1; text-align:center;">
+<img alt="Byste av Aristoteles" src="bilder/aristoteles_byste.jpg" style="max-height:190px;"/>
+<p class="thinker-info">Aristoteles (384–322 f.Kr.). Gresk filosof.<br/>Naturen som formålsrettet</p>
+<p class="photo-credit">Byste. Public domain</p>
+</div>
+<div class="col-text" style="flex:1; text-align:center;">
+<img alt="Descartes' tegning av refleksen: ilden virker på foten, og en tråd trekker i hjernen" src="bilder/descartes_refleks.jpg" style="max-height:190px;"/>
+<p class="thinker-info">René Descartes (1596–1650). Fransk filosof.<br/>«L'Homme» (1664): kroppen som maskin</p>
+<p class="photo-credit">Public domain</p>
+</div>
+</div>
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="kicker">Kap. 11, natursyn <span class="pagecite">· <em>Tenk!</em> s. 156</span></div>
+<h2>Aristoteles' fire årsaker</h2>
+<table class="cmp-table">
+<tr><th></th><th>Statue</th><th>Løve</th><th>Menneske</th></tr>
+<tr class="fragment"><td>Materiell: stoffet</td><td>Bronse</td><td>Knokler, kjøtt, blod</td><td>Kroppen</td></tr>
+<tr class="fragment"><td>Formal: formen</td><td>Statuens form</td><td>Det en løve er</td><td>Sjelen, fornuften</td></tr>
+<tr class="fragment"><td>Bevirkende: opphavet</td><td>Kunstneren</td><td>Foreldrene</td><td>Foreldrene</td></tr>
+<tr class="fragment"><td>Formål: målet</td><td>Å hedre den avbildede</td><td>Å leve ut løvens natur</td><td>Et godt liv (eudaimonia)</td></tr>
+</table>
+<p class="fragment table-note">Menneskets mål er et godt liv: derfor er dydsetikken teleologisk</p>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="fla-ref">Se FLA 40 spørsmål 7</div>
+<div class="kicker">Kap. 11, natursyn <span class="pagecite">· <em>Tenk!</em> ss. 154–6</span></div>
+<h2>Teleologi som natursyn</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Naturlige ting har et <em>telos</em> (formål) de streber mot</li>
+<li class="fragment">Eikenøtta har eiketreet i seg som mulighet</li>
+<li class="fragment">Forandring: fra mulighet til virkelighet</li>
+</ul>
+</div>
+<div class="col-img">
+<div class="img-pair side">
+<img alt="Eikenøtt som spirer" src="bilder/eikenott_spirer.jpg"/>
+<img alt="Et stort eiketre i en åker" src="bilder/eik.jpg"/>
+</div>
+<p class="photo-credit">Eikenøtt: Amphis, CC BY-SA 3.0 · Eik: ZarlokX, CC BY-SA 4.0</p>
+</div>
+</div>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="fla-ref">Se FLA 40 spørsmål 8</div>
+<div class="kicker">Kap. 11, natursyn <span class="pagecite">· <em>Tenk!</em> s. 160</span></div>
+<h2>Mekanistisk natursyn</h2>
+<ul>
+<li class="fragment">Naturen som «maskin», uten formål</li>
+<li class="fragment">Harvey (1628): hjertet er en pumpe, og blodet sirkulerer</li>
+<li class="fragment">Bioingeniør: labmedisinens mekanistiske modell av sykdom</li>
+<li class="fragment">Bare bevirkende årsaker, og det som teller, kan måles</li>
+</ul>
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="kicker">Kap. 11, natursyn <span class="pagecite">· <em>Tenk!</em> s. 154</span></div>
+<h2>Storjordspurven og nebbet</h2>
+<div class="split">
+<div class="col-text">
+<ul>
+<li class="fragment">Fuglearten storjordspurv (<em>Geospiza magnirostris</em>) på Galápagos har et uvanlig kraftig nebb</li>
+<li class="fragment">Én av Darwins finkearter: ulikt nebb tilpasset ulik føde, blant hans sterkeste belegg for naturlig utvalg</li>
+<li class="fragment">Spørsmålet her: hva <em>forklarer</em> nebbet, teleologisk eller evolusjonært?</li>
+</ul>
+</div>
+<div class="col-img">
+<img alt="Storjordspurv (Geospiza magnirostris) med kraftig nebb, fotografert på Galápagos" src="bilder/storjordspurv.jpg"/>
+<p class="photo-credit">Lip Kee Yap, CC BY-SA 2.0</p>
+</div>
+</div>
+
+</section>
+<section class="question-slide tbl-slide" data-correct="1" data-poll-id="q15" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k11">
+<div class="tbl-badge">Lagquiz: først alene, så i gruppa</div>
+<div class="tbl-status"></div>
+<p>Storjordspurven har et uvanlig kraftig nebb. Hvilket alternativ er en teleologisk forklaring på nebbet?</p>
+<div class="alt"><span class="altnum">1</span> Den har kraftig nebb for å knekke nøtter og spise store frø.</div>
+<div class="alt"><span class="altnum">2</span> Tidligere generasjoner med større nebb var mer tilpasningsdyktige.</div>
+<div class="alt"><span class="altnum">3</span> Gud har skapt den slik.</div>
+<div class="alt"><span class="altnum">4</span> Et slikt nebb er et typisk trekk ved arten.</div>
+
+</section>
+<section class="tbl-result-slide" data-tbl-for="q15">
+<h2 class="tbl-title">Lagquiz: resultat</h2>
+<div class="tbl-grid">
+<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
+<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
+<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+<div class="tbl-panel tbl-fasit">
+<h3>Fasit</h3>
+<p class="tbl-q">Storjordspurven har et uvanlig kraftig nebb. Hvilket alternativ er en teleologisk forklaring på nebbet?</p>
+<div class="alt correct"><span class="altnum">1</span> Den har kraftig nebb for å knekke nøtter og spise store frø.</div>
+<div class="alt"><span class="altnum">2</span> Tidligere generasjoner med større nebb var mer tilpasningsdyktige.</div>
+<div class="alt"><span class="altnum">3</span> Gud har skapt den slik.</div>
+<div class="alt"><span class="altnum">4</span> Et slikt nebb er et typisk trekk ved arten.</div>
+<p class="tbl-note">Alt. 2 evolusjonær, 3 religiøs, 4 deskriptiv. Kun 1 gir en hensikt.</p>
+</div>
+</div>
+</section>
+<section class="question-slide tbl-slide" data-correct="1" data-poll-id="q14" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k11">
+<div class="tbl-badge tbl-extra">Ekstra: i eget tempo</div>
+<div class="tbl-status"></div>
+<p>Hva kjennetegner et teleologisk (aristotelisk) natursyn?</p>
+<div class="alt"><span class="altnum">1</span> At prosesser i naturen realiserer visse mål.</div>
+<div class="alt"><span class="altnum">2</span> At Gud har skapt naturen og naturens lover.</div>
+<div class="alt"><span class="altnum">3</span> At vitenskapen bør avdekke lovmessighet i naturen.</div>
+<div class="alt"><span class="altnum">4</span> At all bevegelse skyldes mekaniske krefter på materie.</div>
+<p class="pagecite"><em>Tenk!</em> s. 154</p>
+
+</section>
+<section class="tbl-result-slide" data-tbl-for="q14">
+<h2 class="tbl-title">Lagquiz, ekstra: resultat</h2>
+<div class="tbl-grid">
+<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
+<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
+<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+<div class="tbl-panel tbl-fasit">
+<h3>Fasit</h3>
+<p class="tbl-q">Hva kjennetegner et teleologisk (aristotelisk) natursyn?</p>
+<div class="alt correct"><span class="altnum">1</span> At prosesser i naturen realiserer visse mål.</div>
+<div class="alt"><span class="altnum">2</span> At Gud har skapt naturen og naturens lover.</div>
+<div class="alt"><span class="altnum">3</span> At vitenskapen bør avdekke lovmessighet i naturen.</div>
+<div class="alt"><span class="altnum">4</span> At all bevegelse skyldes mekaniske krefter på materie.</div>
+<p class="tbl-note">Alternativ 3 og 4 er mekanistiske, alternativ 2 er religiøst.</p>
+<p class="pagecite"><em>Tenk!</em> s. 154</p>
+</div>
+</div>
+</section>
+<section class="divider-slide" data-visibility="uncounted">
+<div class="kicker">Kap. 11, natursyn</div>
+<h2>Fordypning</h2>
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker">Kap. 11, teleologisk natursyn <span class="pagecite">· <em>Tenk!</em> ss. 157, 159</span></div>
+<h2>Fire typer forandring</h2>
+<p>Aristoteles, med eplet fra blomst til jord:</p>
+<ul>
+<li class="fragment">Stedsbevegelse: eplet faller fra greina</li>
+<li class="fragment">Kvalitativ: grønt, rødt, brunt</li>
+<li class="fragment">Kvantitativ: vokser i størrelse og vekt</li>
+<li class="fragment">Radikal: blir til og går til grunne (råtner, blir jord)</li>
+</ul>
+
+</section>
+<section class="question-slide mc-slide" data-correct="1" data-poll-id="q16" data-poll-options="4" data-poll-type="mc" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="mc-count"></div>
+<p>Hvilket utsagn stemmer best med det mekanistiske natursynet?</p>
+<div class="alt is-correct"><span class="altnum">1</span> All bevegelse kan beskrives og forutsies matematisk.</div>
+<div class="alt"><span class="altnum">2</span> Levende og ikke-levende ting er kvalitativt forskjellige.</div>
+<div class="alt"><span class="altnum">3</span> Vi må skille kvalitativ, kvantitativ og substansiell forandring.</div>
+<div class="alt"><span class="altnum">4</span> Fysiske lover er ulike på jorda og i himmelrommet.</div>
+<p class="pagecite"><em>Tenk!</em> s. 160</p>
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker">Kap. 11 <span class="pagecite">· <em>Tenk!</em> s. 161</span></div>
+<h2>Primære og sekundære egenskaper</h2>
+<ul>
+<li class="fragment">Primære: størrelse, form, posisjon, bevegelse. Kan måles</li>
+<li class="fragment">Sekundære: farge, smak, lukt. Slik sansene våre reagerer</li>
+<li class="fragment">Bioingeniør: blodverdien er «primær». Hva så med pasientens opplevelse?</li>
+</ul>
+
+</section>
+<section class="discussion-slide tett" data-visibility="uncounted">
+<div class="kicker">Diskusjon · Kap. 11 <span class="pagecite">· <em>Tenk!</em> ss. 154, 160</span></div>
+<h2>Homeostase: klarer vi oss uten formål?</h2>
+<ul>
+<li class="fragment">Kroppen holder blodsukker, temperatur og pH innenfor snevre grenser</li>
+<li class="fragment">Kan vi beskrive dette uten å si hva det er godt for?</li>
+<li class="fragment">Kan vi beskrive hjertet uten å si at det er til for å pumpe blod?</li>
+</ul>
+
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="fla-ref">Se FLA 40 spørsmål 9</div>
+<div class="kicker">En utfordring til <em>Tenk!</em> <span class="pagecite">· <em>Tenk!</em> s. 223, ss. 107–11 (falsifikasjonisme)</span></div>
+<h2>«Utvilsomt»?</h2>
+<ul>
+<li class="fragment"><em>Tenk!</em> s. 223: «Vi er utvilsomt et produkt av evolusjon»</li>
+<li class="fragment">Men etter Popper er en teori i beste fall ennå ikke falsifisert</li>
+<li class="fragment">Kan boka da si «utvilsomt»? Og kan evolusjonsteorien falsifiseres?</li>
+</ul>
+</section>
+</section>
+<!-- ENHETSVITENSKAP (KAP. 10) -->
+<section data-title="Enhetsvitenskap (kap. 10)">
+<section class="overview-slide">
+<div class="kicker">Kap. 10, enhetsvitenskap</div>
+<h2>Oversikt</h2>
+<div class="ov-cols">
+<div class="ov-col kjerne">
+<h3>Kjerne</h3>
+<ul>
+<li>Enhetsvitenskap <span class="ov-ex">blodprøven, John Snow</span></li>
+</ul>
+</div>
+<div class="ov-col ford">
+<h3>Fordypning</h3>
+<ul>
+<li>Reduksjonisme <span class="ov-ex">ett kart for alt?</span></li>
+<li>Bro <span class="ov-ex">hvor er humaniora?</span></li>
+<li class="ov-q">Spørsmål: enhetsvitenskap</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="fla-ref">Se FLA 40 spørsmål 5</div>
+<div class="kicker">Kap. 10 <span class="pagecite">· <em>Tenk!</em> ss. 145–6</span></div>
+<h2>Enhetsvitenskap</h2>
+<ul>
+<li class="fragment">Hvorfor fikk hun kolera? Bakterien (mikrobiologi), vannet (epidemiologi), fattigdom (samfunnsfag)</li>
+<li class="fragment">Alle forklaringene kan være riktige samtidig</li>
+<li class="fragment">Enhetsvitenskap: forklaringene kan «forbindes», f.eks. oversettes til en mer grunnleggende vitenskap</li>
+</ul>
+
+</section>
+<section class="divider-slide" data-visibility="uncounted">
+<div class="kicker">Kap. 10, enhetsvitenskap</div>
+<h2>Fordypning</h2>
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker">Kap. 10 <span class="pagecite">· <em>Tenk!</em> s. 146</span></div>
+<h2>Reduksjonisme: ett kart for alt?</h2>
+<ul>
+<li class="fragment">Reduksjonisme: alt sant om X kan sies i Ys språk (håp som hjernetilstander)</li>
+<li class="fragment">Én virkelighet, men vi trenger både veikart og nedbørskart</li>
+<li class="fragment">Bioingeniør: kan en sykdom forstås bare fra laboratorieverdier?</li>
+</ul>
+
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<div class="kicker">Bro til hermeneutikk <span class="pagecite">· <em>Tenk!</em> s. 147</span></div>
+<h2>Hvor er humaniora?</h2>
+<div class="layers">
+<div style="width:40%">Samfunnsvitenskap</div>
+<div style="width:55%">Biologi</div>
+<div style="width:70%">Kjemi</div>
+<div style="width:85%">Fysikk</div>
+</div>
+<p class="layer-q fragment">Tekster, handlinger, mening: hvor passer de inn?</p>
+
+</section>
+<section class="question-slide mc-slide" data-correct="3" data-poll-id="q12" data-poll-options="4" data-poll-type="mc" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="mc-count"></div>
+<p>Hva går ideen om enhetsvitenskap ut på?</p>
+<div class="alt"><span class="altnum">1</span> Disipliner bør operere uavhengig, uten oversettelse.</div>
+<div class="alt"><span class="altnum">2</span> Resultater kan ikke oversettes mellom disipliner.</div>
+<div class="alt is-correct"><span class="altnum">3</span> Teorier kan oversettes til en mer grunnleggende vitenskap.</div>
+<div class="alt"><span class="altnum">4</span> Resultater er primært sosiale eller politiske produkter.</div>
+<p class="pagecite"><em>Tenk!</em> s. 145</p>
+<p class="mc-note">Alternativ 2 er heller inkommensurabilitet <span class="pagecite">(s. 135)</span></p>
+</section>
+</section>
+<!-- HERMENEUTIKK (THOMASSEN) -->
+<section data-title="Hermeneutikk (Thomassen)">
+<section class="overview-slide">
+<div class="kicker">Hermeneutikk (Thomassen)</div>
+<h2>Oversikt</h2>
+<div class="ov-cols">
+<div class="ov-col kjerne">
+<h3>Kjerne</h3>
+<ul>
+<li>Dilthey og Gadamer <span class="ov-ex"></span></li>
+<li>Forklare eller forstå <span class="ov-ex">CRP og pasientens fortelling</span></li>
+<li>Forforståelse og hermeneutisk sirkel <span class="ov-ex"></span></li>
+<li>Forståelseshorisont <span class="ov-ex"></span></li>
+<li class="ov-q">Lagquiz: den hermeneutiske sirkelen</li>
+</ul>
+</div>
+<div class="ov-col ford">
+<h3>Fordypning</h3>
+<ul>
+<li class="ov-q">Hvor enig: helsevitenskap og naturvitenskap</li>
+<li>Gadamer i helsefagene <span class="ov-ex">diskusjon</span></li>
+<li>To innvendinger mot Gadamer <span class="ov-ex"></span></li>
+</ul>
+</div>
+</div>
+</section>
+<section class="content-slide">
+<h2>Dilthey og Gadamer</h2>
+<div class="split">
+<div class="col-text" style="flex:1; text-align:center;">
+<img alt="Wilhelm Dilthey" src="bilder/dilthey.jpg" style="max-height:190px;"/>
+<p class="thinker-info">Wilhelm Dilthey (1833–1911). Tysk filosof.<br/>«Innføring i åndsvitenskapene» (1883)</p>
+<p class="photo-credit">Public domain</p>
+</div>
+<div class="col-text" style="flex:1; text-align:center;">
+<img alt="Hans-Georg Gadamer" src="bilder/gadamer.jpg" style="max-height:190px;"/>
+<p class="thinker-info">Gadamer (1900–2002). Tysk filosof.<br/>«Wahrheit und Methode» (1960)</p>
+<p class="photo-credit">Leena Ruuskanen, CC BY 3.0</p>
+</div>
+</div>
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="kicker">Hermeneutikk <span class="pagecite">· Thomassen ss. 166–7</span></div>
+<h2>Forklare eller forstå?</h2>
+<p class="quote">«Vi forklarer naturen, sjelelivet forstår vi» (Dilthey)</p>
+<table class="cmp-table">
+<tr><th></th><th>Forklare</th><th>Forstå</th></tr>
+<tr class="fragment"><td>Studerer</td><td>Naturfenomener</td><td>Meningsbærende uttrykk</td></tr>
+<tr class="fragment"><td>Spør etter</td><td>Årsak, virkning, lover</td><td>Mening og intensjon</td></tr>
+<tr class="fragment"><td>Helseeksempel</td><td>Hvorfor er betennelsesverdien (CRP) høy?</td><td>Hva betyr sykdommen for pasienten?</td></tr>
+</table>
+<p class="quote small fragment">«Det er like viktig å vite hva slags pasient sykdommen har, som hva slags sykdom pasienten har» <span class="src-inline">(ofte tilskrevet Hippokrates, men sporet til 1899)</span></p>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="fla-ref">Bakgrunn for FLA 40 spørsmål 10</div>
+<div class="kicker">Hermeneutikk <span class="pagecite">· Thomassen ss. 169–71</span></div>
+<h2>Forforståelse og hermeneutisk sirkel</h2>
+<ul>
+<li class="fragment">Vi møter aldri noe forutsetningsløst: Gadamers «for-dommer»</li>
+<li class="fragment">For-dommene begrenser, men gjør også forståelse mulig</li>
+<li class="fragment">Sirkelen: del og helhet forstås ut fra hverandre</li>
+<li class="fragment">Gadamer: også mellom deg og teksten, der for-dommene rettes: en spiral</li>
+</ul>
+
+</section>
+<section class="content-slide tett">
+<span class="tag tag-kjerne">Kjerne</span>
+<div class="kicker">Hermeneutikk <span class="pagecite">· Thomassen ss. 170–5</span></div>
+<h2>Forståelseshorisont</h2>
+<ul>
+<li class="fragment">Horisonten: all vår historisk betingede forforståelse</li>
+<li class="fragment">Vi kommer aldri utenfor den, men den kan utvides</li>
+<li class="fragment">Sykepleieren har lest journalen, men pasienten passer ikke med bildet</li>
+<li class="fragment">Horisontsammensmelting: min horisont møter den andres, og begge endres</li>
+</ul>
+
+</section>
+<section class="question-slide tbl-slide" data-correct="2" data-poll-id="q25" data-poll-options="4" data-poll-type="tbl">
+<div class="tbl-badge">Lagquiz: først alene, så i gruppa</div>
+<div class="tbl-status"></div>
+<p>Hva er den hermeneutiske sirkelen?</p>
+<div class="alt"><span class="altnum">1</span> At tolkningen går i ring og derfor aldri kan begrunnes.</div>
+<div class="alt"><span class="altnum">2</span> Vekselvirkningen mellom forståelsen av delene og av helheten.</div>
+<div class="alt"><span class="altnum">3</span> At man må legge bort all forforståelse før man tolker.</div>
+<div class="alt"><span class="altnum">4</span> At forklaring og forståelse til slutt blir det samme.</div>
+<p class="pagecite">Thomassen ss. 169–71</p>
+
+</section>
+<section class="tbl-result-slide" data-tbl-for="q25">
+<h2 class="tbl-title">Lagquiz: resultat</h2>
+<div class="tbl-grid">
+<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
+<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
+<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+<div class="tbl-panel tbl-fasit">
+<h3>Fasit</h3>
+<p class="tbl-q">Hva er den hermeneutiske sirkelen?</p>
+<div class="alt"><span class="altnum">1</span> At tolkningen går i ring og derfor aldri kan begrunnes.</div>
+<div class="alt correct"><span class="altnum">2</span> Vekselvirkningen mellom forståelsen av delene og av helheten.</div>
+<div class="alt"><span class="altnum">3</span> At man må legge bort all forforståelse før man tolker.</div>
+<div class="alt"><span class="altnum">4</span> At forklaring og forståelse til slutt blir det samme.</div>
+<p class="tbl-note">Alt. 3 er det Gadamer avviser: vi møter aldri noe forutsetningsløst.</p>
+<p class="pagecite">Thomassen ss. 169–71</p>
+</div>
+</div>
+</section>
+<section class="divider-slide" data-visibility="uncounted">
+<div class="kicker">Hermeneutikk</div>
+<h2>Fordypning</h2>
+</section>
+<section class="engage-slide" data-poll-id="q24" data-poll-labels="uenig|enig" data-poll-options="5" data-poll-prompt="«Helsevitenskapene er vesensforskjellige fra naturvitenskapene»" data-poll-type="scale" data-visibility="uncounted">
+<div class="engage-badge">Avstemning, skala</div>
+<div class="engage-row">
+<div class="engage-text">
+<div class="kicker">Eksamen H24, oppgave 3 <span class="pagecite">· Thomassen ss. 166–7</span></div>
+<h2>Hvor enig er du i utsagnet</h2>
+<p style="font-size:0.55em">«Helsevitenskapene er vesensforskjellige fra naturvitenskapene»</p>
+<p style="font-size:0.4em; opacity:0.7">1 (uenig) til 5 (enig)</p>
+</div>
+<div class="poll-results"></div>
+</div>
+</section>
+<section class="discussion-slide" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="fla-ref">Se FLA 40 spørsmål 10</div>
+<div class="kicker">Diskusjon <span class="pagecite">· Thomassen ss. 184–7</span></div>
+<h2>Gadamer i helsevitenskapene</h2>
+<ul>
+<li class="fragment">Sykepleie: forforståelse i møtet med pasienten</li>
+<li class="fragment">Bioingeniør: tolkning av «grensetilfelle»-prøvesvar</li>
+<li class="fragment">Thomassen: helse- og sosialfag som «relasjonsprofesjoner» (s. 186)</li>
+</ul>
+</section>
+<section class="content-slide tett" data-visibility="uncounted">
+<span class="tag tag-fordypning">Fordypning</span>
+<div class="kicker">Hermeneutikk, kritikk</div>
+<h2>To innvendinger mot Gadamer</h2>
+<ul>
+<li class="fragment">Habermas: tradisjon kan skjule makt og undertrykkelse. Skal den ha autoritet?</li>
+<li class="fragment">Metodehermeneutikk: uten objektivitetsideal, hva stopper «ville» tolkninger?</li>
+<li class="fragment">Øvelse: sett én av dem opp som standpunkt med argumenter</li>
+</ul>
+
+</section>
+</section>
+<!-- CLOSING -->
+<section data-title="Oppsummering">
+<section class="tbl-total-slide" data-tbl-total="">
+<h2 class="tbl-title">Lagquiz: samlet poengtavle</h2>
+<div class="poll-results tbl-total"></div>
+
+</section>
+<section class="content-slide begreper-recap">
+<h2>Begreper, uke 40</h2>
+<p class="kilde-nokkel"><span class="swatch tenk"></span><em>Tenk!</em>  <span class="swatch thomassen"></span>Thomassen</p>
+<ul>
+<li>overraskelsesprinsippet <span class="pagecite src-tenk">(ss. 113–5)</span>, base rate <span class="pagecite src-tenk">(ss. 115–6)</span>, KUDOS og prosedyrekriterier <span class="pagecite src-tenk">(s. 123, ss. 127, 129)</span>, situert kunnskap <span class="pagecite src-tenk">(ss. 126–8)</span></li>
+<li>oppdagelses- og begrunnelseskontekst <span class="pagecite src-tenk">(s. 95)</span>, paradigme og normalvitenskap <span class="pagecite src-tenk">(s. 132)</span>, inkommensurabilitet <span class="pagecite src-tenk">(s. 135)</span>, fremskritt <span class="pagecite src-tenk">(s. 136)</span>, realisme, relativisme og konstruktivisme <span class="pagecite src-tenk">(ss. 133, 140)</span></li>
+<li>enhetsvitenskap <span class="pagecite src-tenk">(s. 145)</span>, reduksjonisme <span class="pagecite src-tenk">(s. 146)</span>, teleologi og substans/form/stoff <span class="pagecite src-tenk">(s. 154)</span>, fire årsaker <span class="pagecite src-tenk">(s. 156)</span>, mekanistisk natursyn <span class="pagecite src-tenk">(s. 160)</span>, primære og sekundære egenskaper <span class="pagecite src-tenk">(s. 161)</span></li>
+<li>hermeneutikk <span class="pagecite src-thomassen">(s. 163)</span>, forklare og forstå <span class="pagecite src-thomassen">(ss. 166–7)</span>, forforståelse og hermeneutisk sirkel <span class="pagecite src-thomassen">(ss. 169–71)</span>, forståelseshorisont og horisontsammensmelting <span class="pagecite src-thomassen">(s. 170, 175)</span></li>
+</ul>
+<p class="src-note">Alle begreper er nå dekket på egne slides ovenfor. NB: begrepslisten merker denne bolken «uke 41» og «uke 42», utdatert i forhold til årets undervisningsplan.</p>
+</section>
+<section class="end-slide" data-background-image="bilder/alaska_2_full.jpg" data-background-size="cover">
+<h2>Takk for i dag!</h2>
+<p class="photo-credit-full">Amulet Peak, Matanuska-elva. Foto: Philip Kuntz, CC BY-SA 4.0</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    width: 960,
+    height: 540,
+    slideNumber: false,
+    controls: true,
+    progress: true,
+    center: false,
+    transition: 'slide',
+    pdfSeparateFragments: false,
+    plugins: [ RevealNotes ]
+  });
+
+  function updateCounter() {
+    var idx = Reveal.getIndices();
+    var horizontalSlides = document.querySelectorAll('.reveal > .slides > section');
+    var totalH = horizontalSlides.length;
+    var currentH = horizontalSlides[idx.h];
+    var verticalSlides = currentH ? currentH.querySelectorAll(':scope > section') : [];
+    var totalV = verticalSlides.length;
+    var title = currentH ? currentH.getAttribute('data-title') : null;
+    var text = 'Del ' + (idx.h + 1) + '/' + totalH;
+    if (title) { text += ': ' + title; }
+    if (totalV > 0) { text += ', slide ' + (idx.v + 1) + '/' + totalV; }
+    document.getElementById('custom-counter').textContent = text;
+    // Bildeslider i helt format: skjul bunnlinjen, den ville dekket bildet
+    var cur = Reveal.getCurrentSlide();
+    document.querySelector('.bottom-bar').style.visibility = cur && cur.classList.contains('image-slide') ? 'hidden' : '';
+  }
+  Reveal.on('slidechanged', updateCounter);
+
+  // Jevnere luft: på en slide med 2 til 4 punkter og mye ledig plass nederst fordeles
+  // plassen som ekstra avstand over punktene (maks 36 px), så sliden ikke ser halvtom ut.
+  // Måles i slidens egne koordinater (960 x 540); bunnlinjen tar omtrent de nederste 70.
+  function spreadBullets(slide) {
+    if (!slide || slide.dataset.spread) return;
+    var items = slide.querySelectorAll(':scope > ul > li, :scope > .split > .col-text > ul > li');
+    if (items.length < 2 || items.length > 4) return;
+    var free = 470 - slide.scrollHeight;
+    if (free < 30) return;
+    var gap = Math.min(36, Math.floor(free * 0.6 / items.length));
+    items.forEach(function (li) { li.style.marginTop = gap + 'px'; });
+    slide.dataset.spread = gap;
+  }
+  Reveal.on('slidechanged', function (e) { spreadBullets(e.currentSlide); });
+  Reveal.on('ready', function (e) {
+    if (/print-pdf/.test(location.search)) document.querySelectorAll('.slides section').forEach(spreadBullets);
+    else spreadBullets(e.currentSlide);
+  });
+  Reveal.on('ready', updateCounter);
+
+  // Dagens plan på join-sliden: én linje per del etter sliden, fra data-title (klikk = gå dit)
+  (function () {
+    var list = document.querySelector('.join-slide .agenda');
+    if (!list) return;
+    var join = list.closest('.join-slide');
+    var parts = Array.prototype.slice.call(document.querySelectorAll('.reveal .slides > section'));
+    parts.slice(parts.indexOf(join) + 1).forEach(function (sec) {
+      if (!sec.dataset.title || sec.classList.contains('end-slide')) return;
+      var h = parts.indexOf(sec);
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#/' + h;
+      a.textContent = sec.dataset.title;
+      a.addEventListener('click', function (e) { e.preventDefault(); Reveal.slide(h, 0); });
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  })();
+</script>
+<!-- Avstemning (erstatter Menti), se ../avstemning/README.md -->
+
+
+
+
+
+
+
+
+
+</body>
+</html>
