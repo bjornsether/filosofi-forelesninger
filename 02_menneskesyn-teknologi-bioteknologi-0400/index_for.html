@@ -356,6 +356,10 @@
   .reveal .question-slide.tbl-live > p:not(.pagecite) { font-size:0.55em; margin:0 0 0.3em; }
   .reveal .question-slide.tbl-live .alt { font-size:0.46em; margin:0.12em 0; }
   .reveal .question-slide.tbl-live .pagecite { font-size:0.4em; }
+  /* v3: flervalg i FLA-delene (uten avstemning og uten svar i salen) */
+  .mc-badge { display:inline-block; background:var(--ntnu-blue); color:#fff; padding:0.2em 0.8em; font-size:0.36em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.4em; }
+  .reveal section.fla-mc { background:#f5f9ff; }
+  .bottom-bar .ntnu-text-inline { margin-left:auto; }
 </style>
 <script>
   // PDF til Canvas: vis fasit på flervalgsslidene (se ../avstemning/avstemning-deck.css)
@@ -547,8 +551,6 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <div class="bottom-bar">
 <div class="custom-counter-inline" id="custom-counter"></div>
 <div class="bar-sep">  ·  </div>
-<div class="qa-reminder-inline">Spørsmål? Send inn når som helst på mobilen</div>
-<div class="bar-sep">  ·  </div>
 <div class="ntnu-text-inline">NTNU i Ålesund, 2026</div>
 </div>
 <div class="slides">
@@ -566,11 +568,12 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <ol class="steps">
 <li>Grupper på 3–4. Fordel de ti FLA-spørsmålene mellom dere</li>
 <li>Finn ditt spørsmål på oversikten (to slides fram), og gå <b>nedover</b> i den delen</li>
-<li>Hver del: spørsmålet og hvor i pensum, begreper, eksempler, <b>Sjekk deg selv</b></li>
-<li>Skriv svaret i FLA-dokumentet</li>
+<li>Hver del har tre slides: spørsmålet med tips, et eksempel og et flervalgsspørsmål</li>
+<li>Slå opp i pensum, og skriv svaret i FLA-dokumentet</li>
 <li>Fortell gruppa hva du fant: du blir ekspert på ditt spørsmål</li>
+<li>Til slutt: lagquiz på mobilen med alle flervalgsspørsmålene. Da trenger laget alle ekspertene</li>
 </ol>
-<p class="src-note">På egen PC: <b>bjornsether.github.io/filosofi-forelesninger</b> · Pil ned: neste slide i delen · O: oversikt over alt</p>
+<p class="src-note">På egen PC: gå til Canvas-siden min, så «Forside for forelesningene mine» · Pil ned: neste slide i delen · O: oversikt over alt</p>
 </section>
 <section class="content-slide tett">
 <div class="kicker">Bro fra uke 40 <span class="pagecite">· <em>Tenk!</em> ss. 160, 173–5</span></div>
@@ -590,7 +593,6 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="photo-credit">Public domain</p>
 </div>
 </div>
-
 </section>
 <section class="nav-slide" id="oversikt">
 <h2>Finn ditt FLA-spørsmål</h2>
@@ -618,7 +620,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="src-note">Klikk for å gå dit. Tilbake hit: lenken øverst til høyre på hvert spørsmål.</p>
 </section>
 </section>
-<section data-title="FLA 1: Fri vilje">
+<section data-title="FLA 1: Har vi fri vilje?">
 <section class="fla-slide" id="fla1">
 <a class="fla-back" href="#/oversikt">↑ Alle FLA-spørsmål</a>
 <div class="fla-top"><span class="fla-num">FLA 41, spørsmål 1</span></div>
@@ -626,78 +628,25 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="fla-q">I begrepslisten definerte du «determinisme», «kompatibilisme» og «inkompatibilisme». Har vi fri vilje? Diskutér styrker og svakheter ved disse tre teoriene.</p>
 <p class="fla-where"><b>Hvor i pensum:</b> <em>Tenk!</em> kap. 12, avsnitt 12.1 «Har vi fri vilje?»</p>
 <p class="fla-where"><b>Begrepslisten:</b> determinisme, kompatibilisme og inkompatibilisme («Menneskesyn og teknologisyn»)</p>
-<p class="fla-where"><b>Videre nedover:</b> determinisme og ansvar · tre svar · styrker og svakheter · rusavhengighet · Libet · sjekk deg selv</p>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begrep · Kap. 12.1 <span class="pagecite">· <em>Tenk!</em> s. 173</span></div>
-<h2>Determinisme og ansvar</h2>
-<ul><li>Determinisme: alt som skjer, har en bestemt tidligere årsak</li><li>Greit for biljardkula, tallerkenen som faller og møllen mot lyset</li><li>Men hvis også dine valg er bestemt på forhånd, hvordan kan de være dine?</li><li>Og kan vi da holde noen moralsk ansvarlig?</li></ul>
-
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begreper · Kap. 12.1 <span class="pagecite">· <em>Tenk!</em> ss. 173–4</span></div>
-<h2>Tre svar</h2>
-<table class="cmp-table">
-<tr><th></th><th>Determinisme?</th><th>Fri vilje?</th><th>Hva er frihet?</th></tr>
-<tr><td>Kompatibilisme (Hobbes)</td><td>Ja</td><td>Ja</td><td>Å kunne gjøre det du ønsker, uhindret</td></tr>
-<tr><td>Libertarianisme</td><td>Nei</td><td>Ja</td><td>Å kunne ha valgt annerledes</td></tr>
-<tr><td>Hard determinisme</td><td>Ja</td><td>Nei</td><td>En illusjon</td></tr>
-</table>
-<p class="table-note">Inkompatibilisme: fri vilje og determinisme går ikke sammen. Libertarianere og harde determinister er begge inkompatibilister.</p>
-
-</section>
-<section class="content-slide tett">
-<div class="kicker">Til FLA 1: styrker og svakheter <span class="pagecite">· <em>Tenk!</em> ss. 173–4</span></div>
-<h2>Styrker og svakheter</h2>
-<table class="cmp-table sw-table">
-<tr><th></th><th>Styrke</th><th>Svakhet</th></tr>
-<tr><td>Kompatibilisme</td><td>Vi kan være ansvarlige, selv om alt er årsaksbestemt</td><td>Friheten blir minimal: møllen som flyr mot lyset, er fri på samme måte (s. 174)</td></tr>
-<tr><td>Libertarianisme</td><td>Tar opplevelsen av å kunne velge annerledes på alvor</td><td>Vanskelig å forklare hvordan mennesket kan være et unntak fra årsakene (s. 173)</td></tr>
-<tr><td>Hard determinisme</td><td>Passer med det mekanistiske natursynet (kap. 11)</td><td>Ingen er moralsk ansvarlige: ros, skyld og straff mister grunnlaget</td></tr>
-</table>
-<p class="table-note">Spør dere: hvilken svakhet er lettest å leve med? Svaret er en begrunnet mening, ikke en fasit.</p>
+<p class="fla-where"><b>Se etter i teksten:</b> Hobbes og møllen; hva inkompatibilistene krever i tillegg; hva hard determinisme betyr for moralsk ansvar</p>
 </section>
 <section class="ex-slide">
 <div class="kicker">Helseeksempel · FLA 1 <span class="pagecite">· <em>Tenk!</em> ss. 173–4</span></div>
 <h2>Rusavhengighet: sykdom eller valg?</h2>
 <div class="ex-grid">
 <div class="ex-case"><h3>Eksempelet</h3><p>Kari har vært avhengig av opioider i ti år. Hun sier at hun vil slutte, men sprekker igjen og igjen. Avhengighet kalles i dag ofte en hjernesykdom (uke 40, verdier i kategoriene).</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Hard determinist: suget har årsaker. Ingen skyld, men behandling</li><li>Libertarianer: i noen øyeblikk kunne hun valgt annerledes, og da har hun et ansvar</li><li>Kompatibilist: fri når hun gjør det hun ønsker. Men hun ønsker jo å slutte?</li><li>Her synes svakheten ved Hobbes: frihet må være mer enn å følge det sterkeste ønsket</li></ul></div>
+<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Hard determinist: suget har årsaker. Ingen skyld, men behandling</li><li>Libertarianer: i noen øyeblikk kunne hun valgt annerledes, og da har hun et ansvar</li><li>Kompatibilist: fri når hun gjør det hun ønsker. Men hun ønsker jo å slutte?</li><li>Hvilken teori får frem styrker og svakheter her?</li></ul></div>
 </div>
+</section>
+<section class="question-slide mc-slide fla-mc long-alts">
+<div class="mc-badge">Flervalg: svar for deg selv. Vi tar det i lagquizen til slutt</div>
+<p>Inga: «Alle hendelser er fullt ut årsaksbestemte. Utøya-terroristen kunne ikke ha handlet annerledes, gitt gener, oppvekst og andre faktorer utenfor hans kontroll. Men han handlet likevel av fri vilje: han handlet uhindret, helt i tråd med sine ønsker og sin oppfatning av situasjonen.» Hvordan er det mest nærliggende å beskrive synet til Inga?</p>
+<div class="alt"><span class="altnum">1</span> Inga har et libertariansk syn.</div>
+<div class="alt"><span class="altnum">2</span> Inga har et kompatibilistisk syn.</div>
+<div class="alt"><span class="altnum">3</span> Inga har et hardt deterministisk syn.</div>
+<div class="alt"><span class="altnum">4</span> Inga har et kommunitaristisk syn.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 173–4</p>
 
-</section>
-<section class="ex-slide">
-<div class="kicker">Klassisk eksempel · FLA 1, ikke pensum</div>
-<h2>Bestemmer hjernen før deg?</h2>
-<div class="ex-grid">
-<div class="ex-case"><h3>Eksempelet</h3><p>Libet (1983): forsøkspersonene bøyde håndleddet når de selv ville, og merket seg når de bestemte seg. Hjerneaktiviteten økte omtrent et tredjedels sekund <em>før</em> de opplevde å bestemme seg.</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Støtte til hard determinisme: hjernen «bestemmer» før du vet det?</li><li>Eller bare forberedelse: Libet mente vi har et veto og kan stoppe</li><li>Nyere tolkning: aktiviteten kan være tilfeldig støy, ikke en skjult beslutning</li><li>Vis at du kan bruke eksempelet både for og mot</li></ul></div>
-</div>
-
-</section>
-<section class="discussion-slide tett">
-<div class="kicker">Til diskusjon i gruppa · bro til prioritering (uke 38) <span class="pagecite">· <em>Tenk!</em> ss. 173–4</span></div>
-<h2>Selvforskyldt sykdom?</h2>
-<ul><li>Bør det ha noe å si for prioriteringen at sykdommen skyldes røyking eller rus?</li><li>De norske prioriteringskriteriene er nytte, ressursbruk og alvorlighet. Skyld er ikke med</li><li>Hvilket av de tre svarene om fri vilje passer med det? Og hvilket passer ikke?</li></ul>
-
-</section>
-<section class="selfcheck-slide long-alts" data-sjekk="eyJjIjogMiwgIm4iOiAiRGV0ZXJtaW5pc21lIG9nIGZyaSB2aWxqZSBww6Ugw6luIGdhbmc6IGtvbXBhdGliaWxpc21lLiBBbHQuIDMgdmlsbGUgc2FndCBhdCBoYW4gaWtrZSBoYW5kbGV0IGZyaXR0LiA8c3BhbiBjbGFzcz1cInNjLWNpdGVcIj48ZW0+VGVuayE8L2VtPiBzcy4gMTczJm5kYXNoOzQ8L3NwYW4+In0=">
-<div class="sc-badge">Sjekk deg selv</div>
-<p class="sc-q">Inga: «Alle hendelser er fullt ut årsaksbestemte. Utøya-terroristen kunne ikke ha handlet annerledes, gitt gener, oppvekst og andre faktorer utenfor hans kontroll. Men han handlet likevel av fri vilje: han handlet uhindret, helt i tråd med sine ønsker og sin oppfatning av situasjonen.» Hvordan er det mest nærliggende å beskrive synet til Inga?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Inga har et libertariansk syn.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> Inga har et kompatibilistisk syn.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Inga har et hardt deterministisk syn.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Inga har et kommunitaristisk syn.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
-</section>
-<section class="selfcheck-slide long-alts" data-sjekk="eyJjIjogMSwgIm4iOiAiQWx0LiAyIGVyIGxpYmVydGFyaWFuaXNtZSwgYWx0LiA0IGVyIGVuIHZhcmlhbnQgYXYgaGFyZCBkZXRlcm1pbmlzbWUuIDxzcGFuIGNsYXNzPVwic2MtY2l0ZVwiPjxlbT5UZW5rITwvZW0+IHMuIDE3NDwvc3Bhbj4ifQ==">
-<div class="sc-badge">Sjekk deg selv, ekstra</div>
-<p class="sc-q">I debatten om hvorvidt mennesker har fri vilje, hva menes med kompatibilisme?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Selv om alle prosesser i universet, inkludert mentale prosesser, skulle være fullstendig determinert, utelukker det ikke at mennesker faktisk har fri vilje.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> Selv om de aller fleste prosesser i universet er fullstendig determinert, er noen av valgene vi gjør, ikke forutbestemte.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Selv om mange prosesser i universet er fullstendig determinert, viser mikrofysikken at noen hendelser også er vilkårlige.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Selv om alle prosesser i universet er fullstendig determinert, er illusjonen av at vi har fri vilje viktig for vår selvforståelse og evne til å ta ansvar.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
 </section>
 </section>
 <section data-title="FLA 2: Kan en KI være bevisst?">
@@ -706,120 +655,28 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <div class="fla-top"><span class="fla-num">FLA 41, spørsmål 2</span></div>
 <h2>Kan en KI være bevisst?</h2>
 <p class="fla-q">I begrepslisten forklarte du forskjellen mellom identitetsteori og funksjonalisme. Funksjonalisme er en omstridt teori i vitenskapene om kognisjon og bevissthet. Hvordan kunne en funksjonalist argumentert for at KI-systemer kan være bevisst? Kan funksjonalisme forklare hvordan slike systemer kunne oppleve smerte?</p>
-<p class="fla-where"><b>Hvor i pensum:</b> <em>Tenk!</em> kap. 12, avsnitt 12.3 «Fysikalisme» og 12.4 «Funksjonalisme: Sinnet kan realiseres på ulike måter» (der også Turingtesten og det kinesiske rommet står)</p>
-<p class="fla-where"><b>Begrepslisten:</b> kropp/sjel-problemet og substansdualismen, fysikalisme, identitetsteori og funksjonalisme, det kinesiske rommet</p>
-<p class="fla-where"><b>Videre nedover:</b> Descartes og Elisabeth · identitetsteori · funksjonalisme · funksjonalistens argument · LaMDA · locked-in · Turing og Searle · sjekk deg selv</p>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Bakgrunn · Kap. 12.2 <span class="pagecite">· <em>Tenk!</em> ss. 174–6</span></div>
-<h2>Substansdualisme (Descartes)</h2>
-<div class="split">
-<div class="col-text">
-<ul>
-<li>Kroppen er en utstrakt ting (<em>res extensa</em>), sinnet en tenkende ting (<em>res cogitans</em>)</li>
-<li>Argumentet: jeg kan tvile på at jeg har kropp, men ikke på at jeg tenker</li>
-<li>Likevel virker de på hverandre, mente Descartes: i hjernen</li>
-</ul>
-</div>
-<div class="col-img">
-<img alt="Descartes' tegning: synsinntrykk går fra øynene til koglekjertelen i hjernen" src="bilder/descartes_koglekjertel.png"/>
-<p class="thinker-info">Synet og koglekjertelen, «L'Homme» (1664)</p>
-<p class="photo-credit">Public domain</p>
-</div>
-</div>
-
-</section>
-<section class="content-slide tett">
-<div class="kicker">Bakgrunn · Kap. 12.2 <span class="pagecite">· <em>Tenk!</em> ss. 176–7</span></div>
-<h2>Kropp/sinn-problemet (Elisabeth)</h2>
-<div class="split">
-<div class="col-text">
-<ul>
-<li>Hammeren: kroppen gir smerte i sinnet, og sinnet trekker hånda unna</li>
-<li>Elisabeth: bare det som har utstrekning, kan flytte noe. Hvordan kan et sinn uten utstrekning flytte en hånd?</li>
-<li>Hennes svar: sinnet er også stoff. Det peker fram mot fysikalismen</li>
-</ul>
-</div>
-<div class="col-img portrait">
-<img alt="Elisabeth av Böhmen, malt av Gerard van Honthorst" src="bilder/elisabeth_honthorst.jpg"/>
-<p class="thinker-info">Elisabeth av Böhmen (1618–1680). Brev til Descartes (1643–9)</p>
-<p class="photo-credit">Gerard van Honthorst, 1636. Public domain</p>
-</div>
-</div>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begrep · Kap. 12.3 <span class="pagecite">· <em>Tenk!</em> ss. 177–9</span></div>
-<h2>Identitetsteori</h2>
-<ul><li>Fysikalisme: alt som finnes, er fysisk, også sinnet</li><li>Identitetsteori: smerte <em>er</em> hjerneaktivitet, slik vann <em>er</em> H₂O</li><li>Ida har hodepine: «C-fibrene fyrer» (forenklet)</li><li>Problemet: samme smerte kan bygge på ulike fysiske prosesser</li></ul>
-
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begrep · Kap. 12.4 <span class="pagecite">· <em>Tenk!</em> ss. 180–1</span></div>
-<h2>Funksjonalisme: smerte som funksjon</h2>
-<div class="flow">
-<div class="step">Input: vevsskade</div><div class="arrow">→</div>
-<span class="step hot" style="display:inline-block">Smerte</span><span class="arrow">→</span>
-<span class="step" style="display:inline-block">Output: «Au!», holder seg på kneet</span>
-</div>
-<p class="flow-note">Pluss koblingen til andre mentale tilstander: frykt, bekymring</p>
-<p class="flow-note"><strong>Multippel realisering:</strong> det samme kan skje i en annen «maskinvare». Menneske, blekksprut, marsboer, datamaskin?</p>
-<p class="flow-note">Forskjellen fra identitetsteorien: det er rollen, ikke materialet, som avgjør</p>
-</section>
-<section class="ex-slide">
-<div class="kicker">Til FLA 2: argumentet steg for steg <span class="pagecite">· <em>Tenk!</em> ss. 180–5</span></div>
-<h2>Argumentet for bevisst KI</h2>
-<div class="ex-grid">
-<div class="ex-case"><h3>Eksempelet</h3><ol><li>En mental tilstand er det den <em>gjør</em>: input, output og forholdet til andre tilstander</li><li>Samme rolle kan spilles av ulikt materiale (multippel realisering)</li><li>Et KI-system kan i prinsippet spille samme rolle som smerte hos oss</li></ol><p class="ex-concl"><b>Altså:</b> KI-en kan ha smerte, og være bevisst (maskinfunksjonalisme)</p></div>
-<div class="ex-why"><h3>Og innvendingene</h3><ul><li>Kan funksjonalismen forklare hvordan smerten <em>føles</em>?</li><li>Funksjonsprofilen sier hva smerten gjør, ikke hvordan den oppleves</li><li>Searle: regler for tegn gir ikke forståelse (det kinesiske rommet)</li><li>Mary: alle fysiske fakta, men ikke opplevelsen (FLA 3)</li></ul></div>
-</div>
+<p class="fla-where"><b>Hvor i pensum:</b> <em>Tenk!</em> kap. 12, avsnitt 12.3 «Fysikalisme» og 12.4 «Funksjonalisme: Sinnet kan realiseres på ulike måter»</p>
+<p class="fla-where"><b>Begrepslisten:</b> fysikalisme, identitetsteori og funksjonalisme, det kinesiske rommet</p>
+<p class="fla-where"><b>Se etter i teksten:</b> smerte som funksjon (input, output); multippel realisering; maskinfunksjonalisme; Turingtesten; Searles innvending</p>
 </section>
 <section class="ex-slide">
 <div class="kicker">Eksempel · FLA 2</div>
 <h2>Google-ingeniøren og chatboten</h2>
 <div class="ex-grid">
 <div class="ex-case"><h3>Eksempelet</h3><p>2022: Google-ingeniøren Blake Lemoine mente at chatboten LaMDA var bevisst. Den skrev blant annet at den var redd for å bli slått av. Google avviste påstanden, og han ble sagt opp.</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>En funksjonalist ville spurt: har LaMDA hele funksjonsprofilen, eller bare riktig output?</li><li>Å skrive «jeg er redd» er ord. Frykt hos oss henger sammen med kropp, trusler og handling</li><li>Searle: LaMDA setter sammen tegn etter mønstre, uten mening</li><li>Turingtesten måler bare atferd utenfra</li></ul></div>
+<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>En funksjonalist ville spurt: har LaMDA hele funksjonsprofilen, eller bare riktig output?</li><li>Å skrive «jeg er redd» er ord. Frykt hos oss henger sammen med kropp, trusler og handling</li><li>Searle: LaMDA setter sammen tegn etter mønstre, uten mening</li><li>Og smerte: kan en funksjonsprofil forklare hvordan den <em>føles</em>?</li></ul></div>
 </div>
 
 </section>
-<section class="ex-slide">
-<div class="kicker">Helseeksempel · FLA 2 <span class="pagecite">· <em>Tenk!</em> s. 179</span></div>
-<h2>Locked-in: bevisst, men uten bevegelse</h2>
-<div class="ex-grid">
-<div class="ex-case"><h3>Eksempelet</h3><ul><li>Locked-in (f.eks. ved ALS): fullt bevisst, men lammet og uten tale</li><li>Andre nervebaner og hjerneområder kan overta jobber</li><li>2024: en ALS-pasient «snakket» via elektroder i hjernen og en datamaskin</li></ul></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Mot identitetsteorien: hjernetilstandene er endret, men personen er den samme og bevisst (s. 179)</li><li>For funksjonalismen: samme rolle, nytt materiale</li><li>Men også en utfordring: bevissthet nesten uten output</li><li>Hjerne og datamaskin sammen: en kyborg? (kap. 13)</li></ul></div>
-</div>
+<section class="question-slide mc-slide fla-mc long-alts">
+<div class="mc-badge">Flervalg: svar for deg selv. Vi tar det i lagquizen til slutt</div>
+<p>Lars om roboten Ava i «Ex Machina»: «Hun er ikke av biologisk materiale, men hun reagerer, føler og svarer slik vi gjør. Altså har hun bevissthet som oss.» Hvilket syn på bevissthet reflekterer dette?</p>
+<div class="alt"><span class="altnum">1</span> Et enaktivistisk syn.</div>
+<div class="alt"><span class="altnum">2</span> Et dualistisk syn.</div>
+<div class="alt"><span class="altnum">3</span> Et identitetsteoretisk syn.</div>
+<div class="alt"><span class="altnum">4</span> Et funksjonalistisk syn.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 180–3</p>
 
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begrep · Kap. 12.4 <span class="pagecite">· <em>Tenk!</em> ss. 183–4</span></div>
-<h2>Turingtesten</h2>
-<ul><li>Kan en maskin i en tekstsamtale lure deg til å tro at den er et menneske?</li><li>Turing (1950): da bør vi godta at maskiner kan tenke</li><li>2025: språkmodellen GPT-4.5 ble valgt som «mennesket» i 73 % av samtalene</li><li>En funksjonalistisk test: den måler bare hva maskinen gjør</li></ul>
-
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begrep · Kap. 12.4, innvending <span class="pagecite">· <em>Tenk!</em> ss. 184–5</span></div>
-<h2>Det kinesiske rommet (Searle)</h2>
-<ul><li>Du setter sammen kinesiske tegn etter en regelbok, uten å kunne kinesisk</li><li>Utenfra ser det ut som forståelse</li><li>Searle: regler for tegn (syntaks) gir ikke mening (semantikk)</li><li>Svak KI: et verktøy. Sterk KI: forstår virkelig</li></ul>
-
-</section>
-<section class="selfcheck-slide" data-sjekk="eyJjIjogNCwgIm4iOiAiUm9sbGVuIHRlbGxlciwgaWtrZSBtYXRlcmlhbGV0OiBmdW5rc2pvbmFsaXNtZS4gRW4gaWRlbnRpdGV0c3Rlb3JldGlrZXIgdmlsbGUga3JldmQgZW4gaGplcm5lLiA8c3BhbiBjbGFzcz1cInNjLWNpdGVcIj48ZW0+VGVuayE8L2VtPiBzcy4gMTgwJm5kYXNoOzM8L3NwYW4+In0=">
-<div class="sc-badge">Sjekk deg selv</div>
-<p class="sc-q">Lars om roboten Ava i «Ex Machina»: «Hun er ikke av biologisk materiale, men hun reagerer, føler og svarer slik vi gjør. Altså har hun bevissthet som oss.» Hvilket syn på bevissthet reflekterer dette?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Et enaktivistisk syn.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> Et dualistisk syn.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Et identitetsteoretisk syn.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Et funksjonalistisk syn.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
-</section>
-<section class="selfcheck-slide" data-sjekk="eyJjIjogMSwgIm4iOiAiRm9yIGZ1bmtzam9uYWxpc21lbiAoYWx0LiAyKSBlciBla3NlbXBlbGV0IHR2ZXJ0IGltb3QgZXQgYXJndW1lbnQ6IG11bHRpcHBlbCByZWFsaXNlcmluZy4gPHNwYW4gY2xhc3M9XCJzYy1jaXRlXCI+PGVtPlRlbmshPC9lbT4gc3MuIDE3OCZuZGFzaDs4MTwvc3Bhbj4ifQ==">
-<div class="sc-badge">Sjekk deg selv, ekstra</div>
-<p class="sc-q">«Når et menneske og en blekksprut har smerter, er de fysiske prosessene helt forskjellige. Kanskje kan også romvesener ha smerter.» Dette er et spesielt stort problem for én teori om bevissthet. Hvilken?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Identitetsteori</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> Funksjonalisme</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Kroppsliggjøringsteori</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Fenomenologisk teori</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
 </section>
 </section>
 <section data-title="FLA 3: Mary og pasientens smerte">
@@ -830,55 +687,26 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="fla-q">Du har forklart Mary-tankeeksperimentet i begrepslisten. Tenk på et helseeksempel i denne sammenhengen: Kan en sykepleier som vet alt om smertefysiologi, vite hvordan det er for pasienten å ha vondt? (Knytt gjerne opp mot skillet fra forrige uke mellom det å forklare og det å forstå!)</p>
 <p class="fla-where"><b>Hvor i pensum:</b> <em>Tenk!</em> kap. 12, avsnitt 12.5 «Førstepersonsperspektivet og det vanskelige bevissthetsproblemet». Forklare og forstå: uke 40, Thomassen</p>
 <p class="fla-where"><b>Begrepslisten:</b> Mary-tankeeksperimentet</p>
-<p class="fla-where"><b>Videre nedover:</b> Mary i tre trinn · sykepleieren og smerten · forklare og forstå · kroppen · sjekk deg selv</p>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begrep · Kap. 12.5 <span class="pagecite">· <em>Tenk!</em> ss. 185–6</span></div>
-<h2>Mary-tankeeksperimentet</h2>
-<p class="case-line">Mary er fargeforsker. Hun vet alt fysisk om fargesyn, men har bare levd i et svart-hvitt rom. Argumentet i tre trinn:</p><ol class="steps-ol"><li>Mary kjenner alle fysiske fakta om farger</li><li>Hun ser en rød tomat, og lærer noe nytt: hvordan rødt ser ut</li><li>Altså er ikke alle fakta fysiske (kunnskapsargumentet)</li></ol>
-<p class="table-note">Førstepersonsperspektivet: hvordan det er for <em>meg</em>. Gapet mellom fysiske fakta og opplevelse kalles forklaringsgapet.</p>
-
+<p class="fla-where"><b>Se etter i teksten:</b> kunnskapsargumentet i tre trinn; førstepersonsperspektivet; forklaringsgapet</p>
 </section>
 <section class="ex-slide">
 <div class="kicker">Helseeksempel · FLA 3</div>
 <h2>Sykepleieren og pasientens smerte</h2>
 <div class="ex-grid">
 <div class="ex-case"><h3>Eksempelet</h3><p>Sykepleieren Mari kan smertefysiologien: nociseptorer, ryggmarg, hjerne, smertestillende. Pasienten sier: «Det er en 8 av 10.»</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Mari kjenner de fysiske fakta, slik Mary kjente fakta om farger</li><li>Hvordan smerten er for pasienten, får hun bare vite fra pasienten selv</li><li>Derfor: smerte er «det pasienten sier den er» (McCaffery), målt 0–10</li><li>Men spedbarn og personer med demens kan ikke si det. Hva da?</li></ul></div>
+<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Mari kjenner de fysiske fakta, slik Mary kjente fakta om farger</li><li>Hvordan smerten er for pasienten, får hun bare vite fra pasienten selv</li><li>Forklare (årsaker, utenfra) og forstå (mening, innenfra): hva mangler Mari?</li><li>Smerte er «det pasienten sier den er» (McCaffery). Men spedbarn og personer med demens?</li></ul></div>
 </div>
 
 </section>
-<section class="content-slide tett">
-<div class="kicker">Til FLA 3: bro til uke 40 (Thomassen, hermeneutikk)</div>
-<h2>Forklare og forstå</h2>
-<table class="cmp-table tre-krit">
-<tr><th></th><th>Forklare</th><th>Forstå</th></tr>
-<tr><td>Perspektiv</td><td>Tredjeperson: utenfra</td><td>Førsteperson: innenfra, eller sammen med pasienten</td></tr>
-<tr><td>Spør om</td><td>Årsaker: hva skjer i nervesystemet?</td><td>Mening: hva betyr smerten for denne pasienten?</td></tr>
-<tr><td>I sykepleien</td><td>Smertefysiologi, legemidler</td><td>Samtalen, pasientens egen beskrivelse</td></tr>
-</table>
-<p class="table-note">Mary og Mari kan <em>forklare</em> alt. Det de mangler, ligner det å <em>forstå</em>. Dilthey: naturen forklarer vi, sjelelivet forstår vi.</p>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Ekstra: et annet svar · Kap. 12.6 <span class="pagecite">· <em>Tenk!</em> ss. 186–9</span></div>
-<h2>Enaktiv sansing: å se er noe vi gjør</h2>
-<ul><li>Vi ser tomaten ved å bevege øyne, hode og kropp, ikke ved at hjernen tar imot et bilde</li><li>Blinde som «ser» med huden: et kamera sender bildet som prikker mot ryggen (Bach-y-Rita, 1969)</li><li>Mary manglet kanskje ikke fakta, men praktisk, kroppslig kunnskap om farger</li></ul>
+<section class="question-slide mc-slide fla-mc long-alts">
+<div class="mc-badge">Flervalg: svar for deg selv. Vi tar det i lagquizen til slutt</div>
+<p>Fysikalister mener at opplevelser, som å føle smerte eller se rødt, bare er fysiske prosesser i nervesystemet. Hva er en rimelig framstilling av Frank Jacksons innvending?</p>
+<div class="alt"><span class="altnum">1</span> Opplevelser er behagelige eller ubehagelige, men det gir liten mening å si det om en hjernetilstand.</div>
+<div class="alt"><span class="altnum">2</span> Å oppleve krever hele kroppen i aktivt samspill med omgivelsene; hjernen er bare én faktor.</div>
+<div class="alt"><span class="altnum">3</span> Selv om man kjenner alle fysiske fakta om en person som ser en fargenyanse, vet man ikke dermed hvordan fargen ser ut for personen.</div>
+<div class="alt"><span class="altnum">4</span> Opplevelser har stor etisk betydning, som plikten til ikke å påføre smerte; fysiske forskjeller har ikke det.</div>
+<p class="pagecite"><em>Tenk!</em> s. 185</p>
 
-</section>
-<section class="content-slide tett">
-<div class="kicker">Ekstra: et annet svar · Kap. 12.6 <span class="pagecite">· <em>Tenk!</em> ss. 190–3</span></div>
-<h2>Den levde kroppen</h2>
-<ul><li>Merleau-Ponty: kroppen er både et objekt og den kroppen jeg lever i</li><li>Etter hjerneslag kan en pasient si: «armen er ikke min»</li><li>Beauvoir: jenter lærer å se seg selv utenfra også</li><li>Young: «jeg kan ikke» er lært, ikke medfødt</li></ul>
-
-</section>
-<section class="selfcheck-slide long-alts" data-sjekk="eyJjIjogMywgIm4iOiAiQWx0LiAzIGVyIGt1bm5za2Fwc2FyZ3VtZW50ZXQgKE1hcnkpLiBBbHQuIDIgZXIgaGVsbGVyIGRlbiBlbmFrdGl2ZSB0aWxuw6ZybWluZ2VuIChzLiAxODcpLiA8c3BhbiBjbGFzcz1cInNjLWNpdGVcIj48ZW0+VGVuayE8L2VtPiBzLiAxODU8L3NwYW4+In0=">
-<div class="sc-badge">Sjekk deg selv</div>
-<p class="sc-q">Fysikalister mener at opplevelser, som å føle smerte eller se rødt, bare er fysiske prosesser i nervesystemet. Hva er en rimelig framstilling av Frank Jacksons innvending?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Opplevelser er behagelige eller ubehagelige, men det gir liten mening å si det om en hjernetilstand.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> Å oppleve krever hele kroppen i aktivt samspill med omgivelsene; hjernen er bare én faktor.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Selv om man kjenner alle fysiske fakta om en person som ser en fargenyanse, vet man ikke dermed hvordan fargen ser ut for personen.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Opplevelser har stor etisk betydning, som plikten til ikke å påføre smerte; fysiske forskjeller har ikke det.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
 </section>
 </section>
 <section data-title="FLA 4: Teknologiens tosidighet">
@@ -888,25 +716,8 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <h2>Teknologiens tosidighet</h2>
 <p class="fla-q">Hva innebærer uttrykket «teknologiens tosidighet»?</p>
 <p class="fla-where"><b>Hvor i pensum:</b> <em>Tenk!</em> kap. 13, avsnitt 13.1 «Teknologiens tosidighet» og 13.6 «Teknologibevissthet»; teknologisynene i 13.2</p>
-<p class="fla-where"><b>Begrepslisten:</b> teknologisk instrumentalisme, teknologisk determinisme, det relasjonelle teknologisynet, Heideggers teknologisyn, sosioteknisk nettverk</p>
-<p class="fla-where"><b>Videre nedover:</b> tosidighet · tre teknologisyn · KI i koloskopi · Helseplattformen · Heidegger · sjekk deg selv</p>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begrep · Kap. 13.1 og 13.6 <span class="pagecite">· <em>Tenk!</em> ss. 196–7, 212</span></div>
-<h2>Teknologiens tosidighet</h2>
-<ul><li>Ny teknologi gir både muligheter og utfordringer (ChatGPT)</li><li>Velferdsteknologi: eldre kan bo hjemme, men mange blir utrygge og ensomme</li><li>Teknologi er ikke nøytral, men heller ikke god eller dårlig i seg selv</li><li>Den former oss på måter som unnslipper regulering</li></ul>
-
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begreper · Kap. 13.2–13.3 <span class="pagecite">· <em>Tenk!</em> ss. 198–201</span></div>
-<h2>Tre teknologisyn</h2>
-<table class="cmp-table">
-<tr><th></th><th>Kort sagt</th><th>Bokas eksempel</th></tr>
-<tr><td>Instrumentalisme</td><td>Nøytralt verktøy: bruken avgjør</td><td>Hammeren</td></tr>
-<tr><td>Determinisme (Heidegger)</td><td>Teknologien legger premissene</td><td>Trappa og rullestolen</td></tr>
-<tr><td>Relasjonelt syn</td><td>Gjensidig påvirkning</td><td>Insulinpenn er ikke atombombe</td></tr>
-</table>
-<p class="table-note">Tosidigheten passer best med det relasjonelle synet: teknologi former oss, men bestemmer ikke alt.</p>
+<p class="fla-where"><b>Begrepslisten:</b> teknologisk instrumentalisme og determinisme, det relasjonelle teknologisynet, Heideggers teknologisyn, sosioteknisk nettverk</p>
+<p class="fla-where"><b>Se etter i teksten:</b> muligheter og utfordringer; virkninger som «unnslipper regulering»; ikke nøytral, men heller ikke god eller dårlig i seg selv</p>
 </section>
 <section class="ex-slide">
 <div class="kicker">Helseeksempel · FLA 4</div>
@@ -917,47 +728,15 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 </div>
 
 </section>
-<section class="ex-slide">
-<div class="kicker">Aktuelt · FLA 4 <span class="pagecite">· <em>Tenk!</em> ss. 208–9</span></div>
-<h2>Helseplattformen</h2>
-<div class="ex-grid">
-<div class="ex-case"><h3>Eksempelet</h3><p>27.4.2024 tok sykehusene i Ålesund, Volda, Molde og Kristiansund i bruk journalsystemet Helseplattformen. Det er sterkt kritisert. 26.5.2026 sa Stortinget nei til å skrote det.</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Et sosioteknisk nettverk: sykehus, kommuner, leverandør, lover (s. 209)</li><li>Når følgene blir synlige, er teknologien vevd inn i alt annet (s. 208)</li><li>Et verktøy vi styrer? Eller former det arbeidsdagen til sykepleiere og bioingeniører?</li><li>Tosidig: felles journal, men mye ekstra arbeid</li></ul></div>
-</div>
+<section class="question-slide mc-slide fla-mc long-alts">
+<div class="mc-badge">Flervalg: svar for deg selv. Vi tar det i lagquizen til slutt</div>
+<p>Hva menes med «teknologiens tosidighet» i <em>Tenk!</em>?</p>
+<div class="alt"><span class="altnum">1</span> At teknologi gir både muligheter og utfordringer, og påvirker oss på måter vi ikke fullt ut kan kontrollere eller regulere.</div>
+<div class="alt"><span class="altnum">2</span> At teknologi er nøytral: den kan brukes både til gode og onde formål, alt etter hvem som bruker den.</div>
+<div class="alt"><span class="altnum">3</span> At all teknologi har både en fysisk side (maskinvaren) og en digital side (programvaren).</div>
+<div class="alt"><span class="altnum">4</span> At teknologi bestemmer samfunnsutviklingen fullstendig, uansett hva vi gjør.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 196–7, 212</p>
 
-</section>
-<section class="content-slide tett">
-<div class="kicker">Ekstra · Kap. 13.4 <span class="pagecite">· <em>Tenk!</em> ss. 205–7</span></div>
-<h2>Heidegger: elva blir en ressurs</h2>
-<ul><li>Det moderne kraftverket «overmanner» elva: den blir bare kraft</li><li>Teknologisk tenkemåte: alt blir en ressurs</li><li>Fosen: vindkraft målt i CO₂, mot natur og samiske rettigheter</li><li>Helse: blir pasienten et tall i systemet?</li></ul>
-
-</section>
-<section class="selfcheck-slide long-alts" data-sjekk="eyJjIjogMSwgIm4iOiAiQWx0LiAyIGVyIGluc3RydW1lbnRhbGlzbWUsIG1lbiB0b3NpZGlnaGV0ZW4gc2t5bGRlcyBuZXR0b3BwIGF0IHRla25vbG9naSBpa2tlIGVyIG7DuHl0cmFsLiBBbHQuIDQgZXIgZGV0ZXJtaW5pc21lOiB0ZWtub2xvZ2kgZm9ybWVyLCBtZW4gYmVzdGVtbWVyIGlra2UgKHMuIDIxMikuIDxzcGFuIGNsYXNzPVwic2MtY2l0ZVwiPjxlbT5UZW5rITwvZW0+IHNzLiAxOTYmbmRhc2g7NywgMjEyPC9zcGFuPiJ9">
-<div class="sc-badge">Sjekk deg selv</div>
-<p class="sc-q">Hva menes med «teknologiens tosidighet» i <em>Tenk!</em>?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> At teknologi gir både muligheter og utfordringer, og påvirker oss på måter vi ikke fullt ut kan kontrollere eller regulere.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> At teknologi er nøytral: den kan brukes både til gode og onde formål, alt etter hvem som bruker den.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> At all teknologi har både en fysisk side (maskinvaren) og en digital side (programvaren).</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> At teknologi bestemmer samfunnsutviklingen fullstendig, uansett hva vi gjør.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
-</section>
-<section class="selfcheck-slide long-alts" data-sjekk="eyJjIjogMSwgIm4iOiAiQWx0LiAzIGVyIGluc3RydW1lbnRhbGlzbWUuIEFsdC4gNCBoYW5kbGVyIG9tIGthcC4gMTIgKFNlYXJsZSksIGlra2Ugb20gdGVrbm9sb2dpc3luLiA8c3BhbiBjbGFzcz1cInNjLWNpdGVcIj48ZW0+VGVuayE8L2VtPiBzcy4gMTk4Jm5kYXNoOzk8L3NwYW4+In0=">
-<div class="sc-badge">Sjekk deg selv, ekstra</div>
-<p class="sc-q">Hanne er teknologisk determinist. Hun diskuterer kunstig intelligens med vennegjengen. Hvilket utsagn representerer best Hannes posisjon?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> KI kommer til å ta over jobbene til svært mange. KI vil gjøre jobber så mye mer effektivt enn mennesker at bedrifter blir nødt til å bruke KI hvis de vil henge med i konkurransen.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> KI kan komme til å ta over mange jobber. Men selv om enkeltbedrifter kan tjene på det, kan vi som samfunn i alle fall i noen grad regulere dette og styre utviklingen dit vi vil.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> KI er bare et verktøy som all annen teknologi. Vi velger selv om vi vil bruke tørketrommel eller tørkestativ, og slik er det med KI også.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> KI kommer aldri til å erstatte mennesker i de fleste jobber, fordi de krever kreativitet, spontanitet og samhandling, noe KI aldri kan klare fordi den mangler bevissthet.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
-</section>
-<section class="selfcheck-slide" data-sjekk="eyJjIjogMiwgIm4iOiAiTsO4eXRyYWx0IHZlcmt0w7h5OiBpbnN0cnVtZW50YWxpc21lLiDCq0tvbXBhdGliaWxpc21lwrsgaMO4cmVyIHRpbCBmcmkgdmlsamUgKGthcC4gMTIpLiA8c3BhbiBjbGFzcz1cInNjLWNpdGVcIj48ZW0+VGVuayE8L2VtPiBzLiAxOTk8L3NwYW4+In0=">
-<div class="sc-badge">Sjekk deg selv, ekstra</div>
-<p class="sc-q">«Kjernekraft i seg selv er verken godt eller ondt. Det er først når mennesker velger å bruke kraften til skade for miljø og liv at teknologien kan bli «ond».» Hvilket teknologisyn gir uttalelsen uttrykk for?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Et deterministisk teknologisyn.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> Et instrumentalistisk teknologisyn.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Et relasjonelt teknologisyn.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Et kompatibilistisk teknologisyn.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
 </section>
 </section>
 <section data-title="FLA 5: Platon og skrivekunsten">
@@ -968,63 +747,25 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="fla-q">Hva var Platons kritikk av skrivekunsten? Gi eksempler på lignende kritikk mot andre teknologier. Nevn noen mulige innvendinger mot slik kritikk.</p>
 <p class="fla-where"><b>Hvor i pensum:</b> <em>Tenk!</em> kap. 13, avsnitt 13.3 «Mennesket og teknologien», delene «Bør vi frykte den teknologiske påvirkningen?» og «Kan vi bedømme morgendagens teknologi i dag?»</p>
 <p class="fla-where"><b>Begrepslisten:</b> Stiegler (under det relasjonelle teknologisynet)</p>
-<p class="fla-where"><b>Videre nedover:</b> Platons kritikk · ChatGPT og sosiale medier · to innvendinger · Ottos notatbok · Gehlen og Stiegler · sjekk deg selv</p>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begrep · Kap. 13.3 <span class="pagecite">· <em>Tenk!</em> s. 202</span></div>
-<h2>Platons kritikk av skriften</h2>
-<ul><li>I «Faidros» forteller Sokrates om kong Thamus i Egypt</li><li>Skriften skulle gjøre folk klokere og hjelpe hukommelsen</li><li>Thamus: tvert imot, den gir glemsel. Minnet hentes utenfra, ikke innenfra</li><li>Platon: hukommelsen vil forfalle på sikt</li></ul>
-
+<p class="fla-where"><b>Se etter i teksten:</b> Thamus i «Faidros»; Turkle om sosiale medier; skråplansargument; morgendagens teknologi med dagens verdier</p>
 </section>
 <section class="ex-slide">
-<div class="kicker">Eksempel · FLA 5 <span class="pagecite">· <em>Tenk!</em> ss. 202–3</span></div>
+<div class="kicker">Eksempel · FLA 5 <span class="pagecite">· <em>Tenk!</em> ss. 202–4</span></div>
 <h2>Samme kritikk i dag</h2>
 <div class="ex-grid">
 <div class="ex-case"><h3>Eksempelet</h3><ul><li>ChatGPT: blir vi avhengige, og dårligere til å skrive selv?</li><li>Turkle: sosiale medier gir vennskap uten friksjon, men det er en illusjon</li><li>Tobakk og Coca-Cola ble også tatt imot med begeistring</li></ul></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Felles mønster: ny teknologi svekker en verdifull menneskelig evne</li><li>Flere eksempler: kalkulatoren og hoderegning, GPS og stedssans</li><li>Helse: KI i koloskopien (FLA 4)</li><li>Finn gjerne et eget eksempel fra praksis</li></ul></div>
+<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Felles mønster med Platon: ny teknologi svekker en verdifull evne</li><li>Flere eksempler: kalkulatoren og hoderegning, GPS og stedssans</li><li>Innvendingene i boka: skråplan, og dagens verdier brukt på morgendagen</li><li>Finn gjerne et eget eksempel fra praksis</li></ul></div>
 </div>
 </section>
-<section class="content-slide tett">
-<div class="kicker">Til FLA 5: innvendinger <span class="pagecite">· <em>Tenk!</em> ss. 203–4</span></div>
-<h2>To innvendinger mot slik kritikk</h2>
-<table class="cmp-table tre-krit">
-<tr><td>Skråplansargument</td><td>Hvis vi tillater A, får vi B, som vi ikke vil. Men B følger sjelden så nødvendig av A (s. 203)</td></tr>
-<tr><td>Dagens verdier</td><td>Vi dømmer morgendagens teknologi med dagens briller. Skriften endret selve idealet: vi verdsetter lesing og litteratur, ikke bare hukommelse (s. 204)</td></tr>
-<tr><td>Men</td><td>Skepsisen er likevel nyttig: den får oss til å spørre hva vi egentlig vil med teknologien (s. 203)</td></tr>
-</table>
-</section>
-<section class="ex-slide">
-<div class="kicker">Helseeksempel · FLA 5, bro til kap. 12 <span class="pagecite">· <em>Tenk!</em> ss. 181–2</span></div>
-<h2>Ottos notatbok</h2>
-<div class="ex-grid">
-<div class="ex-case"><h3>Eksempelet</h3><p>Otto har Alzheimer. Han slår opp adressen til museet i notatboka si. Inga, som er frisk, husker den. Begge kommer fram.</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Thamus ville sagt: Otto henter minnet utenfra</li><li>Clark og Chalmers: notatboka er en del av sinnet hans (utvidet sinn, s. 181)</li><li>Demensomsorg: kalender og huskelapper hjelper pasienten å leve selvstendig</li><li>Svekker teknologien oss, eller utvider den oss?</li></ul></div>
-</div>
+<section class="question-slide mc-slide fla-mc long-alts">
+<div class="mc-badge">Flervalg: svar for deg selv. Vi tar det i lagquizen til slutt</div>
+<p><em>Tenk!</em> drøfter Platons kritikk av skrivekunsten. Hvilken innvending mot slik kritikk av ny teknologi kommer boka med?</p>
+<div class="alt"><span class="altnum">1</span> Platon tok feil, fordi skriften beviselig har gjort hukommelsen vår bedre.</div>
+<div class="alt"><span class="altnum">2</span> Kritikken var berettiget, og derfor bør vi være like skeptiske til ChatGPT.</div>
+<div class="alt"><span class="altnum">3</span> Kritikken dømmer morgendagens teknologi med dagens verdier; skriften har selv endret hva vi mener er verdifullt.</div>
+<div class="alt"><span class="altnum">4</span> Kritikken gjelder bare teknologier som erstatter kroppen, ikke teknologier som erstatter tenkningen.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 202–4</p>
 
-</section>
-<section class="content-slide tett">
-<div class="kicker">Ekstra · Kap. 13.3 <span class="pagecite">· <em>Tenk!</em> s. 201</span></div>
-<h2>Gehlen og Stiegler</h2>
-<ul><li>Gehlen: teknologi forsterker, avlaster og erstatter</li><li>Sykehuset: løfteroboten avlaster pleierne</li><li>Stiegler: teknologien «oppfant» mennesket ved å bære kulturen videre</li><li>Skriften er et godt eksempel: uten den, ingen vitenskap</li></ul>
-
-</section>
-<section class="selfcheck-slide long-alts" data-sjekk="eyJjIjogMywgIm4iOiAiQm9rYSBzaWVyIHR2ZXJ0IGltb3QgYXQgdmkga2Fuc2tqZSBodXNrZXIgZMOlcmxpZ2VyZSBlbm4gcMOlIFBsYXRvbnMgdGlkIChhbHQuIDEpLCBtZW4gc3DDuHIgaHZvcmZvciB2aSBza3VsbGUgbcOldHRlIGRldC4gRGVuIGFuZHJlIGlubnZlbmRpbmdlbjoga3JpdGlra2VuIGJsaXIgbGV0dCBldCBza3LDpXBsYW5zYXJndW1lbnQgKHMuIDIwMykuIDxzcGFuIGNsYXNzPVwic2MtY2l0ZVwiPjxlbT5UZW5rITwvZW0+IHNzLiAyMDImbmRhc2g7NDwvc3Bhbj4ifQ==">
-<div class="sc-badge">Sjekk deg selv</div>
-<p class="sc-q"><em>Tenk!</em> drøfter Platons kritikk av skrivekunsten. Hvilken innvending mot slik kritikk av ny teknologi kommer boka med?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Platon tok feil, fordi skriften beviselig har gjort hukommelsen vår bedre.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> Kritikken var berettiget, og derfor bør vi være like skeptiske til ChatGPT.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Kritikken dømmer morgendagens teknologi med dagens verdier; skriften har selv endret hva vi mener er verdifullt.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Kritikken gjelder bare teknologier som erstatter kroppen, ikke teknologier som erstatter tenkningen.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
-</section>
-<section class="selfcheck-slide long-alts" data-sjekk="eyJjIjogNCwgIm4iOiAiQWx0LiAxIGVyIGhlbGxlciBHZWhsZW4sIGFsdC4gMiBpbnN0cnVtZW50YWxpc21lLiA8c3BhbiBjbGFzcz1cInNjLWNpdGVcIj48ZW0+VGVuayE8L2VtPiBzcy4gMjAxJm5kYXNoOzM8L3NwYW4+In0=">
-<div class="sc-badge">Sjekk deg selv, ekstra</div>
-<p class="sc-q">En professor mener sosiale medier ødelegger studenters sosiale engasjement. En student svarer at unge «digitalt innfødte» kan bruke dem positivt. Hvilket argument, etter Stiegler, kunne støttet studenten?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Mennesket kompenserer for begrensede evner med teknologi, som kan veie opp for manglende evne til å kommunisere med mange.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> All teknologi er nøytral; bare bruken kan være god eller dårlig.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Professoren bygger på et illegitimt skråplansargument.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Teknologi former det menneskelige fordi den muliggjør kultur. Når vi mestrer sosiale teknologier, kan de styrke vennskap.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
 </section>
 </section>
 <section data-title="FLA 6: Etiske utfordringer ved KI">
@@ -1034,57 +775,25 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <h2>Etiske utfordringer ved KI</h2>
 <p class="fla-q">Pensum nevner noen etiske utfordringer ved kunstig intelligens. Hvilke er disse, og kan du komme på noen flere? Tenk gjerne på KI i helsetjenesten.</p>
 <p class="fla-where"><b>Hvor i pensum:</b> <em>Tenk!</em> kap. 13, avsnitt 13.5 «En aktuell teknologisk utfordring: kunstig intelligens», delen «Noen etiske utfordringer med kunstig intelligens»</p>
-<p class="fla-where"><b>Videre nedover:</b> utfordringene i boka · pulsoksymeteret · Watson · flere i helsetjenesten · sjekk deg selv</p>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Til FLA 6: utfordringene i pensum <span class="pagecite">· <em>Tenk!</em> ss. 210–2</span></div>
-<h2>Etiske utfordringer ved KI</h2>
-<table class="cmp-table tre-krit ki-table">
-<tr><td>Skjeve data</td><td>Chatboten Tay ble rasistisk; menn på kjøkken ble tolket som kvinner; risikoalgoritmen i USA</td></tr>
-<tr><td>Misinformasjon</td><td>KI skjønner ikke hva som er sant, og falske nyheter spres raskere</td></tr>
-<tr><td>Overvåking</td><td>Ansiktsgjenkjenning av uigurer i Kina</td></tr>
-<tr><td>Ansvar</td><td>Autonome våpen: hvem har skylda når KI tar feil?</td></tr>
-<tr><td>Filterbobler</td><td>Nyhetsfeeden forsterker meningene vi har</td></tr>
-<tr><td>Tillit</td><td>Watson for Oncology foreslo livsfarlige behandlinger</td></tr>
-<tr><td>Og mer</td><td>Personvern, sosiale forskjeller, gratis arbeid for store selskaper</td></tr>
-</table>
+<p class="fla-where"><b>Se etter i teksten:</b> skjeve data (Tay, risikoalgoritmen); misinformasjon; overvåking; ansvar; filterbobler; tillit; personvern</p>
 </section>
 <section class="ex-slide">
-<div class="kicker">Helseeksempel, bioingeniør og sykepleie · FLA 6 <span class="pagecite">· <em>Tenk!</em> ss. 207, 210–1</span></div>
-<h2>Pulsoksymeteret og skjeve data</h2>
-<div class="ex-grid">
-<div class="ex-case"><h3>Eksempelet</h3>
-<div class="ex-img"><img alt="Pulsoksymeter på en finger" src="bilder/pulsoksymeter.jpg"/><p class="photo-credit">Rcp.basheer, CC BY-SA 3.0</p></div>
-<p>Pulsoksymeteret viser for høy oksygenmetning hos pasienter med mørk hud. Apparatene var utviklet og testet mest på lys hud.</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul>
-<li>Ikke KI, men samme mekanisme som skjeve data</li>
-<li>En KI som lærer av slike målinger, arver feilen og forsterker den</li>
-<li>Verdiene sitter i designet, enten de er ment eller ikke</li>
-<li>Hvem merker feilen først: bioingeniøren, sykepleieren eller pasienten?</li></ul></div>
-</div>
-
-</section>
-<section class="ex-slide">
-<div class="kicker">Helseeksempel · FLA 6 <span class="pagecite">· <em>Tenk!</em> ss. 211–2</span></div>
+<div class="kicker">Helseeksempel · FLA 6 <span class="pagecite">· <em>Tenk!</em> ss. 210–2</span></div>
 <h2>Watson for Oncology</h2>
 <div class="ex-grid">
 <div class="ex-case"><h3>Eksempelet</h3><p>IBMs KI-system Watson for Oncology skulle legge opp behandlingen for kreftpasienter. På Rigshospitalet i København ble det stoppet: det foreslo behandlinger som kunne tatt livet av pasienten.</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Tillit: hvordan vet vi at systemet gjør en faglig forsvarlig jobb?</li><li>Ansvar: hvem har skylda, legen, sykehuset eller produsenten?</li><li>Noë: KI er regelstyrt informasjonsbehandling, ikke forståelse (s. 210)</li><li>Bro til kap. 12: «forstår» systemet kreft? (Searle)</li></ul></div>
+<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Tillit: hvordan vet vi at systemet gjør en faglig forsvarlig jobb?</li><li>Ansvar: hvem har skylda, legen, sykehuset eller produsenten?</li><li>Flere i helse: hvem eier journaldataene? Skal pasienten få vite at KI var med?</li><li>Noë: KI er regelstyrt informasjonsbehandling, ikke forståelse (s. 210)</li></ul></div>
 </div>
 </section>
-<section class="discussion-slide tett">
-<div class="kicker">Til diskusjon i gruppa · FLA 6: «kan du komme på flere?»</div>
-<h2>Flere utfordringer i helsetjenesten?</h2>
-<ul><li>Hvem eier journaldataene når en KI trenes på dem?</li><li>Hva skjer med relasjonen når pasienten snakker med en chatbot?</li><li>Skal pasienten få vite at KI var med i vurderingen?</li><li>Hvilken bekymrer gruppa mest, og hvorfor?</li></ul>
-</section>
-<section class="selfcheck-slide long-alts" data-sjekk="eyJjIjogNCwgIm4iOiAiU2FtbWUgbWVrYW5pc21lIHNvbSBhbnNpa3RzZ2plbmtqZW5uaW5nIHNvbSBlciBtZXN0IG7DuHlha3RpZyBmb3IgaHZpdGUgbWVubiAocy4gMjExKS4gRWtzZW1wZWxldCBlciB0ZW5rdCwgbWVuIHByb2JsZW1ldCBlciBramVudCBmcmEgZm9yc2tuaW5nZW4uIDxzcGFuIGNsYXNzPVwic2MtY2l0ZVwiPjxlbT5UZW5rITwvZW0+IHNzLiAyMTAmbmRhc2g7Mjwvc3Bhbj4ifQ==">
-<div class="sc-badge">Sjekk deg selv</div>
-<p class="sc-q">Et sykehus tar i bruk en KI som skal finne hudkreft på bilder. Den er trent mest på bilder av lys hud, og bommer oftere hos pasienter med mørk hud. Hvilken etisk utfordring ved KI fra pensum illustrerer dette best?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Personvern: bildene kan bli hacket eller solgt videre.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> Boble-problemet: vi får bare informasjon som bekrefter det vi allerede tror.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Gratis arbeid: pasientene trener opp systemet uten å få betalt.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Data er ikke nøytrale: skjevheter i treningsdataene blir videreført og forsterket av KI-en.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
+<section class="question-slide mc-slide fla-mc long-alts">
+<div class="mc-badge">Flervalg: svar for deg selv. Vi tar det i lagquizen til slutt</div>
+<p>Et sykehus tar i bruk en KI som skal finne hudkreft på bilder. Den er trent mest på bilder av lys hud, og bommer oftere hos pasienter med mørk hud. Hvilken etisk utfordring ved KI fra pensum illustrerer dette best?</p>
+<div class="alt"><span class="altnum">1</span> Personvern: bildene kan bli hacket eller solgt videre.</div>
+<div class="alt"><span class="altnum">2</span> Boble-problemet: vi får bare informasjon som bekrefter det vi allerede tror.</div>
+<div class="alt"><span class="altnum">3</span> Gratis arbeid: pasientene trener opp systemet uten å få betalt.</div>
+<div class="alt"><span class="altnum">4</span> Data er ikke nøytrale: skjevheter i treningsdataene blir videreført og forsterket av KI-en.</div>
+<p class="pagecite"><em>Tenk!</em> ss. 210–2</p>
+
 </section>
 </section>
 <section data-title="FLA 7: Hvorfor er bioteknologi vanskelig?">
@@ -1095,60 +804,25 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="fla-q">Hvorfor reiser medisinsk bruk av bioteknologi ofte flere og vanskeligere spørsmål enn det medisinsk bruk av mange andre typer teknologi gjør? Er du enig i at etiske spørsmål innen bioteknologi bør være gjenstand for grundig etisk og politisk behandling?</p>
 <p class="fla-where"><b>Hvor i pensum:</b> Solberg og Hofmann, «Bioteknologiens etikk»: innledningen (Mehmet-saken), «Hva mener vi med «bioteknologi»?» og avslutningen</p>
 <p class="fla-where"><b>Begrepslisten:</b> assistert befruktning («Sykdomsbegrepet, prioritering, bioteknologiens etikk»)</p>
-<p class="fla-where"><b>Videre nedover:</b> Mehmet-saken · hvorfor politikk? · nye foreldreskap · når etikkteoriene kommer til kort · sjekk deg selv</p>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Les først · brukes i hele bioteknologidelen <span class="pagecite">· Solberg og Hofmann ss. 150–1, 153–4</span></div>
-<h2>Mehmet-saken, 2004</h2>
-<div class="split">
-<div class="col-text">
-<ul>
-<li>Mehmet, 7 år, hadde en alvorlig arvelig blodsykdom</li>
-<li>Kur: stamceller fra et nytt søsken med riktig vevstype, laget ved prøverørsbefruktning og testing av embryoene</li>
-<li>Loven ble endret i rekordfart, og en regjering holdt på å falle</li>
-</ul>
-<p class="aside-note small">Moren aborterte spontant. Mehmet fikk aldri søskenet (s. 154)</p>
-</div>
-<div class="col-img">
-<img alt="Menneskelig embryo med åtte celler, tredje dag etter befruktning" src="bilder/embryo_8_celler.jpg"/>
-<p class="thinker-info">Embryo, dag 3: åtte celler</p>
-<p class="photo-credit">RWJMS IVF Program. Public domain</p>
-</div>
-</div>
-
-</section>
-<section class="content-slide tett">
-<div class="kicker">Til FLA 7 · Solberg og Hofmann <span class="pagecite">· ss. 150–2</span></div>
-<h2>Hvorfor er bioteknologi politikk?</h2>
-<ul><li>Bioteknologi: teknologi som bruker levende celler</li><li>Grenseoverskridende: debatten tas i Stortinget, ikke bare i klinikken</li><li>1984, prøverørsbarn i Trondheim: «teknikken gikk foran etikken»</li><li>Bro til kap. 13: teknologien kom først, normene etter</li></ul>
-
+<p class="fla-where"><b>Se etter i teksten:</b> «grenseoverskridende»; den politiske arenaen framfor klinikken; «teknikken gikk foran etikken»; når etikkteoriene kommer til kort</p>
 </section>
 <section class="ex-slide">
-<div class="kicker">Eksempel · FLA 7 <span class="pagecite">· Solberg og Hofmann s. 152</span></div>
-<h2>Nye typer foreldreskap</h2>
+<div class="kicker">Les først: brukes i hele bioteknologidelen · FLA 7 <span class="pagecite">· Solberg og Hofmann ss. 150–1, 153–4</span></div>
+<h2>Mehmet-saken, 2004</h2>
 <div class="ex-grid">
-<div class="ex-case"><h3>Eksempelet</h3><ul><li>1980-tallet: behandling av infertilitet hos heterofile par</li><li>Eggdonasjon: den som føder, er ikke alltid genetisk mor</li><li>2008: lesbiske par. 2020: enslige kvinner og eggdonasjon</li><li>Surrogati: avtalen er ikke bindende i Norge</li></ul></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Teknologien sprengte grensene for det den var ment for: fra sykdom (infertilitet) til ufrivillig barnløshet</li><li>Mor, far og familie får nytt innhold: det angår alle</li><li>Derfor politikk, ikke bare en faglig vurdering</li><li>Er du enig? Hva taler for å la fagfolk avgjøre?</li></ul></div>
+<div class="ex-case"><h3>Eksempelet</h3><p>Mehmet, 7 år, hadde en alvorlig arvelig blodsykdom. Kuren: stamceller fra et nytt søsken med riktig vevstype, laget ved prøverørsbefruktning og testing av embryoene. Loven ble endret i rekordfart, og en regjering holdt på å falle. Moren aborterte spontant, og Mehmet fikk aldri søskenet.</p></div>
+<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Ett liv kan reddes, men et barn blir laget for et formål</li><li>Konsekvensetikken mot pliktetikken (s. 150)</li><li>Saken angikk alle: foreldreskap, menneskeverd, hva et menneske er</li><li>Derfor ble den avgjort i Stortinget, ikke bare i klinikken</li></ul></div>
 </div>
 </section>
-<section class="content-slide tett">
-<div class="kicker">Til FLA 7: hvorfor vanskeligere? · bro til uke 36–38 <span class="pagecite">· Solberg og Hofmann s. 159</span></div>
-<h2>Når etikkteoriene kommer til kort</h2>
-<table class="cmp-table tre-krit">
-<tr><td>Konsekvensetikk</td><td>Hvordan regne med følger mange generasjoner fram i tid?</td></tr>
-<tr><td>Pliktetikk</td><td>Hva blir moralloven når våre moralske evner kan endres?</td></tr>
-<tr><td>Dydsetikk</td><td>Hvilke dyder, når mennesket selv endres?</td></tr>
-</table>
-<p class="table-note">Bioteknologi kan endre selve mennesket. Da blir spørsmålet «hva er et menneske?» en del av etikken.</p>
-</section>
-<section class="selfcheck-slide long-alts" data-sjekk="eyJjIjogMSwgIm4iOiAiwqtHcmVuc2VvdmVyc2tyaWRlbmRlIHV0Zm9yZHJpbmdlciBzb20gYsO4ciBkaXNrdXRlcmVzIGkgb2ZmZW50bGlnaGV0ZW7CuyAocy4gMTUxKS4gQmlvdGVrbm9sb2dpbG92ZW4gcmVndWxlcmVyIG9nc8OlIGJlaGFuZGxpbmcsIHNvbSBhc3Npc3RlcnQgYmVmcnVrdG5pbmcgb2cgZ2VudGVzdGluZy4gPHNwYW4gY2xhc3M9XCJzYy1jaXRlXCI+U29sYmVyZyBvZyBIb2ZtYW5uIHMuIDE1MTwvc3Bhbj4ifQ==">
-<div class="sc-badge">Sjekk deg selv</div>
-<p class="sc-q">Hvorfor har diskusjonene om medisinsk bruk av bioteknologi ofte foregått på den politiske arenaen framfor i klinikken, ifølge Solberg og Hofmann?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Fordi bioteknologien reiser grenseoverskridende spørsmål, for eksempel om foreldreskap og om hva et menneske er, som bør diskuteres i offentligheten.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> Fordi bioteknologi er så dyr at bare Stortinget kan prioritere den.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Fordi helsepersonell mangler kompetanse til å vurdere genetisk informasjon.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Fordi bioteknologi bare brukes i forskning, ikke i behandling av pasienter.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
+<section class="question-slide mc-slide fla-mc long-alts">
+<div class="mc-badge">Flervalg: svar for deg selv. Vi tar det i lagquizen til slutt</div>
+<p>Hvorfor har diskusjonene om medisinsk bruk av bioteknologi ofte foregått på den politiske arenaen framfor i klinikken, ifølge Solberg og Hofmann?</p>
+<div class="alt"><span class="altnum">1</span> Fordi bioteknologien reiser grenseoverskridende spørsmål, for eksempel om foreldreskap og om hva et menneske er, som bør diskuteres i offentligheten.</div>
+<div class="alt"><span class="altnum">2</span> Fordi bioteknologi er så dyr at bare Stortinget kan prioritere den.</div>
+<div class="alt"><span class="altnum">3</span> Fordi helsepersonell mangler kompetanse til å vurdere genetisk informasjon.</div>
+<div class="alt"><span class="altnum">4</span> Fordi bioteknologi bare brukes i forskning, ikke i behandling av pasienter.</div>
+<p class="pagecite">Solberg og Hofmann s. 151</p>
+
 </section>
 </section>
 <section data-title="FLA 8: Retten til ikke å vite">
@@ -1159,39 +833,25 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <div class="fla-q"><p>Prediktiv geninformasjon (du har definert «retten til å vite / retten til ikke å vite» i begrepslisten):</p><ol type="a"><li>Hva betyr det at vi i forbindelse med prediktiv geninformasjon også kan ha «rett til ikke å vite»? Hva skal en slik rettighet være godt for?</li><li>Dersom du blir kjent med at du er bærer av en genetisk-arvelig sykdom, mener du at du er moralsk forpliktet til å informere din familie om dette? Hvis ja, hvorfor; hvis nei, hvorfor ikke?</li></ol></div>
 <p class="fla-where"><b>Hvor i pensum:</b> Solberg og Hofmann, «Gentesting av fødte: retten til å vite og retten til ikke å vite» og «Oppsøkende genetisk virksomhet»</p>
 <p class="fla-where"><b>Begrepslisten:</b> retten til å vite og retten til ikke å vite</p>
-<p class="fla-where"><b>Videre nedover:</b> begrepene · Huntington (8a) · arvelig brystkreft (8b) · sjekk deg selv</p>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begreper · Solberg og Hofmann <span class="pagecite">· ss. 154–6</span></div>
-<h2>Retten til å vite, og til ikke å vite</h2>
-<ul><li>Prediktiv gentest: sier noe om sykdom du kan få senere i livet</li><li>Retten til å vite: informasjon om deg selv og kroppen din</li><li>Retten til ikke å vite: vern om en åpen framtid, med frihet og håp</li><li>Derfor genetisk veiledning før testen</li></ul>
-
+<p class="fla-where"><b>Se etter i teksten:</b> prediktiv gentest; retten til en åpen framtid; genetisk veiledning; hvorfor Norge er restriktivt med å kontakte slekta</p>
 </section>
 <section class="ex-slide">
-<div class="kicker">Helseeksempel · FLA 8a <span class="pagecite">· Solberg og Hofmann ss. 154–5</span></div>
-<h2>Huntington: vil du vite?</h2>
-<div class="ex-grid">
-<div class="ex-case"><h3>Eksempelet</h3><p>Jonas er 25. Faren har fått Huntingtons sykdom, som er arvelig og uten kur. Jonas har 50 % risiko for å ha arvet genet. En gentest kan gi svaret.</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Visshet kan gi ro, og hjelpe med valg om barn og jobb</li><li>Men et positivt svar tar en åpen framtid, og det finnes ingen behandling</li><li>Retten til ikke å vite beskytter friheten til å leve uten svaret</li><li>FLA 8a: hva skal retten være godt for?</li></ul></div>
-</div>
-</section>
-<section class="ex-slide">
-<div class="kicker">Helseeksempel · FLA 8b <span class="pagecite">· Solberg og Hofmann ss. 155–6</span></div>
+<div class="kicker">Helseeksempel · FLA 8 <span class="pagecite">· Solberg og Hofmann ss. 154–6</span></div>
 <h2>Arvelig brystkreft: må du si det?</h2>
 <div class="ex-grid">
 <div class="ex-case"><h3>Eksempelet</h3><p>Sara får vite at hun har en genvariant (BRCA1) som gir høy risiko for bryst- og eggstokkreft. Søstrene hennes kan ha den samme.</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>For søstrene finnes det forebygging, så kunnskapen kan redde liv</li><li>Men søstrene har også rett til ikke å vite</li><li>Norge: helsevesenet kontakter ikke slekta uten ditt samtykke</li><li>FLA 8b: er du moralsk forpliktet til å si det? Begrunn med en etisk teori</li></ul></div>
+<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>For søstrene finnes det forebygging, så kunnskapen kan redde liv</li><li>Men søstrene har også rett til ikke å vite, og til en åpen framtid</li><li>Norge: helsevesenet kontakter ikke slekta uten ditt samtykke</li><li>Er du moralsk forpliktet til å si det? Begrunn med en etisk teori</li></ul></div>
 </div>
-
 </section>
-<section class="selfcheck-slide long-alts" data-sjekk="eyJjIjogMiwgIm4iOiAiRm9yc2lrcmluZyBvZyBhcmJlaWRzZ2l2ZXJlIChhbHQuIDMgb2cgNCkgbmV2bmVzIGkgdGVrc3RlbiAocy4gMTU1KSwgbWVuIGVyIGlra2Uga2plcm5lbiBoZXIuIDxzcGFuIGNsYXNzPVwic2MtY2l0ZVwiPlNvbGJlcmcgb2cgSG9mbWFubiBzcy4gMTU0Jm5kYXNoOzY8L3NwYW4+In0=">
-<div class="sc-badge">Sjekk deg selv</div>
-<p class="sc-q">En person får vite gjennom genetisk testing at hen bærer på et genmateriale som gir høy risiko for en alvorlig arvelig sykdom som også kan ramme søsken og barn. Hvilket etisk dilemma og hvilken rettighet står sentralt?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Taushetsplikten overfor pasienten mot informasjonsplikten overfor helsemyndighetene, samt retten til privatliv.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> Moralsk forpliktelse til å informere familien om risiko mot «retten til ikke å vite», samt hvem som bør ha tilgang til geninformasjon.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Pasientautonomi mot paternalisme, samt arbeidsgivers rett til å kreve genetisk testing.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Om forsikringsselskaper har rett til å nekte forsikring basert på genetisk informasjon, mot solidaritetsprinsippet.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
+<section class="question-slide mc-slide fla-mc long-alts">
+<div class="mc-badge">Flervalg: svar for deg selv. Vi tar det i lagquizen til slutt</div>
+<p>En person får vite gjennom genetisk testing at hen bærer på et genmateriale som gir høy risiko for en alvorlig arvelig sykdom som også kan ramme søsken og barn. Hvilket etisk dilemma og hvilken rettighet står sentralt?</p>
+<div class="alt"><span class="altnum">1</span> Taushetsplikten overfor pasienten mot informasjonsplikten overfor helsemyndighetene, samt retten til privatliv.</div>
+<div class="alt"><span class="altnum">2</span> Moralsk forpliktelse til å informere familien om risiko mot «retten til ikke å vite», samt hvem som bør ha tilgang til geninformasjon.</div>
+<div class="alt"><span class="altnum">3</span> Pasientautonomi mot paternalisme, samt arbeidsgivers rett til å kreve genetisk testing.</div>
+<div class="alt"><span class="altnum">4</span> Om forsikringsselskaper har rett til å nekte forsikring basert på genetisk informasjon, mot solidaritetsprinsippet.</div>
+<p class="pagecite">Solberg og Hofmann ss. 154–6</p>
+
 </section>
 </section>
 <section data-title="FLA 9: CRISPR og designerbabyer">
@@ -1202,57 +862,25 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="fla-q">Tenker du at det er en god idé å bruke CRISPR-Cas9 til å skreddersy genmaterialet til fremtidige mennesker? Er det forskjell på å bruke denne teknologien til å fjerne sykdom og å bruke den til å utvikle smartere eller høyere mennesker? Hvor går grensen mellom akseptabel og uakseptabel bruk av CRISPR-Cas9?</p>
 <p class="fla-where"><b>Hvor i pensum:</b> Solberg og Hofmann, «Genredigering og spørsmålet «hva er et menneske?»» og «Det bioteknologiske mennesket»; fravalg og tilvalg under «Preimplantasjonsgenetisk testing (PGT)»</p>
 <p class="fla-where"><b>Begrepslisten:</b> fravalg og tilvalg, preimplantasjonsgenetisk testing (PGT), transhumanisme</p>
-<p class="fla-where"><b>Videre nedover:</b> fravalg og tilvalg · genredigering · Casgevy · terapi eller forbedring · et døvt barn · sjekk deg selv</p>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begreper · bro til pliktetikk og konsekvensetikk <span class="pagecite">· Solberg og Hofmann ss. 153–4</span></div>
-<h2>Fravalg og tilvalg</h2>
-<p class="case-line">PGT (preimplantasjonsgenetisk testing): embryoer laget ved prøverørsbefruktning testes før ett settes inn i livmoren.</p>
-<table class="cmp-table tre-krit">
-<tr><td>Fravalg</td><td>Velge bort embryoer med sykdomsgenet</td></tr>
-<tr><td>Tilvalg</td><td>Velge et embryo <em>med</em> en egenskap: riktig vevstype for Mehmet</td></tr>
-<tr><td>Pliktetikk</td><td>Kant: aldri bare som middel. Habermas: barnet kan vokse opp med en følelse av å være «laget»</td></tr>
-<tr><td>Konsekvensetikk</td><td>Ett liv reddet, og et barn født og elsket. Hvem tar skade?</td></tr>
-</table>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begrep · Solberg og Hofmann <span class="pagecite">· ss. 157–8</span></div>
-<h2>Genredigering: «hva er et menneske?»</h2>
-<ul><li>Gensaksen CRISPR-Cas9 klipper og limer i DNA</li><li>Redigerte kjønnsceller eller embryoer: endringen går i arv</li><li>Er det trygt, og blir livene gode? Hva med retten til en åpen framtid?</li><li>2018: tvillingene Lulu og Nana ble genredigert i Kina</li></ul>
-
+<p class="fla-where"><b>Se etter i teksten:</b> fravalg og tilvalg; endringer som går i arv; terapi eller forbedring; hvem bestemmer hva som er «bedre»?</p>
 </section>
 <section class="ex-slide">
-<div class="kicker">Aktuelt · FLA 9 <span class="pagecite">· Solberg og Hofmann s. 157</span></div>
+<div class="kicker">Aktuelt · FLA 9 <span class="pagecite">· Solberg og Hofmann ss. 157–8</span></div>
 <h2>Kunne Mehmet fått hjelp i dag?</h2>
 <div class="ex-grid">
-<div class="ex-case"><h3>Eksempelet</h3><p>Casgevy (godkjent i EU 2024): pasientens egne stamceller redigeres med CRISPR og settes tilbake. Brukes mot betatalassemi og sigdcellesykdom: Mehmets sykdom, uten redningssøsken.</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Somatisk behandling: endringen arves ikke. Lite omstridt</li><li>Kimbane (egg, sæd, embryo): endringen går i arv. Svært omstridt</li><li>Lulu og Nana: kimbane, uten at det var nødvendig</li><li>En grense mange trekker: behandle syke ja, arvelige endringer nei</li></ul></div>
+<div class="ex-case"><h3>Eksempelet</h3><p>Casgevy (godkjent i EU 2024): pasientens egne stamceller redigeres med CRISPR og settes tilbake. Brukes mot betatalassemi og sigdcellesykdom: Mehmets sykdom, uten redningssøsken. 2018: tvillingene Lulu og Nana ble genredigert som embryoer i Kina.</p></div>
+<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Casgevy: endringen arves ikke. Lite omstridt</li><li>Lulu og Nana: endringen går i arv, uten at det var nødvendig. Svært omstridt</li><li>Fjerne sykdom eller lage «bedre» mennesker: hvor går grensen?</li><li>Grensesteiner: terapi/forbedring, sykdom/helse, naturlig/unaturlig</li></ul></div>
 </div>
-
 </section>
-<section class="content-slide tett">
-<div class="kicker">Begrep · Solberg og Hofmann <span class="pagecite">· s. 158</span></div>
-<h2>Terapi eller forbedring?</h2>
-<ul><li>Transhumanisme: forbedre mennesket, som hukommelse, nattsyn, levetid</li><li>Grensesteiner: terapi/forbedring, sykdom/helse, naturlig/unaturlig</li><li>Allerede krysset: vaksiner, estetisk kirurgi, prevensjon</li><li>Hva menes med «bedre», og hvem bestemmer det? (s. 159)</li></ul>
+<section class="question-slide mc-slide fla-mc long-alts">
+<div class="mc-badge">Flervalg: svar for deg selv. Vi tar det i lagquizen til slutt</div>
+<p>Et par med arvelig muskelsykdom i familien vil ha PGT, og samtidig velge embryo med ønskede egenskaper utover å unngå sykdom. Hvilket etisk prinsipp og problemstilling reiser dette?</p>
+<div class="alt"><span class="altnum">1</span> Uproblematisk så lenge embryoene ikke destrueres, men fryses ned.</div>
+<div class="alt"><span class="altnum">2</span> Bryter med velgjørenhetsprinsippet: foreldrenes ønsker går foran barnets beste.</div>
+<div class="alt"><span class="altnum">3</span> Handler primært om rettferdighet: bare velstående har råd.</div>
+<div class="alt"><span class="altnum">4</span> Reiser spørsmål om Kants humanitetsprinsipp og skillet mellom fravalg av sykdom og tilvalg av ønskede egenskaper.</div>
+<p class="pagecite">Solberg og Hofmann ss. 153–4</p>
 
-</section>
-<section class="ex-slide">
-<div class="kicker">Klassisk eksempel · FLA 9: hvor går grensen?</div>
-<h2>Å velge et døvt barn</h2>
-<div class="ex-grid">
-<div class="ex-case"><h3>Eksempelet</h3><p>2002: to døve kvinner i USA valgte en døv sæddonor for å få et døvt barn. Sønnen ble født nesten uten hørsel. For dem var døvhet et språk og en kultur, ikke en sykdom.</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Tilvalg av en egenskap de fleste kaller en funksjonsnedsettelse</li><li>Grensesteinene flytter seg: sykdom, eller identitet?</li><li>Godtar vi dette, hvorfor ikke høyere og smartere barn?</li><li>Med CRISPR blir slike valg mulige for langt flere egenskaper</li></ul></div>
-</div>
-
-</section>
-<section class="selfcheck-slide long-alts" data-sjekk="eyJjIjogNCwgIm4iOiAiQWx0LiAyIG9nIDMgZXIgcHJpbnNpcHBlciBmcmEgdWtlIDM1LCBtZW4gaWtrZSBwb2VuZ2V0IGhlci4gVGlsdmFsZyBhdiBlZ2Vuc2thcGVyIGVyIG5ldHRvcHAgZGV0IEZMQSA5IHNww7hyIG9tLiA8c3BhbiBjbGFzcz1cInNjLWNpdGVcIj5Tb2xiZXJnIG9nIEhvZm1hbm4gc3MuIDE1MyZuZGFzaDs0PC9zcGFuPiJ9">
-<div class="sc-badge">Sjekk deg selv</div>
-<p class="sc-q">Et par med arvelig muskelsykdom i familien vil ha PGT, og samtidig velge embryo med ønskede egenskaper utover å unngå sykdom. Hvilket etisk prinsipp og problemstilling reiser dette?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Uproblematisk så lenge embryoene ikke destrueres, men fryses ned.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> Bryter med velgjørenhetsprinsippet: foreldrenes ønsker går foran barnets beste.</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Handler primært om rettferdighet: bare velstående har råd.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Reiser spørsmål om Kants humanitetsprinsipp og skillet mellom fravalg av sykdom og tilvalg av ønskede egenskaper.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
 </section>
 </section>
 <section data-title="FLA 10: Godt mot dem som ikke finnes?">
@@ -1262,50 +890,28 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <h2>Godt mot dem som ikke finnes?</h2>
 <p class="fla-q">Har vi plikt til å gjøre godt mot dem som ikke finnes? Sammenlign ansvaret vi har for å skape gode liv overfor ufødte barn (for eksempel et nedfrosset egg eller en sædcelle i en sædbank) med ansvaret vi har overfor kommende generasjoners gode liv (for eksempel i spørsmålet om klimaendringer). Hva er de relevante likhetene og ulikhetene? Dette spørsmålet kan relateres til seksjon 7 («Dydsetikk i praksis») i kapittel 18 i <em>Tenk!</em></p>
 <p class="fla-where"><b>Hvor i pensum:</b> Solberg og Hofmann, «Hvordan gjøre godt mot dem som ikke finnes?»; <em>Tenk!</em> kap. 18, avsnitt 18.7 «Dydsetikk i praksis» (miljøetikk)</p>
-<p class="fla-where"><b>Videre nedover:</b> barnets beste · i klinikken · klimaet · likheter og ulikheter · sjekk deg selv</p>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Begrep · Solberg og Hofmann <span class="pagecite">· s. 153</span></div>
-<h2>Barnets beste, før barnet finnes</h2>
-<ul><li>Barnets beste styrer reguleringen av assistert befruktning</li><li>Men barnet finnes ikke ennå. Gjør vi det godt ved å nekte det å bli til?</li><li>Kan vi gjøre galt mot noen ved å gi dem et liv?</li><li>Forfatterne: les det dydsetisk, som samfunnets ansvar som «medskaper»</li></ul>
+<p class="fla-where"><b>Se etter i teksten:</b> barnets beste; legene som «medskapere»; en dydsetisk tolkning; dydsetisk miljøetikk (Hill, Sandler)</p>
 </section>
 <section class="ex-slide">
-<div class="kicker">Helseeksempel · FLA 10 <span class="pagecite">· Solberg og Hofmann s. 153</span></div>
+<div class="kicker">Helseeksempel · FLA 10 <span class="pagecite">· Solberg og Hofmann s. 153; <em>Tenk!</em> ss. 266–8</span></div>
 <h2>I fertilitetsklinikken</h2>
 <div class="ex-grid">
-<div class="ex-case"><h3>Eksempelet</h3><p>Før assistert befruktning må paret levere politiattest (barneomsorgsattest), og legen gjør en psykososial vurdering. Man er varsom med for eksempel rusavhengige og tungt straffedømte.</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Begrunnet i barnets beste (s. 153)</li><li>Men hvem som helst kan få barn på soverommet, uten vurdering</li><li>Svaret: samfunnet stiller med teknologi og helsepersonell, og legene blir «medskapere»</li><li>Medskaper gir medansvar: et dydsetisk ansvar</li></ul></div>
+<div class="ex-case"><h3>Eksempelet</h3><p>Før assistert befruktning må paret levere politiattest (barneomsorgsattest), og legen gjør en psykososial vurdering. Begrunnelsen er barnets beste. Men barnet finnes ikke ennå.</p></div>
+<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Gjør vi barnet godt ved å nekte det å bli til?</li><li>Svaret i teksten: samfunnet blir «medskaper», og tar et dydsetisk ansvar</li><li>Klimaet: kommende generasjoner finnes heller ikke ennå</li><li>Likhet: de finnes ikke. Ulikhet: ett mulig barn mot milliarder, og om de blir til</li></ul></div>
 </div>
 </section>
-<section class="ex-slide">
-<div class="kicker">Eksempel · FLA 10, bro til <em>Tenk!</em> kap. 18 <span class="pagecite">· <em>Tenk!</em> ss. 266–8</span></div>
-<h2>Klimaet og kommende generasjoner</h2>
-<div class="ex-grid">
-<div class="ex-case"><h3>Eksempelet</h3><p>Kommende generasjoner finnes ikke ennå, men vil leve med klimaet vi etterlater. Én flyreise har lite å si for klimaet totalt sett.</p></div>
-<div class="ex-why"><h3>Hva viser eksempelet?</h3><ul><li>Dydsetikken spør: hva slags person er det som gjør noe slikt? (Hill)</li><li>Likegyldighet overfor miljøet er en last, selv om én handling betyr lite (Sandler)</li><li>Carson: ydmykhet i møte med naturen</li><li>Samme språk som «barnets beste»: ansvar, ikke regnestykker</li></ul></div>
-</div>
-</section>
-<section class="content-slide tett">
-<div class="kicker">Til FLA 10: sammenlign</div>
-<h2>Likheter og ulikheter</h2>
-<table class="cmp-table tre-krit sw-table">
-<tr><th></th><th>Det ufødte barnet</th><th>Kommende generasjoner</th></tr>
-<tr><td>Hvem?</td><td>Ett bestemt mulig barn</td><td>Milliarder ukjente mennesker</td></tr>
-<tr><td>Hva avgjør valget?</td><td>Om barnet blir til i det hele tatt</td><td>Mest hvordan de får det</td></tr>
-<tr><td>Hvem handler?</td><td>Foreldre, lege og samfunn</td><td>Alle, med små bidrag hver</td></tr>
-<tr><td>Felles</td><td colspan="2">De vi har ansvar for, finnes ikke ennå. Dydsetikken gir et språk for ansvaret</td></tr>
-</table>
-</section>
-<section class="selfcheck-slide long-alts" data-sjekk="eyJjIjogMiwgIm4iOiAiRm9yZmF0dGVybmUgZm9yZXNsw6VyIMOlIGxlc2UgwqtiYXJuZXRzIGJlc3RlwrsgaSBlbiBmb3JzaWt0aWcgZHlkc2V0aXNrIG1lbmluZzogc2FtZnVubmV0IHZpbCB2w6ZyZSBhbnN2YXJsaWcgbsOlciBkZXQgc2VsdiBlciBtZWQgb2cgc2thcGVyIGJhcm5ldCAocy4gMTUzKS4gPHNwYW4gY2xhc3M9XCJzYy1jaXRlXCI+U29sYmVyZyBvZyBIb2ZtYW5uIHMuIDE1Mzwvc3Bhbj4ifQ==">
-<div class="sc-badge">Sjekk deg selv</div>
-<p class="sc-q">Solberg og Hofmann spør: «Hvordan gjøre godt mot dem som ikke finnes?» Hva er problemet med å bruke «hensynet til barnets beste» når legen vurderer assistert befruktning?</p>
-<button class="sc-alt" data-v="1"><span class="altnum">1</span> Barnets beste kan ikke måles, fordi lykke er subjektiv.</button>
-<button class="sc-alt" data-v="2"><span class="altnum">2</span> Barnet finnes ikke når beslutningen tas: gjør vi det godt ved å nekte det å bli til?</button>
-<button class="sc-alt" data-v="3"><span class="altnum">3</span> Foreldrenes autonomi går etter loven alltid foran barnets beste.</button>
-<button class="sc-alt" data-v="4"><span class="altnum">4</span> Barnets beste er et rettferdighetsprinsipp som bare gjelder fordeling av ressurser.</button>
-<p class="sc-feedback">Klikk på et alternativ. Feil svar? Prøv igjen.</p>
+<section class="question-slide mc-slide fla-mc long-alts">
+<div class="mc-badge">Flervalg: svar for deg selv. Vi tar det i lagquizen til slutt</div>
+<p>Solberg og Hofmann spør: «Hvordan gjøre godt mot dem som ikke finnes?» Hva er problemet med å bruke «hensynet til barnets beste» når legen vurderer assistert befruktning?</p>
+<div class="alt"><span class="altnum">1</span> Barnets beste kan ikke måles, fordi lykke er subjektiv.</div>
+<div class="alt"><span class="altnum">2</span> Barnet finnes ikke når beslutningen tas: gjør vi det godt ved å nekte det å bli til?</div>
+<div class="alt"><span class="altnum">3</span> Foreldrenes autonomi går etter loven alltid foran barnets beste.</div>
+<div class="alt"><span class="altnum">4</span> Barnets beste er et rettferdighetsprinsipp som bare gjelder fordeling av ressurser.</div>
+<p class="pagecite">Solberg og Hofmann s. 153</p>
+
 </section>
 </section>
+
 <section data-title="Avslutning">
 <section class="content-slide begreper-recap">
 <h2>Begreper, uke 41</h2>
@@ -1397,36 +1003,6 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
     });
   })();
 
-  // Sjekk deg selv: fasit og forklaring ligger kodet i data-sjekk (ikke avstemning, virker
-  // også i distribusjonskopiene). Feil svar streikes ut, og man kan prøve igjen.
-  (function () {
-    var print = /print-pdf/.test(location.search);
-    document.querySelectorAll('section.selfcheck-slide').forEach(function (s) {
-      var d;
-      try { d = JSON.parse(decodeURIComponent(escape(atob(s.dataset.sjekk)))); } catch (e) { return; }
-      var fb = s.querySelector('.sc-feedback');
-      var alts = s.querySelectorAll('.sc-alt');
-      function solve(b) {
-        b.classList.add('right');
-        s.classList.add('solved');
-        fb.className = 'sc-feedback ok';
-        fb.innerHTML = '<b>Riktig!</b> ' + d.n;
-      }
-      alts.forEach(function (b) {
-        b.addEventListener('click', function (e) {
-          e.stopPropagation();
-          if (s.classList.contains('solved') || b.disabled) return;
-          if (+b.dataset.v === d.c) { solve(b); return; }
-          b.classList.add('wrong');
-          b.disabled = true;
-          fb.className = 'sc-feedback err';
-          fb.textContent = 'Ikke riktig. Prøv igjen.';
-        });
-      });
-      // PDF til Canvas: vis svaret med en gang
-      if (print) alts.forEach(function (b) { if (+b.dataset.v === d.c) solve(b); });
-    });
-  })();
 </script>
 <!-- Avstemning (erstatter Menti), se ../avstemning/README.md -->
 
