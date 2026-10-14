@@ -177,11 +177,14 @@
       drawMcSlide(shown.slide, shown.spec, shown.rows, hidden);
     } else if (shown.kind === 'tbl') {
       drawTblStatus(shown.slide, shown.rows, triesFor(shown.spec.id), shown.block);
-      if (shown.liveBox) liveTotal(shown.liveBox, R.totals(shown.allTries, extraIds()));
+      if (shown.liveBox) liveTotal(shown.liveBox, shown.liveBox.dataset.tavle === 'ekstra' ? extraTotals(shown.allTries) : R.totals(shown.allTries, extraIds()));
     } else if (shown.kind === 'tblres') {
-      drawTblResult(shown.slide, shown.spec, shown.rows, triesFor(shown.spec.id), hidden, shown.block && shown.block.pos > 0, shown.correct);
+      // Ekstraspørsmål med egen tavle (data-ekstra-tavle) viser poeng som vanlig
+      var noPoints = !!(shown.block && shown.block.pos > 0 && !shown.block.slides[shown.block.pos].hasAttribute('data-ekstra-tavle'));
+      drawTblResult(shown.slide, shown.spec, shown.rows, triesFor(shown.spec.id), hidden, noPoints, shown.correct);
     } else if (shown.kind === 'total' && shown.box) {
-      R.standings(shown.box, R.totals(shown.tries, extraIds()));
+      // data-tbl-total="ekstra": egen tavle for ekstraspørsmålene i lagquiz-blokkene
+      R.standings(shown.box, shown.slide.dataset.tblTotal === 'ekstra' ? extraTotals(shown.tries) : R.totals(shown.tries, extraIds()));
     }
   }
 
@@ -244,6 +247,12 @@
     if (ind) R.render(ind, bars, rows, false, correct);
     if (first) R.render(first, bars, st.teams.filter(function (t) { return t.first != null; }).map(function (t) { return { value: t.first }; }), false, correct);
     if (pts) R.leaderboard(pts, st.teams, { extra: extra });
+  }
+
+  // Poengsum bare for ekstraspørsmålene (ikke første i en lagquiz-blokk), til egen tavle
+  function extraTotals(tries) {
+    var ex = extraIds();
+    return R.totals(tries.filter(function (t) { return ex[t.qid]; }), null);
   }
 
   // Samlet poengtavle i kortform ved siden av spørsmålet (lagquiz med .tbl-live-total):
