@@ -183,8 +183,12 @@
       var noPoints = !!(shown.block && shown.block.pos > 0 && !shown.block.slides[shown.block.pos].hasAttribute('data-ekstra-tavle'));
       drawTblResult(shown.slide, shown.spec, shown.rows, triesFor(shown.spec.id), hidden, noPoints, shown.correct);
     } else if (shown.kind === 'total' && shown.box) {
-      // data-tbl-total="ekstra": egen tavle for ekstraspørsmålene i lagquiz-blokkene
-      R.standings(shown.box, shown.slide.dataset.tblTotal === 'ekstra' ? extraTotals(shown.tries) : R.totals(shown.tries, extraIds()));
+      // Egen tavle for ekstraspørsmålene i lagquiz-blokkene: data-tbl-total="ekstra" på sliden,
+      // eller data-tavle="ekstra" på boksen (flere tavler side om side på samme slide)
+      shown.boxes.forEach(function (b) {
+        var ekstra = b.dataset.tavle ? b.dataset.tavle === 'ekstra' : shown.slide.dataset.tblTotal === 'ekstra';
+        R.standings(b, ekstra ? extraTotals(shown.tries) : R.totals(shown.tries, extraIds()));
+      });
     }
   }
 
@@ -382,11 +386,11 @@
 
   // Samlet poengtavle: alle lagforsøk i økten (bare foreleser kan lese dem)
   function showTotal(slide) {
-    var box = slide.querySelector('.tbl-total');
-    if (!box) return;
-    if (!isPresenter()) { R.message(box, 'Trykk A og logg inn for å vise poengtavlen.'); return; }
-    shown = { kind: 'total', spec: { id: null }, slide: slide, box: box, rows: [], tries: [] };
-    R.message(box, 'Henter poeng …');
+    var boxes = Array.prototype.slice.call(slide.querySelectorAll('.tbl-total'));
+    if (!boxes.length) return;
+    if (!isPresenter()) { boxes.forEach(function (b) { R.message(b, 'Trykk A og logg inn for å vise poengtavlen.'); }); return; }
+    shown = { kind: 'total', spec: { id: null }, slide: slide, box: boxes[0], boxes: boxes, rows: [], tries: [] };
+    boxes.forEach(function (b) { R.message(b, 'Henter poeng …'); });
     unsubs.push(sessionRef.collection('teamtries').onSnapshot(function (snap) {
       if (!shown || shown.kind !== 'total') return;
       shown.tries = snap.docs.map(function (d) { return d.data(); });
