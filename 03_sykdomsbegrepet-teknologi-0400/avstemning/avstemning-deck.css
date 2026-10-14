@@ -1,0 +1,97 @@
+/* Avstemning i reveal.js-dekket, se README.md i samme mappe.
+   Selve resultatvisningen er i public/resultater.css (delt med foreleser-siden);
+   her er bare det som er spesielt for dekket. Størrelser i px er i slidens egne
+   koordinater (960x540), reveal.js skalerer. */
+
+.reveal .poll-results { aspect-ratio:16/9; font-size:20px; }
+.poll-slide .poll-results { width:740px; margin:0 auto; }
+.engage-row .poll-results { flex:1 1 auto; }
+
+/* Bunnlinjen: statusprikk (grå = ikke innlogget, grønn = innlogget som foreleser)
+   og antall ubesvarte spørsmål fra studentene (vises bare når det finnes noen) */
+.bottom-bar .poll-dot { flex:0 0 auto; font-size:14px; color:#aaa; margin-right:6px; cursor:pointer; pointer-events:auto; }
+.bottom-bar .poll-dot.on { color:#1d7a3d; }
+.bottom-bar .poll-dot.err { color:#b3261e; }
+/* Samme diskrete stil som resten av bunnlinjen (18px, grå, 75 %) */
+.bottom-bar .poll-qa {
+  flex:0 0 auto; display:inline-flex; align-items:center; gap:5px; margin-left:12px; white-space:nowrap;
+  font-size:18px; color:#555; opacity:0.75;
+}
+.bottom-bar .poll-qa[hidden] { display:none; }
+.bottom-bar .poll-qa svg { width:0.9em; height:0.9em; }
+
+/* Innloggingspanelet (tast A). Ligger utenfor .slides, så det skaleres ikke. */
+.avst-panel {
+  position:fixed; top:16px; right:16px; z-index:100; width:320px;
+  background:#fff; color:#1f2430; padding:16px;
+  box-shadow:0 6px 24px rgba(0,0,0,0.25); font:15px/1.4 system-ui, "Segoe UI", Arial, sans-serif; text-align:left;
+}
+.avst-panel h3 { margin:0 0 6px; font-size:17px; color:var(--ntnu-blue); text-transform:none; }
+.avst-panel p { margin:0 0 10px; }
+.avst-panel input { display:block; width:100%; box-sizing:border-box; margin-bottom:8px; padding:8px; font:inherit; border:1px solid #c9ced8; }
+.avst-panel button { font:inherit; padding:7px 12px; border:0; background:var(--ntnu-blue); color:#fff; cursor:pointer; margin:0 6px 6px 0; }
+.avst-panel button.danger { background:#b3261e; }
+.avst-panel .avst-help { font-size:12px; color:#666; margin:6px 0 0; }
+
+/* ---- Lagquiz (team-based learning) ---- */
+
+/* Spørsmålssliden: merke øverst og fremdrift nederst (bare tall, eget tempo) */
+.tbl-badge {
+  display:inline-block; background:var(--magenta, #ad208e); color:#fff;
+  padding:0.2em 0.8em; font-size:0.36em; font-weight:700;
+  letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.4em;
+}
+/* Ekstraspørsmål i en lagquiz-blokk: gir ikke poeng */
+.tbl-badge.tbl-extra { background:#fff; color:var(--magenta, #ad208e); box-shadow:inset 0 0 0 2px var(--magenta, #ad208e); }
+.tbl-status { margin-top:0.6em; font-size:0.4em; color:#555; white-space:pre-line; }
+
+/* Resultatsliden: fire paneler i 2 x 2 (alene, lagenes første valg, poeng, fasit) */
+.reveal section.tbl-result-slide { text-align:left; }
+.tbl-result-slide h2.tbl-title { font-size:0.9em; margin:0 0 0.25em; }
+/* Samlet poengtavle (data-tbl-total) */
+.reveal section.tbl-total-slide { text-align:left; }
+.tbl-total-slide h2.tbl-title { font-size:0.9em; margin:0 0 0.25em; }
+.reveal .tbl-total-slide .poll-results.tbl-total { aspect-ratio:auto; height:430px; font-size:19px; }
+.tbl-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:205px 205px; gap:10px 14px; }
+.tbl-panel { display:flex; flex-direction:column; min-height:0; }
+.tbl-panel h3 { font-size:15px; margin:0 0 4px; color:var(--ntnu-blue, #00509e); text-transform:uppercase; letter-spacing:0.05em; }
+.reveal .tbl-panel .poll-results { flex:1; aspect-ratio:auto; font-size:15px; width:auto; }
+.tbl-fasit { background:#f2fbf8; padding:8px 12px; box-shadow:0 2px 10px rgba(0,0,0,0.12); overflow:hidden; }
+.tbl-fasit .tbl-q { font-size:12px; margin:0 0 3px; }
+.reveal .tbl-fasit .alt { font-size:11.5px; margin:0; padding:1px 6px; line-height:1.3; }
+.tbl-fasit .tbl-note, .tbl-fasit .pagecite { font-size:11px; margin:3px 0 0; line-height:1.3; }
+/* Før R: fasiten er skjult (paneler viser bare antall) */
+.tbl-result-slide:not(.revealed) .tbl-fasit > * { visibility:hidden; }
+.tbl-result-slide:not(.revealed) .tbl-fasit::before { content:"Fasit vises med R"; display:block; color:#777; font-size:14px; margin-top:80px; text-align:center; }
+
+/* ---- Enkelt flervalg på én slide (fordypning) ---- */
+.mc-slide .alt { position:relative; overflow:hidden; isolation:isolate; --share:0%; }
+.mc-slide .alt::before {
+  content:""; position:absolute; left:0; top:0; bottom:0; width:var(--share);
+  background:rgba(0,80,158,0.14); transition:width 0.4s; z-index:-1;
+}
+.mc-slide .alt .mc-share { float:right; font-size:0.8em; color:#555; font-weight:400; }
+.mc-slide .mc-note { display:none; }
+.mc-slide .mc-count { font-size:0.4em; color:#555; margin-top:0.4em; }
+.mc-slide.revealed .alt.is-correct { background:#e3f6e9; font-weight:700; }
+.mc-slide.revealed .alt.is-correct::before { background:rgba(29,122,61,0.22); }
+.mc-slide.revealed .alt.is-correct .altnum { color:#1d7a3d; }
+.mc-slide.revealed .mc-note { display:block; }
+
+/* PDF til Canvas (?print-pdf): vis fasit og notat, skjul tellere og tomme resultatpaneler */
+html.avst-print .mc-slide .alt.is-correct { background:#e3f6e9; font-weight:700; }
+html.avst-print .mc-slide .mc-note { display:block; }
+html.avst-print .mc-count, html.avst-print .tbl-status { display:none; }
+html.avst-print .tbl-total > * { display:none; }
+html.avst-print .tbl-total::before { content:"Poengtavlen fra forelesningen vises her live."; margin:auto; color:#777; font-size:0.9em; }
+html.avst-print .tbl-result-slide .tbl-fasit > * { visibility:visible; }
+html.avst-print .tbl-result-slide .tbl-fasit::before { content:none; }
+html.avst-print .tbl-result-slide .tbl-grid { grid-template-columns:1fr; grid-template-rows:auto; }
+html.avst-print .tbl-result-slide .tbl-panel:not(.tbl-fasit) { display:none; }
+.tbl-fasit .altnum { display:inline-block; width:1.4em; font-weight:700; color:var(--ntnu-blue, #00509e); }
+.tbl-fasit .alt.correct { background:#e3f6e9; font-weight:700; }
+.tbl-fasit .alt.correct .altnum { color:#1d7a3d; }
+.tbl-fasit .alt.correct::after { content:" \2713"; color:#1d7a3d; font-weight:700; }
+.reveal .mc-slide .mc-note { font-size:0.5em; margin-top:0.3em; }
+/* PDF: ingen «Trykk A og logg inn»-meldinger i tomme resultatbokser */
+html.avst-print .poll-results .pr-msg { visibility:hidden; }
