@@ -1,0 +1,83 @@
+/* Resultatvisning, delt av dekkene og foreleser-siden (se resultater.js).
+   Størrelsene følger boksens font-size, så samme stil passer både på en
+   slide (20px) og på en mobil. Fargene hentes fra sidens egne --ntnu-blue osv. */
+
+.poll-results {
+  position:relative; box-sizing:border-box;
+  display:flex; flex-direction:column; overflow:hidden;
+  padding:0.7em 0.9em 0.4em; background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,0.12);
+  color:var(--ink, #1f2430); text-align:center; line-height:1.2;
+}
+
+.pr-msg { margin:auto; color:#777; font-size:0.9em; }
+.pr-foot { flex:0 0 auto; margin-top:0.3em; font-size:0.7em; color:#666; }
+
+/* Skjult (standard mens det stemmes): bare antall svar */
+.pr-waiting { flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+.pr-waiting-n { font-size:4em; font-weight:700; color:var(--ntnu-blue, #00509e); line-height:1; }
+.pr-waiting-text { font-size:1.2em; color:#555; margin-bottom:0.8em; }
+.pr-waiting .pr-msg { margin:0; font-size:0.75em; }
+
+/* Stolper: flervalg og skala */
+.pr-bars { flex:1; min-height:0; display:flex; justify-content:center; gap:1.1em; }
+.pr-col { flex:1; max-width:6em; display:flex; flex-direction:column; align-items:center; }
+.pr-count { font-size:1em; font-weight:700; }
+.pr-track { flex:1; width:100%; position:relative; margin-top:0.2em; }
+.pr-bar {
+  position:absolute; left:0; right:0; bottom:0; min-height:3px;
+  background:var(--ntnu-blue, #00509e); transition:height 0.4s;
+}
+.pr-label { margin-top:0.25em; font-size:1.2em; font-weight:700; color:var(--ntnu-blue, #00509e); }
+.pr-sublabel { font-size:0.6em; color:#666; min-height:1.25em; }
+
+/* Riktig svar: hakemerke over stolpen, og stolpen/tallet i grønt i stedet for blatt */
+.pr-check {
+  width:1.4em; height:1.4em; margin-bottom:0.2em; border-radius:50%;
+  background:var(--ok, #1d7a3d); color:#fff; font-size:0.9em; font-weight:800;
+  display:flex; align-items:center; justify-content:center; flex:0 0 auto;
+}
+.pr-col.pr-correct .pr-bar { background:var(--ok, #1d7a3d); }
+.pr-col.pr-correct .pr-label { color:var(--ok, #1d7a3d); }
+
+/* Ordsky (ordstørrelse settes i em av resultater.js) */
+.pr-cloud {
+  flex:1; min-height:0; display:flex; flex-wrap:wrap; align-content:center; justify-content:center;
+  gap:0.1em 0.8em; font-weight:700; line-height:1.1;
+}
+
+/* Åpne svar og Q&A */
+.pr-cards {
+  flex:1; min-height:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(9.5em, 1fr));
+  gap:0.4em; align-content:start; overflow:hidden; text-align:left;
+}
+.pr-card { background:#f1f3f7; padding:0.4em 0.5em; font-size:0.7em; line-height:1.3; overflow-wrap:anywhere; }
+
+/* Rangering */
+.pr-rank { flex:1; min-height:0; display:flex; flex-direction:column; justify-content:center; gap:0.6em; text-align:left; }
+.pr-rank-row { display:flex; align-items:center; gap:0.6em; font-size:0.9em; }
+.pr-rank-name { flex:0 0 42%; }
+.pr-rank-track { flex:1; }
+.pr-rank-bar { height:1.1em; background:var(--purple, #552988); }
+.pr-rank-avg { font-size:0.75em; color:#666; white-space:nowrap; }
+
+/* Lagquiz: poengtavle */
+.pr-board { flex:1; min-height:0; display:flex; flex-direction:column; justify-content:flex-start; gap:0.25em; text-align:left; overflow:hidden; }
+.pr-board-row { display:flex; align-items:baseline; gap:0.6em; padding:0.15em 0.3em; border-bottom:1px solid #e3e6ec; font-size:0.9em; }
+.pr-board-row.pending { color:#888; }
+.pr-board-name { flex:1; font-weight:700; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pr-board-tries { font-size:0.75em; color:#666; white-space:nowrap; }
+.pr-board-pts { flex:0 0 2.6em; text-align:right; font-weight:700; color:var(--ntnu-blue, #00509e); }
+
+/* Lagquiz: samlet poengtavle for økten (totals/standings i resultater.js) */
+.pr-total { flex:1; min-height:0; display:grid; grid-template-columns:1fr; grid-auto-rows:min-content; gap:0 1.6em; text-align:left; overflow:hidden; }
+.pr-total.two { grid-template-columns:1fr 1fr; grid-auto-flow:column; grid-template-rows:repeat(15, min-content); }
+.pr-total-row { display:flex; align-items:baseline; gap:0.5em; padding:0.2em 0.3em; border-bottom:1px solid #e3e6ec; }
+.pr-total.two .pr-total-row { font-size:0.8em; padding:0.1em 0.3em; }
+.pr-total-row.top { background:#f2f6fb; }
+.pr-total-place { flex:0 0 1.8em; text-align:right; color:#666; }
+.pr-total-name { flex:1; font-weight:700; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pr-total-cells { display:flex; gap:0.15em; }
+.pr-total-cell { width:1.3em; text-align:center; font-size:0.7em; color:#555; background:#eef0f4; }
+.pr-total-cell.none { color:#aaa; background:none; }
+.pr-total-sum { flex:0 0 3em; text-align:right; font-weight:700; color:var(--ntnu-blue, #00509e); }
