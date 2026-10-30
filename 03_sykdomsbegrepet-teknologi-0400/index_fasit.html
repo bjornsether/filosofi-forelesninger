@@ -578,6 +578,8 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 .reveal section.tbl-live { padding-right:0 !important; }
 /* uke 41: flervalgene i FLA-delene viser nå svaret og forklaringen, så de får litt mindre skrift */
 .reveal .slides section.fla-mc { font-size:82%; }
+/* uke 40: vanlige flervalg der forklaringen (mc-note) nå vises */
+.reveal .slides section.mc-slide:not(.fla-mc):has(.mc-note) { font-size:85%; }
 </style></head>
 <body>
 <div class="reveal">
@@ -669,7 +671,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q01">
-<h2 class="tbl-title">Lagquiz 1 (FLA 1): resultat</h2>
+<h2 class="tbl-title">Lagquiz 1 (FLA 1): fasit</h2>
 <div class="tbl-grid">
 
 
@@ -699,7 +701,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q11">
-<h2 class="tbl-title">Ekstra 1: resultat</h2>
+<h2 class="tbl-title">Ekstra 1: fasit</h2>
 <div class="tbl-grid">
 
 
@@ -748,7 +750,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q02">
-<h2 class="tbl-title">Lagquiz 2 (FLA 2): resultat</h2>
+<h2 class="tbl-title">Lagquiz 2 (FLA 2): fasit</h2>
 <div class="tbl-grid">
 
 
@@ -778,7 +780,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q12">
-<h2 class="tbl-title">Ekstra 2: resultat</h2>
+<h2 class="tbl-title">Ekstra 2: fasit</h2>
 <div class="tbl-grid">
 
 
@@ -828,7 +830,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q03">
-<h2 class="tbl-title">Lagquiz 3 (FLA 3): resultat</h2>
+<h2 class="tbl-title">Lagquiz 3 (FLA 3): fasit</h2>
 <div class="tbl-grid">
 
 
@@ -858,7 +860,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q13">
-<h2 class="tbl-title">Ekstra 3: resultat</h2>
+<h2 class="tbl-title">Ekstra 3: fasit</h2>
 <div class="tbl-grid">
 
 
@@ -907,7 +909,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q04">
-<h2 class="tbl-title">Lagquiz 4 (FLA 4): resultat</h2>
+<h2 class="tbl-title">Lagquiz 4 (FLA 4): fasit</h2>
 <div class="tbl-grid">
 
 
@@ -937,7 +939,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q14">
-<h2 class="tbl-title">Ekstra 4: resultat</h2>
+<h2 class="tbl-title">Ekstra 4: fasit</h2>
 <div class="tbl-grid">
 
 
@@ -987,7 +989,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q05">
-<h2 class="tbl-title">Lagquiz 5 (FLA 5): resultat</h2>
+<h2 class="tbl-title">Lagquiz 5 (FLA 5): fasit</h2>
 <div class="tbl-grid">
 
 
@@ -1017,7 +1019,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q15">
-<h2 class="tbl-title">Ekstra 5: resultat</h2>
+<h2 class="tbl-title">Ekstra 5: fasit</h2>
 <div class="tbl-grid">
 
 
@@ -1066,7 +1068,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q06">
-<h2 class="tbl-title">Lagquiz 6 (FLA 6): resultat</h2>
+<h2 class="tbl-title">Lagquiz 6 (FLA 6): fasit</h2>
 <div class="tbl-grid">
 
 
@@ -1096,7 +1098,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q16">
-<h2 class="tbl-title">Ekstra 6: resultat</h2>
+<h2 class="tbl-title">Ekstra 6: fasit</h2>
 <div class="tbl-grid">
 
 
@@ -1145,7 +1147,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q07">
-<h2 class="tbl-title">Lagquiz 7 (FLA 7): resultat</h2>
+<h2 class="tbl-title">Lagquiz 7 (FLA 7): fasit</h2>
 <div class="tbl-grid">
 
 
@@ -1175,7 +1177,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q17">
-<h2 class="tbl-title">Ekstra 7: resultat</h2>
+<h2 class="tbl-title">Ekstra 7: fasit</h2>
 <div class="tbl-grid">
 
 
@@ -1224,7 +1226,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q08">
-<h2 class="tbl-title">Lagquiz 8 (FLA 8): resultat</h2>
+<h2 class="tbl-title">Lagquiz 8 (FLA 8): fasit</h2>
 <div class="tbl-grid">
 
 
@@ -1254,7 +1256,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 
 </section>
 <section class="tbl-result-slide fasit-full" data-tbl-for="q18">
-<h2 class="tbl-title">Ekstra 8: resultat</h2>
+<h2 class="tbl-title">Ekstra 8: fasit</h2>
 <div class="tbl-grid">
 
 

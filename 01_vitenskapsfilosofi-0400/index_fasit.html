@@ -443,6 +443,20 @@ html.avst-print .tbl-result-slide .tbl-panel:not(.tbl-fasit) { display:none; }
 .reveal .mc-slide .mc-note { font-size:0.5em; margin-top:0.3em; }
 /* PDF: ingen «Trykk A og logg inn»-meldinger i tomme resultatbokser */
 html.avst-print .poll-results .pr-msg { visibility:hidden; }
+</style><style>
+/* index_fasit.html: lagquizens resultatslide viser bare fasiten, i full bredde (lag_distribusjonsversjoner.py) */
+.reveal .tbl-result-slide.fasit-full .tbl-grid { display:block; }
+.reveal .tbl-result-slide.fasit-full .tbl-fasit { width:100%; box-sizing:border-box; }
+.reveal .tbl-result-slide.fasit-full .tbl-fasit h3 { font-size:18px; }
+.reveal .tbl-result-slide.fasit-full .tbl-fasit .tbl-q { font-size:21px; margin-bottom:8px; }
+.reveal .tbl-result-slide.fasit-full .tbl-fasit .alt { font-size:18.5px; padding:3px 10px; }
+.reveal .tbl-result-slide.fasit-full .tbl-fasit .tbl-note { font-size:17px; margin-top:8px; }
+.reveal .tbl-result-slide.fasit-full .tbl-fasit .pagecite { font-size:16px; }
+.reveal section.tbl-live { padding-right:0 !important; }
+/* uke 41: flervalgene i FLA-delene viser nå svaret og forklaringen, så de får litt mindre skrift */
+.reveal .slides section.fla-mc { font-size:82%; }
+/* uke 40: vanlige flervalg der forklaringen (mc-note) nå vises */
+.reveal .slides section.mc-slide:not(.fla-mc):has(.mc-note) { font-size:85%; }
 </style></head>
 <body>
 <div class="reveal">
@@ -630,7 +644,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 </section>
 <section class="question-slide tbl-slide" data-correct="1" data-poll-id="q02" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k7">
 <div class="tbl-badge">Lagquiz: først alene, så i gruppa</div>
-<div class="tbl-status"></div>
+
 <div class="fla-ref">Se FLA 40: Bekreftelse</div>
 <p>Hvilke av de tre spørsmålene avgjør om observasjonen <em>bekrefter</em> hypotesen, ikke bare hvor stor <em>tillit</em> vi bør ha?</p>
 <div class="alt"><span class="altnum">1</span> Spørsmål 1 og 2.</div>
@@ -640,12 +654,12 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="pagecite"><em>Tenk!</em> ss. 113–6</p>
 
 </section>
-<section class="tbl-result-slide" data-tbl-for="q02">
-<h2 class="tbl-title">Lagquiz: resultat</h2>
+<section class="tbl-result-slide fasit-full" data-tbl-for="q02">
+<h2 class="tbl-title">Lagquiz: fasit</h2>
 <div class="tbl-grid">
-<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
-<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
-<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+
+
+
 <div class="tbl-panel tbl-fasit">
 <h3>Fasit</h3>
 <p class="tbl-q">Hvilke av de tre spørsmålene avgjør om observasjonen bekrefter hypotesen, ikke bare hvor stor tillit vi bør ha?</p>
@@ -660,7 +674,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 </section>
 <section class="question-slide tbl-slide long-alts" data-correct="4" data-poll-id="q03" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k7">
 <div class="tbl-badge tbl-extra">Ekstra: i eget tempo</div>
-<div class="tbl-status"></div>
+
 <p>Et kornete bilde er det mest kjente «beviset» for Loch Ness-sjøormen. Skeptikeren: en sjøorm strider mot biologien, og bildet kan forestille mye rart. Hva er en tilsvarende måte å fremstille innvendingen på?</p>
 <div class="alt"><span class="altnum">1</span> Poppers falsifikasjonisme: kunnskapen i biologi og zoologi er samlet sett tilstrekkelig til å avkrefte hypotesen «det lever en stor sjøorm i Loch Ness».</div>
 <div class="alt"><span class="altnum">2</span> Hypotetisk-deduktiv metode: fra hypotesen kan man utlede observasjoner, men det er ikke klart at man faktisk har fått en observasjon i tråd med prediksjonene.</div>
@@ -669,12 +683,12 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="pagecite"><em>Tenk!</em> ss. 113–6</p>
 
 </section>
-<section class="tbl-result-slide" data-tbl-for="q03">
-<h2 class="tbl-title">Lagquiz, ekstra: resultat</h2>
+<section class="tbl-result-slide fasit-full" data-tbl-for="q03">
+<h2 class="tbl-title">Lagquiz, ekstra: fasit</h2>
 <div class="tbl-grid">
-<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
-<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
-<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+
+
+
 <div class="tbl-panel tbl-fasit">
 <h3>Fasit</h3>
 <p class="tbl-q">Nessie-skeptikeren: «bemerkelsesverdig påstand krever bemerkelsesverdig evidens». Tilsvarende måte å si det på?</p>
@@ -863,7 +877,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 </section>
 <section class="question-slide tbl-slide" data-correct="1" data-poll-id="q06" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k8">
 <div class="tbl-badge">Lagquiz: først alene, så i gruppa</div>
-<div class="tbl-status"></div>
+
 <p>Hva innebærer «situert kunnskap»?</p>
 <div class="alt"><span class="altnum">1</span> Forskerens egenskaper påvirker evaluering av data og funn.</div>
 <div class="alt"><span class="altnum">2</span> Forskerens standpunkt må ikke påvirkes utenfra.</div>
@@ -872,12 +886,12 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="pagecite"><em>Tenk!</em> ss. 126–8</p>
 
 </section>
-<section class="tbl-result-slide" data-tbl-for="q06">
-<h2 class="tbl-title">Lagquiz: resultat</h2>
+<section class="tbl-result-slide fasit-full" data-tbl-for="q06">
+<h2 class="tbl-title">Lagquiz: fasit</h2>
 <div class="tbl-grid">
-<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
-<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
-<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+
+
+
 <div class="tbl-panel tbl-fasit">
 <h3>Fasit</h3>
 <p class="tbl-q">Hva innebærer «situert kunnskap»?</p>
@@ -891,7 +905,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 </section>
 <section class="question-slide tbl-slide" data-correct="4" data-poll-id="q05" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k8">
 <div class="tbl-badge tbl-extra">Ekstra: i eget tempo</div>
-<div class="tbl-status"></div>
+
 <p>Hva går normen om universalisme ut på?</p>
 <div class="alt"><span class="altnum">1</span> Søke mest allmenngyldige svar.</div>
 <div class="alt"><span class="altnum">2</span> Unngå at forskning styres av egeninteresse.</div>
@@ -900,12 +914,12 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="pagecite"><em>Tenk!</em> s. 123</p>
 
 </section>
-<section class="tbl-result-slide" data-tbl-for="q05">
-<h2 class="tbl-title">Lagquiz, ekstra: resultat</h2>
+<section class="tbl-result-slide fasit-full" data-tbl-for="q05">
+<h2 class="tbl-title">Lagquiz, ekstra: fasit</h2>
 <div class="tbl-grid">
-<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
-<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
-<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+
+
+
 <div class="tbl-panel tbl-fasit">
 <h3>Fasit</h3>
 <p class="tbl-q">Hva går normen om universalisme ut på?</p>
@@ -1205,7 +1219,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 </section>
 <section class="question-slide tbl-slide" data-correct="2" data-poll-id="q07" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k9">
 <div class="tbl-badge">Lagquiz: først alene, så i gruppa</div>
-<div class="tbl-status"></div>
+
 <p>Forskjellen mellom Poppers og Kuhns syn?</p>
 <div class="alt"><span class="altnum">1</span> Popper: sikkerhet, Kuhn: veltes ved anomalier.</div>
 <div class="alt"><span class="altnum">2</span> Popper: krav om falsifiserbarhet, Kuhn: teorier beskyttes.</div>
@@ -1214,12 +1228,12 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="pagecite"><em>Tenk!</em> ss. 107–11, ss. 132–8</p>
 
 </section>
-<section class="tbl-result-slide" data-tbl-for="q07">
-<h2 class="tbl-title">Lagquiz: resultat</h2>
+<section class="tbl-result-slide fasit-full" data-tbl-for="q07">
+<h2 class="tbl-title">Lagquiz: fasit</h2>
 <div class="tbl-grid">
-<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
-<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
-<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+
+
+
 <div class="tbl-panel tbl-fasit">
 <h3>Fasit</h3>
 <p class="tbl-q">Forskjellen mellom Poppers og Kuhns syn?</p>
@@ -1234,7 +1248,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 </section>
 <section class="question-slide tbl-slide" data-correct="2" data-poll-id="q21" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k9">
 <div class="tbl-badge tbl-extra">Ekstra: i eget tempo</div>
-<div class="tbl-status"></div>
+
 <p>Uranus fulgte ikke Newtons lover. Man antok en ukjent planet. Hvordan ville Kuhn beskrevet det?</p>
 <div class="alt"><span class="altnum">1</span> Newtons lover var falsifisert og burde vært forkastet.</div>
 <div class="alt"><span class="altnum">2</span> En anomali, løst innenfor normalvitenskapen.</div>
@@ -1243,12 +1257,12 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="pagecite"><em>Tenk!</em> ss. 106, 132–5</p>
 
 </section>
-<section class="tbl-result-slide" data-tbl-for="q21">
-<h2 class="tbl-title">Lagquiz, ekstra: resultat</h2>
+<section class="tbl-result-slide fasit-full" data-tbl-for="q21">
+<h2 class="tbl-title">Lagquiz, ekstra: fasit</h2>
 <div class="tbl-grid">
-<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
-<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
-<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+
+
+
 <div class="tbl-panel tbl-fasit">
 <h3>Fasit</h3>
 <p class="tbl-q">Uranus fulgte ikke Newtons lover. Man antok en ukjent planet. Hvordan ville Kuhn beskrevet det?</p>
@@ -1648,7 +1662,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 </section>
 <section class="question-slide tbl-slide" data-correct="1" data-poll-id="q15" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k11">
 <div class="tbl-badge">Lagquiz: først alene, så i gruppa</div>
-<div class="tbl-status"></div>
+
 <p>Storjordspurven har et uvanlig kraftig nebb. Hvilket alternativ er en teleologisk forklaring på nebbet?</p>
 <div class="alt"><span class="altnum">1</span> Den har kraftig nebb for å knekke nøtter og spise store frø.</div>
 <div class="alt"><span class="altnum">2</span> Tidligere generasjoner med større nebb var mer tilpasningsdyktige.</div>
@@ -1656,12 +1670,12 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <div class="alt"><span class="altnum">4</span> Et slikt nebb er et typisk trekk ved arten.</div>
 
 </section>
-<section class="tbl-result-slide" data-tbl-for="q15">
-<h2 class="tbl-title">Lagquiz: resultat</h2>
+<section class="tbl-result-slide fasit-full" data-tbl-for="q15">
+<h2 class="tbl-title">Lagquiz: fasit</h2>
 <div class="tbl-grid">
-<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
-<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
-<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+
+
+
 <div class="tbl-panel tbl-fasit">
 <h3>Fasit</h3>
 <p class="tbl-q">Storjordspurven har et uvanlig kraftig nebb. Hvilket alternativ er en teleologisk forklaring på nebbet?</p>
@@ -1675,7 +1689,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 </section>
 <section class="question-slide tbl-slide" data-correct="1" data-poll-id="q14" data-poll-options="4" data-poll-type="tbl" data-tbl-block="k11">
 <div class="tbl-badge tbl-extra">Ekstra: i eget tempo</div>
-<div class="tbl-status"></div>
+
 <p>Hva kjennetegner et teleologisk (aristotelisk) natursyn?</p>
 <div class="alt"><span class="altnum">1</span> At prosesser i naturen realiserer visse mål.</div>
 <div class="alt"><span class="altnum">2</span> At Gud har skapt naturen og naturens lover.</div>
@@ -1684,12 +1698,12 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="pagecite"><em>Tenk!</em> s. 154</p>
 
 </section>
-<section class="tbl-result-slide" data-tbl-for="q14">
-<h2 class="tbl-title">Lagquiz, ekstra: resultat</h2>
+<section class="tbl-result-slide fasit-full" data-tbl-for="q14">
+<h2 class="tbl-title">Lagquiz, ekstra: fasit</h2>
 <div class="tbl-grid">
-<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
-<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
-<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+
+
+
 <div class="tbl-panel tbl-fasit">
 <h3>Fasit</h3>
 <p class="tbl-q">Hva kjennetegner et teleologisk (aristotelisk) natursyn?</p>
@@ -1917,7 +1931,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 </section>
 <section class="question-slide tbl-slide" data-correct="2" data-poll-id="q25" data-poll-options="4" data-poll-type="tbl">
 <div class="tbl-badge">Lagquiz: først alene, så i gruppa</div>
-<div class="tbl-status"></div>
+
 <p>Hva er den hermeneutiske sirkelen?</p>
 <div class="alt"><span class="altnum">1</span> At tolkningen går i ring og derfor aldri kan begrunnes.</div>
 <div class="alt"><span class="altnum">2</span> Vekselvirkningen mellom forståelsen av delene og av helheten.</div>
@@ -1926,12 +1940,12 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 <p class="pagecite">Thomassen ss. 169–71</p>
 
 </section>
-<section class="tbl-result-slide" data-tbl-for="q25">
-<h2 class="tbl-title">Lagquiz: resultat</h2>
+<section class="tbl-result-slide fasit-full" data-tbl-for="q25">
+<h2 class="tbl-title">Lagquiz: fasit</h2>
 <div class="tbl-grid">
-<div class="tbl-panel"><h3>Alene</h3><div class="poll-results tbl-ind"></div></div>
-<div class="tbl-panel"><h3>Lagenes første valg</h3><div class="poll-results tbl-team"></div></div>
-<div class="tbl-panel"><h3>Poeng</h3><div class="poll-results tbl-points"></div></div>
+
+
+
 <div class="tbl-panel tbl-fasit">
 <h3>Fasit</h3>
 <p class="tbl-q">Hva er den hermeneutiske sirkelen?</p>
@@ -1985,11 +1999,7 @@ html.avst-print .poll-results .pr-msg { visibility:hidden; }
 </section>
 <!-- CLOSING -->
 <section data-title="Oppsummering">
-<section class="tbl-total-slide" data-tbl-total="">
-<h2 class="tbl-title">Lagquiz: samlet poengtavle</h2>
-<div class="poll-results tbl-total"></div>
 
-</section>
 <section class="content-slide begreper-recap">
 <h2>Begreper, uke 40</h2>
 <p class="kilde-nokkel"><span class="swatch tenk"></span><em>Tenk!</em>  <span class="swatch thomassen"></span>Thomassen</p>
